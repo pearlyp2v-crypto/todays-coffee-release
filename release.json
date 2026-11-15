@@ -1,7 +1,7 @@
 {
   "app": "3.8.16",
   "source_repository": "pearlyp2v-crypto/app-todays-coffee",
-  "source_commit": "e500fbd8f282ee2b0d5f7b88982af983d57cc3d0",
+  "source_commit": "954181d157cdb8b151e3e3894e5767e582714244",
   "html_sha256": "5de197d3a7781c1a3813a1015b6f22afdced54ab4075b828cf79fef284073031",
   "files": {
     "index.html": "5de197d3a7781c1a3813a1015b6f22afdced54ab4075b828cf79fef284073031",
