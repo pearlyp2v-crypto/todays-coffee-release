@@ -1,0 +1,8 @@
+{
+  "app": "3.8.14",
+  "source_repository": "pearlyp2v-crypto/app-todays-coffee",
+  "source_commit": "79761617009d5b44b56b624dcc964d6d2a795e02",
+  "source_pull_request": "https://github.com/pearlyp2v-crypto/app-todays-coffee/pull/5",
+  "html_sha256": "2473f863d0dadedd880db2ada273cf83a4946dc07ed923cc0751ad4dfc673f71",
+  "note": "Release repository payload only; GitHub Pages hosting not enabled."
+}

@@ -1,0 +1,17 @@
+{
+  "app": "3.8.14",
+  "database_source": "v2.6 embedded snapshot extracted from v3.8.9 (not Excel-verified)",
+  "engine": "0.5 + five-stage rest v3.8.13",
+  "html_sha256": "2473f863d0dadedd880db2ada273cf83a4946dc07ed923cc0751ad4dfc673f71",
+  "beans": 218,
+  "public_recipes": 29,
+  "source_sha256": {
+    "APP_VERSION": "05d1123415920ff69fbf55d1a73dbf818268daecc3eaabae8e1209f5b200c89f",
+    "app/02_coffee-log/src/index.template.html": "f27c2dc04b9421b8d51f2f42cc5527b38c17ec4699cd3c9a68d8757e9d1cd4c8",
+    "data/beans.json": "aeabae2a740ce906350515e3c61445f92462a88e4adc572bc4add2fe8ad7348e",
+    "data/recipe-config.json": "9f3988d554a14061ed228404af31ae909395e8da8d0b1736427ffb0b2532ed6d",
+    "data/public-recipes.json": "e4c6b98488abc3193fc7e561f420f47083050f3fda50e03817c561be21c3c9ab",
+    "engine/recipe-engine.js": "ec6574b77eb8993e353f95a92e4e996b1be6d7dd67ef49f2101bee833d3018c3",
+    "scripts/build.py": "da27253c94b2ee6a655d9332dac796729c88df1bace80e12e0997ad0d823ab82"
+  }
+}
