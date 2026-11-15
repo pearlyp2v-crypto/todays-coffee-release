@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.14</title><style data-source="design-system/legacy.css">
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.16</title><meta name="app-version" content="3.8.16"/><style data-source="design-system/legacy.css">
 :root{--bg:#F1E5DC;--page:#FFFEFB;--ink:#4A4947;--sub:#6E6B66;--line:#D8D2C2;--slate:#4A4947;--cherry:#B17457;--panel:#FFFEFB;--muted:#D8D2C2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #6E6B66;outline-offset:2px}button:disabled,input:disabled{opacity:.5;cursor:not-allowed}[hidden]{display:none!important}
 .app{max-width:440px;min-height:100dvh;background:var(--page);margin:0 auto;box-shadow:0 15px 55px #4A494717}.header{height:64px;padding:0 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:850;letter-spacing:-1.05px}.brand .dot{color:var(--cherry)}.slogan{font:700 9px/1.35 Georgia,serif;color:#6E6B66;text-align:right}main{padding:22px 19px 38px}.eyebrow{display:flex;align-items:center;gap:8px;font:700 10px Georgia,serif;letter-spacing:1.5px;color:var(--cherry)}.eyebrow:before{content:'';width:21px;height:2px;background:var(--cherry)}h1{font-size:25px;margin:12px 0 4px;letter-spacing:-.9px}.subtitle{color:var(--sub);font-size:12px;line-height:1.6;margin:0 0 18px}
@@ -2628,7 +2628,7 @@ body.tc-brew-focus #tc-global-header,body:has(#recipe-card.timer-focus) #tc-glob
 .tc-backup-import-preview{display:grid;gap:9px;padding:11px;border-radius:10px;background:var(--theme-search,#F9F7F0);font-size:11px;line-height:1.7}
 .tc-backup-note{font-size:10.5px;line-height:1.6;color:var(--theme-sub,#6E6B66)}
 </style>
-</head>
+<meta name="pwa-release" content="5c67a5ff40908fcc79c5d708191c0afcdecd976f64fdfe41b4a8c9e6d1721dfd"/></head>
 <body class="variant-b step-layout-a"><div class="app"><main id="brew-main">
 <button class="eyebrow eyebrow-link" type="button">COFFEE LOG · BREW GUIDE</button><div class="stage-header"><nav aria-label="추출 과정" class="flow-steps">
 <button aria-current="step" class="flow-step active" data-step="1" type="button"><span>준비</span></button>
@@ -8428,7 +8428,7 @@ async function exportBackup3813(){
  const data=backupLocal3813(),stats=backupStats3813(data);let photos;
  try{photos=await photosForBackup3813()}
  catch(e){if(stats.logPhotos)throw Error('Brew Log 사진을 읽지 못해 완전한 백업을 만들 수 없어요. 브라우저 저장 공간을 확인해 주세요.');photos=[]}
- const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.14',exportedAt:new Date().toISOString(),
+ const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.16',exportedAt:new Date().toISOString(),
   metadata:{...stats,photos:photos.length},localStorage:data,photos};
  downloadBackup3813(backup);return backup.metadata;
 }
@@ -8547,4 +8547,104 @@ function drawBackupSettings3813(target){
 }
 
 })();</script>
-</body></html>
+<script data-source="pwa/client.js">(() => {
+  'use strict';
+  // Version snapshots and file:// HTML remain normal standalone documents.
+  if (!window.isSecureContext || !('serviceWorker' in navigator) ||
+      !(/^https?:$/.test(location.protocol)) ||
+      !(location.pathname.endsWith('/') || location.pathname.endsWith('/index.html'))) return;
+  const base = new URL('./', location.href);
+  const version = document.querySelector('meta[name="app-version"]').content;
+  let registration, installPrompt, applying = false, lastCheck = 0, message = '오프라인 준비 중';
+  const manifest = document.createElement('link');
+  manifest.rel = 'manifest'; manifest.href = new URL('manifest.webmanifest', base); document.head.append(manifest);
+  const favicon = document.createElement('link');
+  favicon.rel = 'icon'; favicon.type = 'image/png'; favicon.href = new URL('icons/favicon-32.png',base); document.head.append(favicon);
+  const apple = document.createElement('link');
+  apple.rel = 'apple-touch-icon'; apple.href = new URL('icons/apple-touch-icon.png', base); document.head.append(apple);
+  for (const [name, content] of [['apple-mobile-web-app-capable','yes'],['mobile-web-app-capable','yes'],['apple-mobile-web-app-title','오늘의 커피'],['apple-mobile-web-app-status-bar-style','default']]) {
+    const meta = document.createElement('meta'); meta.name = name; meta.content = content; document.head.append(meta);
+  }
+  const style = document.createElement('style');
+  style.textContent = '.coffee-pwa-panel{margin-top:16px;padding-top:14px;border-top:1px solid var(--theme-border,#D8D2C2);color:var(--ink,#4A4947);font-size:12px;line-height:1.65}.coffee-pwa-panel h3{font-size:14px;margin:0 0 6px}.coffee-pwa-panel p{margin:6px 0}.coffee-pwa-actions{display:flex;flex-wrap:wrap;gap:8px}.coffee-pwa-panel button,.coffee-pwa-notice button{font:inherit;min-height:44px;border:1px solid var(--theme-border,#D8D2C2);border-radius:8px;padding:8px 12px;color:var(--ink,#4A4947);background:var(--panel,#FFFEFB)}.coffee-pwa-notice{position:fixed;z-index:150;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));width:min(92vw,400px);padding:14px;border:1px solid var(--theme-border,#D8D2C2);border-radius:12px;background:var(--panel,#FFFEFB);color:var(--ink,#4A4947);box-shadow:0 4px 20px #4A494728;font-size:13px;line-height:1.6}.coffee-pwa-notice p{margin:0 0 10px}';
+  document.head.append(style);
+  function installed() { return matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; }
+  function refreshPanel() {
+    const panel = document.getElementById('coffee-pwa-panel');
+    if (!panel) return;
+    panel.querySelector('[data-pwa-status]').textContent = 'v' + version + ' · ' + message;
+    panel.querySelector('[data-pwa-install]').textContent = installed() ? '앱으로 실행 중' : '홈 화면에 추가';
+    if (installed()) panel.querySelector('[data-pwa-install]').textContent = '앱으로 실행 중';
+    panel.querySelector('[data-pwa-install]').disabled = installed();
+  }
+  async function install() {
+    if (installPrompt) {
+      const prompt = installPrompt; installPrompt = null;
+      await prompt.prompt(); await prompt.userChoice; refreshPanel();
+    } else {
+      window.alert('iPhone/iPad: Safari에서 공유 → 홈 화면에 추가를 선택하세요.\nAndroid: 브라우저 메뉴의 앱 설치 또는 홈 화면에 추가를 선택하세요.\n처음 온라인으로 앱을 연 뒤 오프라인 준비 완료를 확인해 주세요.');
+    }
+  }
+  async function checkUpdate() {
+    if (!registration || !navigator.onLine) return;
+    lastCheck = Date.now();
+    try {
+      await registration.update();
+      if (registration.waiting) offerUpdate();
+      else if (!registration.installing) {message = '오프라인 준비 완료 · 최신 버전 확인됨'; refreshPanel();}
+    } catch (_) {message = '업데이트 확인 실패 · 현재 버전은 유지됩니다'; refreshPanel();}
+  }
+  function offerUpdate() {
+    message = '새 버전이 있습니다'; refreshPanel();
+    if (document.getElementById('coffee-pwa-notice')) return;
+    const notice = document.createElement('section'); notice.id = 'coffee-pwa-notice';
+    notice.className = 'coffee-pwa-notice'; notice.setAttribute('role','status');
+    notice.innerHTML = '<p>새 버전이 있습니다. 추출과 기록 저장을 마친 뒤 업데이트해 주세요.</p><div class="coffee-pwa-actions"><button type="button" data-pwa-apply>업데이트</button><button type="button" data-pwa-later>나중에</button></div>';
+    notice.querySelector('[data-pwa-later]').onclick = () => notice.remove();
+    notice.querySelector('[data-pwa-apply]').onclick = () => {
+      if (!window.confirm('저장하지 않은 입력과 진행 중인 추출은 이어지지 않을 수 있습니다. 저장을 마쳤다면 새 버전으로 업데이트할까요?')) return;
+      if (!registration?.waiting) {notice.remove(); location.reload(); return;}
+      applying = true; registration.waiting.postMessage({type:'APPLY_UPDATE'});
+    };
+    document.body.append(notice);
+  }
+  function addPanel() {
+    const target = document.getElementById('tc-settings-content');
+    if (!target || document.getElementById('coffee-pwa-panel')) return;
+    const panel = document.createElement('section'); panel.id = 'coffee-pwa-panel'; panel.className = 'coffee-pwa-panel';
+    panel.innerHTML = '<h3>앱 설치·업데이트</h3><p data-pwa-status aria-live="polite"></p><div class="coffee-pwa-actions"><button type="button" data-pwa-install>홈 화면에 추가</button><button type="button" data-pwa-check>업데이트 확인</button></div><p>온라인으로 한 번 연 뒤 기본 기록·레시피를 오프라인에서 사용할 수 있어요. OCR은 인터넷 연결이 필요해요. 기록은 이 기기에 저장됩니다.</p>';
+    panel.querySelector('[data-pwa-install]').onclick = install;
+    panel.querySelector('[data-pwa-check]').onclick = checkUpdate;
+    target.append(panel); refreshPanel();
+  }
+  new MutationObserver(addPanel).observe(document.body, {childList:true,subtree:true});
+  addPanel();
+  window.addEventListener('beforeinstallprompt', event => {event.preventDefault(); installPrompt = event; refreshPanel();});
+  window.addEventListener('appinstalled', () => {installPrompt = null; refreshPanel();});
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (applying) location.reload();
+    // Other open tabs are never forcibly reloaded, so inputs/timers stay untouched.
+  });
+  navigator.serviceWorker.register(new URL('sw.js',base), {scope:base.href,updateViaCache:'none'}).then(async reg => {
+    registration = reg;
+    function watch(worker) {
+      if (!worker) return;
+      worker.addEventListener('statechange', () => {
+        if (worker.state === 'installed') {
+          if (reg.waiting && navigator.serviceWorker.controller) offerUpdate();
+          else {message = '오프라인 준비 완료'; refreshPanel();}
+        } else if (worker.state === 'redundant') {message = '새 버전 준비 실패 · 현재 버전 유지'; refreshPanel();}
+      });
+    }
+    if (reg.waiting) offerUpdate();
+    watch(reg.installing); reg.addEventListener('updatefound', () => watch(reg.installing));
+    if (reg.active) {message = '오프라인 준비 완료'; refreshPanel();}
+    await navigator.serviceWorker.ready;
+    message = reg.waiting ? '새 버전이 있습니다' : '오프라인 준비 완료'; refreshPanel();
+  }).catch(() => {message = '오프라인 설치를 완료하지 못했습니다 · 온라인 실행 가능'; refreshPanel();});
+  window.addEventListener('online',checkUpdate);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && Date.now()-lastCheck > 60*60*1000) checkUpdate();
+  });
+})();
+</script></body></html>

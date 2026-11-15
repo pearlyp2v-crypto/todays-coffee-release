@@ -1,17 +1,33 @@
 {
-  "app": "3.8.14",
+  "app": "3.8.16",
   "database_source": "v2.6 embedded snapshot extracted from v3.8.9 (not Excel-verified)",
   "engine": "0.5 + five-stage rest v3.8.13",
-  "html_sha256": "2473f863d0dadedd880db2ada273cf83a4946dc07ed923cc0751ad4dfc673f71",
+  "html_sha256": "5de197d3a7781c1a3813a1015b6f22afdced54ab4075b828cf79fef284073031",
   "beans": 218,
   "public_recipes": 29,
   "source_sha256": {
-    "APP_VERSION": "05d1123415920ff69fbf55d1a73dbf818268daecc3eaabae8e1209f5b200c89f",
-    "app/02_coffee-log/src/index.template.html": "f27c2dc04b9421b8d51f2f42cc5527b38c17ec4699cd3c9a68d8757e9d1cd4c8",
+    "APP_VERSION": "77b226f1143d2f480979a63cf37a09c75999f0cf1d5f115385f5b6548c261096",
+    "app/02_coffee-log/src/index.template.html": "592581ef30a460cc847ffac9898a3d6351ab9801b12a73de387057097ff89a23",
     "data/beans.json": "aeabae2a740ce906350515e3c61445f92462a88e4adc572bc4add2fe8ad7348e",
     "data/recipe-config.json": "9f3988d554a14061ed228404af31ae909395e8da8d0b1736427ffb0b2532ed6d",
     "data/public-recipes.json": "e4c6b98488abc3193fc7e561f420f47083050f3fda50e03817c561be21c3c9ab",
     "engine/recipe-engine.js": "ec6574b77eb8993e353f95a92e4e996b1be6d7dd67ef49f2101bee833d3018c3",
-    "scripts/build.py": "da27253c94b2ee6a655d9332dac796729c88df1bace80e12e0997ad0d823ab82"
+    "scripts/build.py": "757ebb988e596371148a9e9ab4ed9aeca638e38a49448d4ca344322c7923b59b",
+    "pwa/client.js": "70f4aceb2f855b20acd05160b66592cf179f9701c0badce17030491d21a64151",
+    "pwa/sw.js": "b72a79873188409f4e65b2296e0a591cd4b3b500f1784b169fb4d3c9422c5e92",
+    "pwa/manifest.webmanifest": "9dbd9a807df1b2f2a795a865bea4082d06dbf11979074d9f85e6f813c6460fc6",
+    "pwa/icons/apple-touch-icon.png": "41a26242723cb918a90c4f6a3a482b106da951df276c9c231783eba875e351ec",
+    "pwa/icons/favicon-32.png": "0aa0a36a53c6303ac959754b0603a5dab1737e37dc1f1e5a76209de0472b7873",
+    "pwa/icons/icon-192.png": "4949ec394f757ebb0a876f824565bd203f140381f5dedf40e074a1fb243cb3f5",
+    "pwa/icons/icon-512.png": "2d1cbc0f6ae3ee0ccff96cffc3c48e7d94bca8a43b43c2e4a12630c4c5826512"
+  },
+  "pwa_sha256": {
+    "manifest.webmanifest": "9dbd9a807df1b2f2a795a865bea4082d06dbf11979074d9f85e6f813c6460fc6",
+    "icons/apple-touch-icon.png": "41a26242723cb918a90c4f6a3a482b106da951df276c9c231783eba875e351ec",
+    "icons/favicon-32.png": "0aa0a36a53c6303ac959754b0603a5dab1737e37dc1f1e5a76209de0472b7873",
+    "icons/icon-192.png": "4949ec394f757ebb0a876f824565bd203f140381f5dedf40e074a1fb243cb3f5",
+    "icons/icon-512.png": "2d1cbc0f6ae3ee0ccff96cffc3c48e7d94bca8a43b43c2e4a12630c4c5826512",
+    "sw.js": "9ab0f33bc4126be92b9350172c50cd5d586ab58656d8c5a42f4ba3d431dd4da1",
+    ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   }
 }
