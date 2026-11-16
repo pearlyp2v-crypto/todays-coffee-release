@@ -1,0 +1,15 @@
+{
+  "kind": "UI design review revision 2",
+  "source_repository": "pearlyp2v-crypto/app-todays-coffee",
+  "source_commit": "37abd3acbbb219e0931b7b3454ad98f4f5003d34",
+  "source_path": "docs/reviews/home-icons-v3.8.33-r2.html",
+  "sha256": "a86b3ebd82d52c643c8d0b08448594b637a7b55897b0aa2b481e2e73e33efe2d",
+  "app_applied": false,
+  "maximum_displayed_flavors": 4,
+  "existing_three_circles_preserved": true,
+  "dripper": "C",
+  "moka_spout": false,
+  "icon_px": 24,
+  "stroke_width": 1.7,
+  "personal_data": false
+}
