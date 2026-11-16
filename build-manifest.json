@@ -1,13 +1,13 @@
 {
-  "app": "3.8.34",
+  "app": "3.8.36",
   "database_source": "v2.6 embedded snapshot + OCR-DB-20261116-01 roaster aliases (218 beans not Excel-verified)",
   "roaster_aliases_source": "coffee-db/roaster-aliases-v1.json",
   "engine": "0.5 + five-stage rest v3.8.13",
-  "html_sha256": "7f9edbf1e365307cf5da32e9e124bddb70a72253adeeb820991473419a2f675d",
+  "html_sha256": "0fd862d95e934b5dad92be2682e73471f40253479a189ad22fb2f6cf28f6ee96",
   "beans": 218,
   "public_recipes": 29,
   "source_sha256": {
-    "APP_VERSION": "8f011741475abfaf6e487a538823e0a2a856b2d693d226fa0a567b07f009a7db",
+    "APP_VERSION": "bdf072f506fd48ed8cdf4a6f03d1d91b70b39609c9da6da2d50a4e42ff5d4d00",
     "app/02_coffee-log/src/index.template.html": "0aa92055a67c96b658d9c8fc42e9fdc5c28d6bec8518d066a14cbfe3c6ae6aa0",
     "app/02_coffee-log/src/label-ocr.js": "660697bd2221bc34b4e7c74e34fa4d2db85d67fa485991d55ca03b9ed04df34e",
     "data/beans.json": "bc3a939522207c371cba79a14bbdbcf87b173dc2491d0decf6ae471c170d06aa",
@@ -17,7 +17,7 @@
     "engine/recipe-engine.js": "ec6574b77eb8993e353f95a92e4e996b1be6d7dd67ef49f2101bee833d3018c3",
     "scripts/build.py": "a4b7aa46223a65ba53ccf9627f30f8c9ec00a467ef695893657d87d4c5cdb105",
     "coffee-db/roaster-aliases-v1.json": "d666c2785d085f5d6a9ce2f04fa75474d5b47cae439ad9d6c18db8d9af13c3ff",
-    "pwa/client.js": "dae916cb396ac2a271d959de0556812d8d37f70162f14f8c684b2a8b20fa0588",
+    "pwa/client.js": "45865296aab4eb37236a15a98600118889959ecd0a0e248699615d140c0e05ea",
     "pwa/sw.js": "b72a79873188409f4e65b2296e0a591cd4b3b500f1784b169fb4d3c9422c5e92",
     "pwa/manifest.webmanifest": "9dbd9a807df1b2f2a795a865bea4082d06dbf11979074d9f85e6f813c6460fc6",
     "pwa/icons/apple-touch-icon.png": "41a26242723cb918a90c4f6a3a482b106da951df276c9c231783eba875e351ec",
@@ -31,7 +31,7 @@
     "icons/favicon-32.png": "0aa0a36a53c6303ac959754b0603a5dab1737e37dc1f1e5a76209de0472b7873",
     "icons/icon-192.png": "4949ec394f757ebb0a876f824565bd203f140381f5dedf40e074a1fb243cb3f5",
     "icons/icon-512.png": "2d1cbc0f6ae3ee0ccff96cffc3c48e7d94bca8a43b43c2e4a12630c4c5826512",
-    "sw.js": "1b128b4e239eabc1beb6b6f5d6aa757d89608f6830f2d46184b933977d3368f5",
+    "sw.js": "dc0bc7b4d5d3d6f96772203f955f18cfbc2f27feca9903097aa29b0a802cac30",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   }
 }
