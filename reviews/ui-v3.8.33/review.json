@@ -1,0 +1,13 @@
+{
+  "kind": "UI design review — approval pending",
+  "source_repository": "pearlyp2v-crypto/app-todays-coffee",
+  "source_commit": "5c3035dbda4c336ef2ca1a818e7ad2848adf7a70",
+  "source_path": "docs/reviews/home-icons-v3.8.33.html",
+  "sha256": "b1b429726dd5b5bcc4682c663d805e34eb8c0ef416c3da7d83d3f34578dd40aa",
+  "app_applied": false,
+  "includes": [
+    "Home text +8px, flavor caption and 1–5 circles: overlap/separate",
+    "Dripper A/B/C and octagonal moka icons"
+  ],
+  "personal_data": false
+}
