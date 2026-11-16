@@ -25,6 +25,23 @@ jobs:
           cp index.html manifest.webmanifest sw.js build-manifest.json release.json .nojekyll _site/
           cp -R icons _site/icons
           if [ -d previews ]; then cp -R previews _site/previews; fi
+          if [ -d reviews ]; then cp -R reviews _site/reviews; fi
+      - name: Verify staged preview and review files
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from hashlib import sha256
+          for folder in ['previews', 'reviews']:
+              root = Path(folder)
+              if not root.is_dir():
+                  continue
+              files = [source for source in root.rglob('*') if source.is_file()]
+              for source in files:
+                  staged = Path('_site') / source
+                  assert staged.is_file(), f'Missing staged file: {source}'
+                  assert sha256(source.read_bytes()).digest() == sha256(staged.read_bytes()).digest(), f'Staged file differs: {source}'
+              print(f'Verified {len(files)} staged {folder} files')
+          PY
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
