@@ -1,0 +1,26 @@
+{
+  "kind": "Four-flavor position comparison — approval pending",
+  "source_repository": "pearlyp2v-crypto/app-todays-coffee",
+  "source_commit": "472d29f6815b1b11094554e2ee81cdeb78e0cd52",
+  "source_path": "docs/reviews/flavor-four-layouts-r3.html",
+  "sha256": "06636c39c47350940f579234c937f5b995cf7e5f3bd07eeaa229eccb5b6152d5",
+  "flavor_layout_applied": false,
+  "equipment_icons_approved": true,
+  "app_version": "3.8.34",
+  "existing_three_preserved": true,
+  "circle_sizes": [
+    158,
+    140,
+    122,
+    76
+  ],
+  "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "maximum_displayed_flavors": 4,
+  "personal_data": false
+}
