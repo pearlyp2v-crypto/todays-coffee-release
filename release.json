@@ -1,17 +1,17 @@
 {
-  "app": "3.8.71",
+  "app": "3.8.74",
   "source_repository": "pearlyp2v-crypto/app-todays-coffee",
-  "source_commit": "4eaab2a2d5c2c8b30c2059f487617f54055bf5fe",
-  "html_sha256": "5ad202bb9a833f51890109f6cca3410f63a104244bbcddf3a83b3d1438c250af",
+  "source_commit": "fe278a3585ad9f36fc8369e4afa8c435da888ba5",
+  "html_sha256": "64b249de7316aa15e8bb4cf9159bd97354ec79c3c6534e79f1c64d3b3d08b414",
   "files": {
-    "index.html": "5ad202bb9a833f51890109f6cca3410f63a104244bbcddf3a83b3d1438c250af",
+    "index.html": "64b249de7316aa15e8bb4cf9159bd97354ec79c3c6534e79f1c64d3b3d08b414",
     "manifest.webmanifest": "9dbd9a807df1b2f2a795a865bea4082d06dbf11979074d9f85e6f813c6460fc6",
-    "sw.js": "81093c54de9441a28baa41b0a9769b61160f013cc3e224d339796218c4f78a70",
-    "build-manifest.json": "0466131a5f0387b5e077e20bb32980a892f52aeb115c535dd83a73bddde38c2e",
+    "sw.js": "21867a11beb5f3b0457446cb6fa3679ca463c37147ffef99691c094c9c15e08d",
+    "build-manifest.json": "573fb577bd477eb2e14ffc10336f011e4558f2bd58272a17831f89e2d94dfab9",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "icons/apple-touch-icon.png": "dfbfe82ce35b0d8177d8b764b1b593d33a823cd2443a497b13ff4fd70d0578b5",
-    "icons/favicon-32.png": "e87ecafe285b414a51bcb7d89a53c67e8480d1c1b3e9694f951c46031e5d25d3",
-    "icons/icon-192.png": "adf171a206832e697429178a194a0d35e0592c3e1a5a5d6de24f476b02db95a8",
-    "icons/icon-512.png": "54cff71712ecc3be34baf852262678f96a86602b01a8fdfa630521a11f4a5812"
+    "icons/apple-touch-icon.png": "bb1aacc666eb1ba6b9b715fed95bc04beb53930f3374d2edb33b25a0fbf05293",
+    "icons/favicon-32.png": "1d9d44831b3d6f6aaaccdff57c4d0501e20933b91ba12ecf5813ef310b9aade8",
+    "icons/icon-192.png": "55a97f8059d41e97c43cced1f6b06133c865b277dcb76fb0e8da3213b7758541",
+    "icons/icon-512.png": "e70c4a097c12bc2933781e18b356cb8efda9245838201a1dbd6c14c5c7d7918f"
   }
 }
