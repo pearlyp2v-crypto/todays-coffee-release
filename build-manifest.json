@@ -1,10 +1,10 @@
 {
-  "app": "3.8.69",
+  "app": "3.8.71",
   "database_source": "coffee-db/오늘의커피_원두DB_v3.2.xlsx",
   "database_exporter": "coffee-db/exporter/export_db.py",
   "roaster_aliases_source": "coffee-db/roaster-aliases-v1.json",
   "engine": "0.6",
-  "html_sha256": "e1aca64e6d52a018947eec1d8796f333311b9ae17eb5d6f48d7d287726040857",
+  "html_sha256": "5ad202bb9a833f51890109f6cca3410f63a104244bbcddf3a83b3d1438c250af",
   "beans": 218,
   "public_recipes": 29,
   "source_sha256": {
@@ -12,9 +12,9 @@
     "app/01_persona/src/page.css": "09013bc1ccc60f2679b0ada83d824601c3f67ad14a44ca582f63da9203c3e63e",
     "app/01_persona/src/page.js": "b9281f43b05aeb351f2bb57bd98ffb77a40743d3afa433c3caa1317c2eca3375",
     "app/02_coffee-log/src/date-picker.js": "bb8c93fc0175c688d7317dcd25a2c35a31864420ccdf07b6ed289e6c171f413d",
-    "APP_VERSION": "84609c73a105a396a47d86b9e77f8b512091c33746b8f20ed341d94b66566440",
-    "app/02_coffee-log/src/index.template.html": "91513e66f056764299f2613834dc220b305a318f367ca2fede994b80863b141a",
-    "app/02_coffee-log/src/label-ocr.js": "660697bd2221bc34b4e7c74e34fa4d2db85d67fa485991d55ca03b9ed04df34e",
+    "APP_VERSION": "df2337d569cfc0a1f9150bdbf337714587e4f9122dc34a60ef86b6d2e106ec38",
+    "app/02_coffee-log/src/index.template.html": "999413c57c00124314030d0e9ae69953649f3b27fc47494f0476a5f93e67b180",
+    "app/02_coffee-log/src/label-ocr.js": "e2342b95e9de846e605fffe740c5bd51c163ac2b43b615e658101dc4ec6ea0c3",
     "data/beans.json": "b21ec42d6d42981811efb4b7902621dc2c11728edcb3321b3cb349aa1c295ff4",
     "data/recipe-config.json": "0006b9b5c535d6493925ab2f67f9b66187abe20490439bd125778cd9da0d87cd",
     "data/public-recipes.json": "87e6c6ba881baaff4a943d760513e02de61b32ee7663fb3574ad40c36fc8f94a",
@@ -28,18 +28,18 @@
     "pwa/client.js": "a065f0f6a81f7c1d60f2f75a51249e3f72a69c24515b225298bb740c80ecf4a9",
     "pwa/sw.js": "b72a79873188409f4e65b2296e0a591cd4b3b500f1784b169fb4d3c9422c5e92",
     "pwa/manifest.webmanifest": "9dbd9a807df1b2f2a795a865bea4082d06dbf11979074d9f85e6f813c6460fc6",
-    "pwa/icons/apple-touch-icon.png": "41a26242723cb918a90c4f6a3a482b106da951df276c9c231783eba875e351ec",
-    "pwa/icons/favicon-32.png": "0aa0a36a53c6303ac959754b0603a5dab1737e37dc1f1e5a76209de0472b7873",
-    "pwa/icons/icon-192.png": "4949ec394f757ebb0a876f824565bd203f140381f5dedf40e074a1fb243cb3f5",
-    "pwa/icons/icon-512.png": "2d1cbc0f6ae3ee0ccff96cffc3c48e7d94bca8a43b43c2e4a12630c4c5826512"
+    "pwa/icons/apple-touch-icon.png": "dfbfe82ce35b0d8177d8b764b1b593d33a823cd2443a497b13ff4fd70d0578b5",
+    "pwa/icons/favicon-32.png": "e87ecafe285b414a51bcb7d89a53c67e8480d1c1b3e9694f951c46031e5d25d3",
+    "pwa/icons/icon-192.png": "adf171a206832e697429178a194a0d35e0592c3e1a5a5d6de24f476b02db95a8",
+    "pwa/icons/icon-512.png": "54cff71712ecc3be34baf852262678f96a86602b01a8fdfa630521a11f4a5812"
   },
   "pwa_sha256": {
     "manifest.webmanifest": "9dbd9a807df1b2f2a795a865bea4082d06dbf11979074d9f85e6f813c6460fc6",
-    "icons/apple-touch-icon.png": "41a26242723cb918a90c4f6a3a482b106da951df276c9c231783eba875e351ec",
-    "icons/favicon-32.png": "0aa0a36a53c6303ac959754b0603a5dab1737e37dc1f1e5a76209de0472b7873",
-    "icons/icon-192.png": "4949ec394f757ebb0a876f824565bd203f140381f5dedf40e074a1fb243cb3f5",
-    "icons/icon-512.png": "2d1cbc0f6ae3ee0ccff96cffc3c48e7d94bca8a43b43c2e4a12630c4c5826512",
-    "sw.js": "255489639ff356c3c0777b72700a97743df63152a27726da10b58473796b03c0",
+    "icons/apple-touch-icon.png": "dfbfe82ce35b0d8177d8b764b1b593d33a823cd2443a497b13ff4fd70d0578b5",
+    "icons/favicon-32.png": "e87ecafe285b414a51bcb7d89a53c67e8480d1c1b3e9694f951c46031e5d25d3",
+    "icons/icon-192.png": "adf171a206832e697429178a194a0d35e0592c3e1a5a5d6de24f476b02db95a8",
+    "icons/icon-512.png": "54cff71712ecc3be34baf852262678f96a86602b01a8fdfa630521a11f4a5812",
+    "sw.js": "81093c54de9441a28baa41b0a9769b61160f013cc3e224d339796218c4f78a70",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   }
 }

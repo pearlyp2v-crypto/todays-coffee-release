@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.69</title><meta name="app-version" content="3.8.69"/><style data-source="design-system/legacy.css">
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.71</title><meta name="app-version" content="3.8.71"/><style data-source="design-system/legacy.css">
 :root{--bg:#F1E5DC;--page:#FFFEFB;--ink:#4A4947;--sub:#6E6B66;--line:#D8D2C2;--slate:#4A4947;--cherry:#B17457;--panel:#FFFEFB;--muted:#D8D2C2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #6E6B66;outline-offset:2px}button:disabled,input:disabled{opacity:.5;cursor:not-allowed}[hidden]{display:none!important}
 .app{max-width:440px;min-height:100dvh;background:var(--page);margin:0 auto;box-shadow:0 15px 55px #4A494717}.header{height:64px;padding:0 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:850;letter-spacing:-1.05px}.brand .dot{color:var(--cherry)}.slogan{font:700 9px/1.35 Georgia,serif;color:#6E6B66;text-align:right}main{padding:22px 19px 38px}.eyebrow{display:flex;align-items:center;gap:8px;font:700 10px Georgia,serif;letter-spacing:1.5px;color:var(--cherry)}.eyebrow:before{content:'';width:21px;height:2px;background:var(--cherry)}h1{font-size:25px;margin:12px 0 4px;letter-spacing:-.9px}.subtitle{color:var(--sub);font-size:12px;line-height:1.6;margin:0 0 18px}
@@ -334,6 +334,11 @@ body.step-layout-a .flow-step.active{border-bottom-color:#6E6B66;}
 .actual-completion{display:flex;align-items:baseline;gap:8px}
 .record-recipe-meta{margin:0 0 14px;color:var(--sub);font-size:12px;line-height:1.5;overflow-wrap:anywhere}
 #today-bean{white-space:nowrap;overflow-x:auto;scrollbar-width:thin}
+#record-context-fields #today-bean{overflow:visible;white-space:normal}
+/* v3.8.71: 아이폰은 16px보다 작은 입력칸을 누르면 화면을 확대한다. 아이폰에서만 검색·입력칸 글자를 16px로 */
+@supports (-webkit-touch-callout:none){
+ input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=color]),textarea,select{font-size:16px!important}
+} /* v3.8.71: 원두 검색 목록이 칸 안에 잘려 안 보이던 문제 */
 .export214{display:grid;gap:8px;margin:10px 0}
 .log-jumps214{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:calc(18px + env(safe-area-inset-bottom));z-index:5;display:grid;gap:6px}
 .log-jumps214[hidden]{display:none}
@@ -2763,6 +2768,11 @@ body:has(#tc-home[hidden]) #tc-brew-hint{display:none!important}
 }
 :is(#tc-bean-page,#prep-bean-browser,#prep-selected-bean) .tc-switch-tab[aria-selected=true],#tc-recipe-home .tc-switch-tab[aria-selected=true],#tc-profile .tc-switch-tab[aria-selected=true]{border-bottom:2px solid var(--theme-navy)}
 #tc-bean-search-row{margin-bottom:10px}
+.prep-db-results{grid-column:1/-1;margin-top:14px;border-top:1px solid var(--theme-border,#E5DFD3);padding-top:10px}
+.prep-db-results h3{margin:0 0 4px;font-size:11px;letter-spacing:.06em;color:var(--theme-sub,#6E6B66);font-weight:700}
+.prep-db-result{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--theme-border,#EFEAE0);padding:10px 2px;color:var(--theme-navy,#4A4947);font:inherit}
+.prep-db-result strong{display:block;font-size:14px;line-height:1.35}
+.prep-db-result small{display:block;font-size:11px;color:var(--theme-sub,#6E6B66);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #tc-bean-search-row[hidden]{display:none}
 #tc-bean-search{box-sizing:border-box;width:100%;height:38px;border:1px solid var(--theme-border);border-radius:9px;padding:7px 10px;background:var(--theme-surface);color:var(--theme-navy);font:inherit;font-size:12px}
 #tc-recipe-home #tc-recipe-sort{width:auto;min-width:48px;padding:5px 8px;white-space:nowrap;font-size:11px;color:var(--theme-sub)}
@@ -3410,7 +3420,7 @@ return {
 #stage-recipe #recipe-card .recipe-icon-actions .icon-btn{width:34px;height:34px;display:grid;place-items:center;padding:6px}
 #stage-recipe #recipe-card .recipe-icon-actions .icon-btn svg{display:block;width:22px;height:22px}
 </style>
-<meta name="pwa-release" content="6bf391f95617478527c80aad6c815a441fec687b41bb54054d1dd26bd30525fe"/></head>
+<meta name="pwa-release" content="bacf8f098dd84acf8340d8d29ca130a4748f37fdb14864d6353f83777c7e737b"/></head>
 <body class="variant-b step-layout-a"><div class="app"><main id="brew-main">
 <button class="eyebrow eyebrow-link" type="button">COFFEE LOG · BREW GUIDE</button><div class="stage-header"><nav aria-label="추출 과정" class="flow-steps">
 <button aria-current="step" class="flow-step active" data-step="1" type="button"><span>준비</span></button>
@@ -4323,7 +4333,36 @@ function createBeanMatcher(beans,roasters){
  };
 }
 
-const api={createNoteTools,normalizeLines,koreanTitleDecision,HANGUL_RULES,createBeanMatcher,BEAN_MATCH_RULES,parse,parseTarget,merge,exactEvidence,binaryDecision,BINARY_RULES,appendNotes,contrastPixels,adaptivePixels,createSession};root.CoffeeLabelOCR=api;
+/* v3.8.71: 사진·원두 DB에서 불러온 산지·품종·가공·로스팅을 한국어로 통일한다. 원두명·로스터리 이름(고유명사)은 바꾸지 않는다. */
+const KOREAN_TERMS=Object.freeze({
+ origin:[['Ethiopia','에티오피아'],['Kenya','케냐'],['Colombia','콜롬비아'],['Brazil','브라질'],['Brasil','브라질'],['Guatemala','과테말라'],['Costa Rica','코스타리카'],['Panama','파나마'],['Honduras','온두라스'],['El Salvador','엘살바도르'],['Salvador','엘살바도르'],['Nicaragua','니카라과'],['Mexico','멕시코'],['Peru','페루'],['Bolivia','볼리비아'],['Ecuador','에콰도르'],['Rwanda','르완다'],['Burundi','부룬디'],['Uganda','우간다'],['Tanzania','탄자니아'],['Malawi','말라위'],['Zambia','잠비아'],['Zimbabwe','짐바브웨'],['Yemen','예멘'],['Indonesia','인도네시아'],['India','인도'],['Vietnam','베트남'],['Viet Nam','베트남'],['Papua New Guinea','파푸아뉴기니'],['PNG','파푸아뉴기니'],['China','중국'],['Taiwan','대만'],['Thailand','태국'],['Laos','라오스'],['Myanmar','미얀마'],['Philippines','필리핀'],['Timor-Leste','동티모르'],['East Timor','동티모르'],['Jamaica','자메이카'],['Hawaii','하와이'],['Dominican Republic','도미니카 공화국'],['Haiti','아이티'],['Cuba','쿠바'],['Puerto Rico','푸에르토리코'],['DR Congo','콩고민주공화국'],['Congo','콩고민주공화국'],['Australia','호주'],['Sumatra','수마트라'],['Sulawesi','술라웨시'],['Java','자바'],['Bali','발리'],
+  ['Yirgacheffe','예가체프'],['Yirgachefe','예가체프'],['Yirga Cheffe','예가체프'],['Guji','구지'],['Sidama','시다마'],['Sidamo','시다마'],['Harrar','하라'],['Harar','하라'],['Limu','리무'],['Jimma','짐마'],['Djimmah','짐마'],['Gedeb','게뎁'],['Kochere','코체레'],['Bensa','벤사'],['Bench Maji','벤치 마지'],['Hambela','함벨라'],['Uraga','우라가'],['Shakiso','샤키소'],['Chelbesa','첼베사'],['Worka','워카'],['Banko','반코'],['West Arsi','웨스트 아르시'],['Arsi','아르시'],['Nensebo','넨세보'],
+  ['Huila','우일라'],['Narino','나리뇨'],['Cauca','카우카'],['Tolima','톨리마'],['Antioquia','안티오키아'],['Santander','산탄데르'],['Quindio','킨디오'],['Risaralda','리사랄다'],['Antigua','안티구아'],['Huehuetenango','우에우에테낭고'],['Acatenango','아카테낭고'],['Atitlan','아티틀란'],['Coban','코반'],['Fraijanes','프라이하네스'],['Tarrazu','타라주'],['West Valley','웨스트 밸리'],['Central Valley','센트럴 밸리'],['Brunca','브룽카'],['Naranjo','나랑호'],['Boquete','보케테'],['Volcan','볼칸'],['Nyeri','니에리'],['Kirinyaga','키리냐가'],['Muranga',"무랑아"],["Murang'a","무랑아"],['Kiambu','키암부'],['Embu','엠부'],['Cerrado Mineiro','세하도 미네이루'],['Cerrado','세하도'],['Mogiana','모지아나'],['Sul de Minas','술 지 미나스'],['Minas Gerais','미나스 제라이스'],['Chapada Diamantina','샤파다 지아만치나'],['Marcala','마르칼라'],['Santa Barbara','산타바르바라'],['Copan','코판'],['Ocotepeque','오코테페케'],['Intibuca','인티부카'],['La Paz','라파스'],['Santa Ana','산타아나'],['Chalatenango','찰라테낭고'],['Apaneca','아파네카'],['Jinotega','히노테가'],['Matagalpa','마타갈파'],['Nueva Segovia','누에바 세고비아'],['Chiapas','치아파스'],['Oaxaca','오악사카'],['Veracruz','베라크루스'],['Cajamarca','카하마르카'],['Cusco','쿠스코'],['Puno','푸노'],['Amazonas','아마소나스'],['Aceh','아체'],['Gayo','가요'],['Toraja','토라자'],['Kintamani','킨타마니'],['Flores','플로레스'],['Bajawa','바자와'],['Mandheling','만델링'],['Lintong','린통'],['Kona','코나'],['Blue Mountain','블루마운틴'],['Yunnan','윈난'],['Kivu','키부'],['Kayanza','카얀자'],['Ngozi','응고지'],['Nyamasheke','냐마셰케'],['Huye','후예'],['Gakenke','가켄케'],['Mbeya','음베야'],['Kilimanjaro','킬리만자로'],['Mount Elgon','엘곤산'],['Mt. Elgon','엘곤산'],['Elgon','엘곤산'],['Rwenzori','르웬조리'],['Chikmagalur','치크마갈루르'],['Dalat','달랏'],['Haraz','하라즈'],['Loja','로하'],['Ermera','에르메라'],['Waghi Valley','와기 밸리']],
+ variety:[['Ethiopian Heirloom','에티오피아 재래종'],['Heirloom','에티오피아 재래종'],['Landrace','에티오피아 재래종'],['JARC','에티오피아 재래종'],['Geisha','게이샤'],['Gesha','게이샤'],['Pink Bourbon','핑크 버번'],['Red Bourbon','레드 버번'],['Yellow Bourbon','옐로 버번'],['Orange Bourbon','오렌지 버번'],['Bourbon','버번'],['Typica','티피카'],['Caturra','카투라'],['Catuai','카투아이'],['Castillo','카스티요'],['Mundo Novo','문도 노보'],['Pacamara','파카마라'],['Pacas','파카스'],['Sidra','시드라'],['Maragogype','마라고지페'],['Maragogipe','마라고지페'],['Java','자바'],['Catimor','카티모르'],['Colombia','콜롬비아'],['Tabi','타비'],['Ruiru 11','루이루 11'],['Batian','바티안'],['Wush Wush','우슈우슈'],['Villa Sarchi','빌라 사치'],['Laurina','로리나'],['Robusta','로부스타'],['Canephora','로부스타'],['Kurume','쿠루메'],['Wolisho','월리초'],['Wolicho','월리초'],['Dega','데가'],['Pache','파체'],['Kent','켄트'],['Mokka','모카'],['Mocca','모카'],['Chiroso','치로소'],['Parainema','파라이네마'],['Obata','오바타'],['Marsellesa','마르세예사'],['Lempira','렘피라'],['Sarchimor','사치모르'],['Arabica','아라비카']],
+ process:[['Carbonic Maceration','카보닉 마세레이션'],['Double Anaerobic','더블 무산소 발효'],['Anaerobic Natural','무산소 내추럴'],['Anaerobic Washed','무산소 워시드'],['Anaerobic Honey','무산소 허니'],['Anaerobic Fermentation','무산소 발효'],['Anaerobic','무산소 발효'],['Pulped Natural','펄프드 내추럴'],['Semi-washed','세미 워시드'],['Semi Washed','세미 워시드'],['Wet-hulled','웻헐'],['Wet Hulled','웻헐'],['Giling Basah','웻헐'],['Black Honey','블랙 허니'],['Red Honey','레드 허니'],['Yellow Honey','옐로 허니'],['White Honey','화이트 허니'],['Honey','허니'],['Fully Washed','워시드'],['Double Washed','더블 워시드'],['Washed','워시드'],['Natural','내추럴'],['Dry Process','내추럴'],['Sun-dried','내추럴'],['Sun Dried','내추럴'],['Co-fermented','공동 발효'],['Co-ferment','공동 발효'],['Infused','가향'],['Monsooned','몬순 가공'],['Swiss Water','디카페인 (스위스 워터)'],['Mountain Water','디카페인 (마운틴 워터)'],['Sugarcane','디카페인 (사탕수수 EA)'],['Ethyl Acetate','디카페인 (사탕수수 EA)'],['Decaf','디카페인'],['Decaffeinated','디카페인'],['Thermal Shock','써멀 쇼크'],['Yeast','이스트 발효'],['Lactic','젖산 발효'],['Extended Fermentation','장시간 발효'],['Fermented','발효'],['Fermentation','발효'],['Experimental','실험 가공']],
+ roast:[['Medium Dark','미디움다크'],['Medium-Dark','미디움다크'],['Light Medium','미디움라이트'],['Light-Medium','미디움라이트'],['Medium Light','미디움라이트'],['Medium-Light','미디움라이트'],['Very Light','라이트'],['Light','라이트'],['Medium','미디움'],['Dark','다크'],['Filter','필터'],['Espresso','에스프레소'],['Omni','옴니']]
+});
+function plainLatin(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').normalize('NFC')}
+function createKoreanizer(extra={}){
+ const lists={};
+ for(const key of Object.keys(KOREAN_TERMS)){
+  const pairs=[...(extra[key]||[]),...KOREAN_TERMS[key]].filter(p=>p&&p[0]&&p[1]&&/[A-Za-z]/.test(p[0]));
+  const seen=new Set();lists[key]=pairs.map(([en,ko])=>[plainLatin(en).trim(),ko]).filter(([en])=>{const k=en.toLowerCase();if(seen.has(k))return false;seen.add(k);return true})
+   .sort((a,b)=>b[0].length-a[0].length).map(([en,ko])=>[new RegExp('(^|[^A-Za-z0-9])'+en.replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/[ -]+/g,'[ -]+')+'(?![A-Za-z])','gi'),ko]);
+ }
+ lists.special=lists.process;
+ return function koreanize(key,value){
+  const list=lists[key];if(!list||value==null||!/[A-Za-z]/.test(String(value)))return value;
+  let text=plainLatin(value);
+  for(const [re,ko] of list)text=text.replace(re,(m,lead)=>lead+ko);
+  if(key==='process'||key==='special')text=text.replace(/(^|[^A-Za-z])(?:process(?:ed|ing)?|method)(?![A-Za-z])/gi,'$1');
+  if(key==='roast')text=text.replace(/(^|[^A-Za-z])roast(?:ed|ing)?(?![A-Za-z])/gi,'$1로스팅').replace(/^\s*로스팅\s*/,'').replace(/(라이트|미디움라이트|미디움|미디움다크|다크)\s+로스팅$/,'$1');
+  if(key==='origin')text=text.replace(/([가-힣])\s*[,\-–—]\s*(?=[가-힣])/g,'$1 · ');
+  return text.replace(/\s{2,}/g,' ').replace(/^[\s,·]+|[\s,·]+$/g,'').trim()||String(value);
+ };
+}
+
+const api={createKoreanizer,KOREAN_TERMS,createNoteTools,normalizeLines,koreanTitleDecision,HANGUL_RULES,createBeanMatcher,BEAN_MATCH_RULES,parse,parseTarget,merge,exactEvidence,binaryDecision,BINARY_RULES,appendNotes,contrastPixels,adaptivePixels,createSession};root.CoffeeLabelOCR=api;
 if(typeof module==='object'&&module.exports)module.exports=api;
 })(typeof window==='object'?window:globalThis);
 </script><script>
@@ -5605,7 +5644,7 @@ $('label-photo').onchange=async e=>{
   const root=$('modal-body');root.replaceChildren();root.classList.add('ocr-review');$('modal').classList.add('ocr-modal');
   const token=ocrRun;let revision=0,source=rotatedLabelCanvas(image,0),crop={x:0,y:0,w:1,h:1},lastValidCrop={...crop},start=null,dragBox=null,busy=false,progressRev=0,matches=[];
   image.src='';image=null;e.target.value='';
-  const names={name:'원두명',roastDate:'로스팅 날짜',origin:'산지',producer:'농장 / 생산자',variety:'품종',altitude:'재배 고도',process:'프로세싱',special:'기타 (특수 가공 · 가향)',roast:'로스팅 포인트',roastery:'로스터리',tastingNotes:'테이스팅 노트'};
+  const names={name:'원두명',roastDate:'로스팅 날짜',origin:'산지',producer:'농장 / 생산자',variety:'품종',altitude:'재배 고도',process:'프로세싱',special:'기타 (특수 가공 · 가향)',roast:'로스팅',roastery:'로스터리',tastingNotes:'테이스팅 노트'};
   const fieldNode=key=>$('bean-'+(key==='roastDate'?'roast-date':key==='tastingNotes'?'tasting':key));
   const initial=getBean(),original=Object.fromEntries(Object.keys(names).map(key=>[key,fieldNode(key)?.value||'']));
   const draft={...original,storageMethod:initial.storageMethod||'상온'},dirty=new Set(),recognized=new Set();
@@ -5642,7 +5681,7 @@ $('label-photo').onchange=async e=>{
   let merged={};
   function chooseProduct(product){
    const values={name:product.name,roastery:product.roastery,origin:product.origin,variety:product.variety,process:product.process,special:product.special,roast:product.roast,tastingNotes:(Array.isArray(product.tastingNotes)?product.tastingNotes.join(', '):product.tastingNotes)||product.notesRaw};
-   for(const [key,value] of Object.entries(values)){if(!String(value||'').trim())continue;draft[key]=key==='tastingNotes'?notes(value):String(value);dirty.add(key);recognized.add(key)}
+   for(const [key,value] of Object.entries(values)){if(!String(value||'').trim())continue;draft[key]=key==='tastingNotes'?notes(value):key==='name'?String(value):String(koreanBean271(key,String(value)));dirty.add(key);recognized.add(key)}
    renderForm();
   }
   function closeSearches(){for(const list of form.querySelectorAll('.ocr-search-list'))list.hidden=true;for(const input of form.querySelectorAll('[role=combobox]'))input.setAttribute('aria-expanded','false')}
@@ -5716,6 +5755,7 @@ $('label-photo').onchange=async e=>{
     const value=merged[key][0].value;if(key==='tastingNotes'){const tools=window.TCVisualV38?.noteTools,before=original[key],identity=text=>normalizeText(tools?.match(text)?.name||text),existing=new Set((tools?tools.split(before):uniqueTags(before)).map(identity)),incoming=tools?tools.split(notes(value)):uniqueTags(value),added=incoming.filter(note=>!existing.has(identity(note)));draft[key]=before+(added.length?(before.trim()?', ':'')+added.join(', '):'')}else draft[key]=value;
     recognized.add(key);
    }
+   for(const key of ['origin','variety','process','special','roast','roastery'])if(!dirty.has(key)&&draft[key])draft[key]=koreanBean271(key,draft[key]); // v3.8.71: 한국어로 통일
    renderForm();photoScreen.hidden=true;resultScreen.hidden=false;root.dataset.ocrStage='review';$('modal-title').textContent='원두 정보 확인';$('modal').querySelector('.sheet').scrollTop=0;
   }
   async function run(full=false){
@@ -5851,6 +5891,17 @@ function sampleRecipeForBean(bean){
 function productNames(product){
  return [product.name,...(product.aliases||[])];
 }
+const productExtra270=new WeakMap();
+function productExtraFields270(product){
+ // v3.8.70: 산지·품종·가공·로스터리 영어 이름으로도 찾기 (이름 일치보다 뒤에 정렬)
+ if(productExtra270.has(product))return productExtra270.get(product);
+ let roasterAliases=[];
+ try{const db=product.dbId&&DB217.beans.find(b=>b.id===product.dbId);roasterAliases=(db&&DB217.roasters?.[db.roasterId]?.aliases)||[]}catch(e){}
+ const parts=[product.origin,product.variety,product.process,product.special,...roasterAliases,...(product.blends||[]).map(x=>[x.origin,x.variety,x.process].join(' '))];
+ try{const ko=koreanProduct271(product);parts.push(ko.origin,ko.variety,ko.process,ko.special,...(ko.blends||[]).map(x=>[x.origin,x.variety,x.process].join(' ')))}catch(e){} // 영어로 적힌 DB 값도 한국어로 찾기
+ const fields=parts.join(' / ').split(/\s*[\/·,]\s*/).map(productKey).filter(Boolean);
+ productExtra270.set(product,fields);return fields;
+}
 function productMatches(query){
  const key=productKey(query);
  if(!key)return [];
@@ -5859,13 +5910,30 @@ function productMatches(query){
   const names=productNames(product).map(productKey);
   const roastery=productKey(product.roastery);
   const qualified=names.map(name=>roastery+name);
-  const fields=[roastery,...names,...qualified];
+  const fields=[roastery,...names,...qualified],all=[...fields,...productExtraFields270(product)];
   const score=qualified.includes(key)?5:names.includes(key)?4:fields.some(field=>field.startsWith(key))?3:
-   fields.some(field=>field.includes(key))?2:terms.every(term=>fields.some(field=>field.includes(term)))?1:0;
+   fields.some(field=>field.includes(key))?2:terms.every(term=>all.some(field=>field.includes(term)))?1:0;
   return {product,score};
  }).filter(match=>match.score).sort((a,b)=>b.score-a.score).map(match=>match.product);
 }
-function applyProduct(product){fillBean({...product,id:null,productId:product.id,roastDate:'',photo:'',blends:product.blends||[]});$('bean-name').value=product.name;markField($('bean-name'));$('bean-name-list').hidden=true;$('bean-name').setAttribute('aria-expanded','false');beanStatus('제품 정보를 불러왔습니다. 확인 후 MY BEANS에 저장해 주세요.');updateProductSource();refreshCardInfo()}
+/* v3.8.71: 사진·원두 DB에서 온 산지·품종·가공·로스팅을 한국어로, 로스터리 영어 이름은 DB의 한국어 이름으로 */
+function koreanBean271(key,value){
+ if(value==null||value==='')return value;
+ if(key==='roastery'){const k=productKey(value);for(const r of Object.values(window.CoffeeDB?.roasters||{}))if([r.name,...(r.aliases||[])].some(a=>productKey(a)===k))return r.name;return value}
+ if(!koreanBean271.fn){
+  const variety=[],origin=[];
+  try{for(const v of catalog.varieties||[]){const m=String(v).match(/^(.+?)\s*\((.+)\)$/);if(m)for(const en of m[2].split('/'))variety.push([en.trim(),m[1].trim()])}
+   for(const o of catalog.originNotes||[]){const ko=String(o.origin).split(' · '),en=String(o.english||'').split(/\s*·\s*/);en.forEach((e,i)=>{if(ko[i])origin.push([e,ko[i]])})}}catch(e){}
+  koreanBean271.fn=window.CoffeeLabelOCR?.createKoreanizer?CoffeeLabelOCR.createKoreanizer({variety,origin}):(k,v)=>v;
+ }
+ return koreanBean271.fn(key,value);
+}
+function koreanProduct271(product){
+ const out={...product};for(const key of ['origin','variety','process','special','roast'])out[key]=koreanBean271(key,out[key]);
+ if(Array.isArray(out.blends))out.blends=out.blends.map(b=>{const x={...b};for(const key of ['origin','variety','process','special'])x[key]=koreanBean271(key,x[key]);return x});
+ return out;
+}
+function applyProduct(product){product=koreanProduct271(product);fillBean({...product,id:null,productId:product.id,roastDate:'',photo:'',blends:product.blends||[]});$('bean-name').value=product.name;markField($('bean-name'));$('bean-name-list').hidden=true;$('bean-name').setAttribute('aria-expanded','false');beanStatus('제품 정보를 불러왔습니다. 확인 후 MY BEANS에 저장해 주세요.');updateProductSource();refreshCardInfo()}
 function exactBeanProducts(name){
  const key=productKey(name);
  return appData.products.filter(product=>productNames(product).some(alias=>
@@ -9342,7 +9410,7 @@ function renderBeanPage(){
  root.classList.toggle('tc-own-list',beanView==='list');
  const query=productKey($tc('tc-bean-search').value);
  const visible=userBeans.filter(b=>(beanFilter==='on'?b.active!==false:b.active===false)&&(!query||productKey([b.name,b.roastery,b.origin,b.producer,...(b.tastingNotes||[])].join(' ')).includes(query)));
- if(!visible.length){const p=document.createElement('p');p.className='tc-bean-list-note';p.textContent=query?'검색 결과가 없어요.':userBeans.length?beanFilter.toUpperCase()+' 상태의 원두가 없어요.':'등록된 원두가 없어요. + 버튼을 눌러 첫 원두를 등록해 보세요.';root.append(p);return}
+ if(!visible.length){const p=document.createElement('p');p.className='tc-bean-list-note';p.textContent=query?'검색 결과가 없어요.':userBeans.length?beanFilter.toUpperCase()+' 상태의 원두가 없어요.':'등록된 원두가 없어요. + 버튼을 눌러 첫 원두를 등록해 보세요.';root.append(p);if(appendBeanDb271(root,$tc('tc-bean-search').value))p.textContent='내 원두에는 없어요. 아래 원두 DB에서 골라 보세요.';return}
  for(const b of visible){
   const wrap=document.createElement('article');wrap.className='tc-own-wrap';wrap.dataset.beanId=b.id;
   const btn=document.createElement('button');btn.type='button';btn.className='tc-own-bean';
@@ -9363,7 +9431,19 @@ function renderBeanPage(){
   check.onchange=()=>{const ok=check.checked?selectBeanCard(b):clearBeanSelection();if(!ok)check.checked=selectedCollectionBean()?.id===b.id};select.append(check);front.append(select);
   wrap.append(front);bindBeanSwipe(wrap,front,b);root.append(wrap);
  }
+ appendBeanDb271(root,$tc('tc-bean-search').value);
  positionBeanChecks();requestAnimationFrame(positionBeanChecks);
+}
+/* v3.8.71: 내 원두 페이지 검색에도 원두 DB 결과. 누르면 그 정보로 원두 등록 창이 열린다. */
+function appendBeanDb271(root,raw){
+ const query=String(raw||'').trim();if(!productKey(query))return false;
+ const owned=new Set(userBeans.map(b=>productKey(b.roastery||'')+'|'+productKey(b.name)));
+ const found=productMatches(query).filter(p=>!owned.has(productKey(p.roastery||'')+'|'+productKey(p.name))).slice(0,12);
+ if(!found.length)return false;
+ const box=document.createElement('section');box.className='prep-db-results';box.innerHTML='<h3>원두 DB</h3>';
+ for(const product of found){const b=document.createElement('button');b.type='button';b.className='prep-db-result';b.innerHTML='<strong>'+esc(product.name)+'</strong><small>'+esc([product.roastery,product.origin,product.process].filter(Boolean).join(' · '))+'</small>';
+  b.onclick=()=>{openBeanLayer('new');applyProduct(product);toast('원두 DB 정보를 불러왔어요. 로스팅 날짜를 넣고 저장하세요.')};box.append(b)}
+ root.append(box);return true;
 }
 
 let profilePane3812='brew';
@@ -9661,7 +9741,7 @@ function moveBeanFields(){
  if(!sourceBeanSection.querySelector('.tc-required-name')){const label=document.createElement('label');label.className='tc-required-name';label.htmlFor='bean-name';label.textContent='원두명 · 필수';sourceBeanSection.querySelector('.bean-search215').before(label)}
  homeFieldsDetails.open=false;window.TCBeanV389?.updateDatePlacement();
  // Keep field names visible both in the sheet and the guide, not generic placeholders.
- const hints={name:'원두명 검색 또는 직접 입력',roastery:'로스터리',origin:'산지 (예: 코스타리카 · 따라주)',variety:'품종',process:'프로세싱',roast:'로스팅 포인트',special:'기타 (특수 가공 · 가향)'};
+ const hints={name:'원두명 검색 또는 직접 입력',roastery:'로스터리',origin:'산지 (예: 코스타리카 · 따라주)',variety:'품종',process:'프로세싱',roast:'로스팅',special:'기타 (특수 가공 · 가향)'};
  for(const [key,value] of Object.entries(hints)){const f=$tc('bean-'+key);if(f)f.placeholder=value}
 }
 function restoreBeanFields(){
@@ -9914,7 +9994,7 @@ window.TCDateParse3811=parseDate3811;
  dateText.addEventListener('blur',()=>{if(dateText.value.trim())dateCommit()});
  dateText.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();dateCommit()}});
  window.TCDateEdit3811={sync:dateUpdate,commit:dateCommit,canonicalDate,dateText};
- const placeholders={origin:'산지 (예: 코스타리카 · 따라주)',producer:'농장 / 생산자',variety:'품종',process:'프로세싱',altitude:'재배 고도',roast:'로스팅 포인트',roastery:'로스터리',tasting:'테이스팅 노트 · 쉼표로 구분'};
+ const placeholders={origin:'산지 (예: 코스타리카 · 따라주)',producer:'농장 / 생산자',variety:'품종',process:'프로세싱',altitude:'재배 고도',roast:'로스팅',roastery:'로스터리',tasting:'테이스팅 노트 · 쉼표로 구분'};
  for(const [key,value] of Object.entries(placeholders)){
   const field=$tc('bean-'+key);if(!field)continue;field.placeholder=value;field.setAttribute('aria-label',value);
  }
@@ -10156,7 +10236,7 @@ function openBeanDetail(bean){
   :'<span class="tc-detail-photo empty">'+listOrbs(b)+'</span>';
  const head=document.createElement('div');head.className='tc-detail-head';
  head.innerHTML='<button class="tc-detail-photo tc-photo-trigger" type="button" id="tc-detail-change-photo" aria-label="원두 사진 촬영 또는 선택">'+pic+'</button>'+
-  '<div class="tc-detail-heading"><h3>'+esc(b.name||'이름 없는 원두')+'</h3><p class="tc-detail-roastery">'+esc(b.roastery||'로스터리 미입력')+'</p>'+[['산지',b.origin],['농장',b.producer],['품종',b.variety],['재배 고도',b.altitude],['프로세싱',b.process],['로스팅 포인트',b.roast],['기타',b.special]].filter(x=>x[1]).map(([label,value])=>'<p class="tc-detail-data"><span>'+label+'</span><b>'+esc(value)+'</b></p>').join('')+'</div>';
+  '<div class="tc-detail-heading"><h3>'+esc(b.name||'이름 없는 원두')+'</h3><p class="tc-detail-roastery">'+esc(b.roastery||'로스터리 미입력')+'</p>'+[['산지',b.origin],['농장',b.producer],['품종',b.variety],['재배 고도',b.altitude],['프로세싱',b.process],['로스팅',b.roast],['기타',b.special]].filter(x=>x[1]).map(([label,value])=>'<p class="tc-detail-data"><span>'+label+'</span><b>'+esc(value)+'</b></p>').join('')+'</div>';
  root.append(head);head.querySelector('#tc-detail-change-photo').onclick=()=>openPhotoPicker(b);
  const status=document.createElement('div');status.className='tc-detail-status';
  status.innerHTML=restChipHTML(b)+'<span class="tc-rest-short">'+esc(restShort3812(r))+'</span>';root.append(status);
@@ -10289,7 +10369,7 @@ let recordBeanMatches=[],recordBeanIndex=-1;
 function closeRecordBeans(){recordBeanOptions.hidden=true;recordBeanInput.setAttribute('aria-expanded','false');recordBeanInput.removeAttribute('aria-activedescendant');recordBeanIndex=-1}
 function selectRecordBean(item){
  if(!recordDraft)return;clearTimeout(draftTimer);captureRecordForm();
- const owned=item.owned,bean=clone(item.bean);if(!owned){bean.productId=bean.id;bean.id=null}
+ const owned=item.owned;let bean=clone(item.bean);if(!owned){bean=koreanProduct271(bean);bean.productId=bean.id;bean.id=null}
  recordDraft.bean=bean;recordDraft.beanId=owned?bean.id||null:null;recordDraft.beanName=bean.name;
  recordBeanInput.value=bean.name;recordBeanInput.dataset.initial=bean.name;closeRecordBeans();syncRecordTitle();renderRecordSummary();persistRecordDraft();recordBeanInput.focus({preventScroll:true});
 }
@@ -10486,7 +10566,7 @@ showBeans=function(){
   const view=$tc('tc-bean-grid').cloneNode(true);view.id='prep-bean-view';
   const add=$tc('tc-bean-add').cloneNode(true);add.id='prep-bean-add';add.onclick=()=>{closeModal();openBeanLayer('new',true)};
   tools.append(filter,view,add);head.insertBefore(tools,$tc('close-modal'));
-  const search=document.createElement('input');search.type='search';search.className='prep-bean-search';search.placeholder='내 원두 검색하기';search.setAttribute('aria-label','내 원두 검색');const cards=document.createElement('div');cards.className='tc-bean-list';browser.append(search,cards);
+  const search=document.createElement('input');search.type='search';search.className='prep-bean-search';search.placeholder='내 원두 · 원두 DB 검색하기';search.setAttribute('aria-label','내 원두와 원두 DB 검색');const cards=document.createElement('div');cards.className='tc-bean-list';browser.append(search,cards);
   function draw(){
    const collectionSearch=$tc('tc-bean-search'),previousSearch=collectionSearch.value;collectionSearch.value='';renderBeanPage();collectionSearch.value=previousSearch;filter.innerHTML=$tc('tc-bean-filter').innerHTML;filter.setAttribute('aria-pressed',String(beanFilter==='on'));view.innerHTML=$tc('tc-bean-grid').innerHTML;view.setAttribute('aria-label',$tc('tc-bean-grid').getAttribute('aria-label'));
    cards.classList.toggle('tc-own-list',beanView==='list');cards.replaceChildren();const query=productKey(search.value);
@@ -10495,7 +10575,20 @@ showBeans=function(){
     row.querySelector('.tc-bean-select')?.remove();
     const on=row.querySelector('.tc-own-toggle');if(on)on.onclick=()=>{const old=bean.active;bean.active=bean.active===false;if(!saveBeans())bean.active=old;draw()};cards.append(row);
    }
-   renderBeanPage();if(!cards.children.length)cards.innerHTML='<p class="tc-bean-list-note">검색 결과가 없어요.</p>';
+   renderBeanPage();
+   browser.querySelector('.prep-db-results')?.remove();
+   if(query){
+    // v3.8.70: 내 원두에 없어도 원두 DB(218종)에서 바로 고를 수 있게
+    const owned=new Set(userBeans.map(b=>productKey(b.roastery||'')+'|'+productKey(b.name)));
+    const found=productMatches(search.value).filter(p=>!owned.has(productKey(p.roastery||'')+'|'+productKey(p.name))).slice(0,12);
+    if(found.length){
+     const box=document.createElement('section');box.className='prep-db-results';box.innerHTML='<h3>원두 DB</h3>';
+     for(const product of found){const b=document.createElement('button');b.type='button';b.className='prep-db-result';b.innerHTML='<strong>'+esc(product.name)+'</strong><small>'+esc([product.roastery,product.origin,product.process].filter(Boolean).join(' · '))+'</small>';
+      b.onclick=()=>{applyProduct(product);closeModal();syncPrepPreview();toast('원두 DB에서 불러왔어요.')};box.append(b)}
+     browser.append(box);
+    }
+   }
+   if(!cards.children.length)cards.innerHTML='<p class="tc-bean-list-note">'+(query?(browser.querySelector('.prep-db-results')?'내 원두에는 없어요. 아래 원두 DB에서 골라 보세요.':'검색 결과가 없어요.'):(userBeans.length?'이 상태의 원두가 없어요.':'아직 등록한 원두가 없어요. 위에 원두 이름이나 산지를 입력하면 원두 DB에서 찾아요.'))+'</p>';
   }
   filter.onclick=()=>{beanFilter=beanFilter==='on'?'off':'on';store('coffee_log_bean_filter',beanFilter);draw()};view.onclick=()=>{beanView=beanView==='cards'?'list':'cards';store('coffee_log_bean_view',beanView);draw()};search.oninput=draw;draw();
  });
@@ -10560,7 +10653,7 @@ async function exportBackup3813(){
  const data=backupLocal3813(),stats=backupStats3813(data);let photos;
  try{photos=await photosForBackup3813()}
  catch(e){if(stats.logPhotos)throw Error('Brew Log 사진을 읽지 못해 완전한 백업을 만들 수 없어요. 브라우저 저장 공간을 확인해 주세요.');photos=[]}
- const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.69',exportedAt:new Date().toISOString(),
+ const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.71',exportedAt:new Date().toISOString(),
   metadata:{...stats,photos:photos.length},localStorage:data,photos};
  downloadBackup3813(backup);return backup.metadata;
 }
