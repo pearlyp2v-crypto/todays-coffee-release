@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.83</title><meta name="app-version" content="3.8.83"/><style data-source="design-system/legacy.css">
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.84</title><meta name="app-version" content="3.8.84"/><style data-source="design-system/legacy.css">
 :root{--bg:#F1E5DC;--page:#FFFEFB;--ink:#4A4947;--sub:#6E6B66;--line:#D8D2C2;--slate:#4A4947;--cherry:#B17457;--panel:#FFFEFB;--muted:#D8D2C2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #6E6B66;outline-offset:2px}button:disabled,input:disabled{opacity:.5;cursor:not-allowed}[hidden]{display:none!important}
 .app{max-width:440px;min-height:100dvh;background:var(--page);margin:0 auto;box-shadow:0 15px 55px #4A494717}.header{height:64px;padding:0 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:850;letter-spacing:-1.05px}.brand .dot{color:var(--cherry)}.slogan{font:700 9px/1.35 Georgia,serif;color:#6E6B66;text-align:right}main{padding:22px 19px 38px}.eyebrow{display:flex;align-items:center;gap:8px;font:700 10px Georgia,serif;letter-spacing:1.5px;color:var(--cherry)}.eyebrow:before{content:'';width:21px;height:2px;background:var(--cherry)}h1{font-size:25px;margin:12px 0 4px;letter-spacing:-.9px}.subtitle{color:var(--sub);font-size:12px;line-height:1.6;margin:0 0 18px}
@@ -10812,6 +10812,12 @@ async function kakaoCafeSearch275(name,position,auto=false){
     if(list)kakaoNearby281={key,at:Date.now(),list};
    }
    const want=cafeKey281(name);if(kakaoNearby281?.key===key)data=data.concat(kakaoNearby281.list.filter(p=>cafeKey281(p.place_name).includes(want)));
+   // v3.8.84: 찾은 결과에 '상호 ○○점' 체인이 있으면 상호 이름으로 내 주변을 한 번 더 찾는다
+   // ("텐퍼" → 광주 '텐퍼센트커피 광주금남로점' → '텐퍼센트커피'로 주변 검색 → 신서혁신도시점·동호점…)
+   const brands=[];
+   for(const p of data){const parts=String(p.place_name||'').trim().split(/\s+/);if(parts.length<2||!/점$/.test(parts[parts.length-1]))continue;
+    const brand=parts.slice(0,-1).join(' '),bk=cafeKey281(brand);if(!bk.includes(want)||q.some(x=>cafeKey281(x)===bk)||brands.some(b=>cafeKey281(b)===bk))continue;brands.push(brand);if(brands.length>=2)break}
+   for(const brand of brands){const near=await call('keywordSearch',brand,{size:15,category_group_code:'CE7',location:loc,radius:20000,sort:S.SortBy.DISTANCE});if(near)data=data.concat(near.data)}
   }
   if(!data.length)for(const query of q){const any=await pagesN('keywordSearch',query,{size:15});if(any===null)return null;data=data.concat(any)}               // 없으면 모든 장소(전국)
  }else{
@@ -10820,7 +10826,10 @@ async function kakaoCafeSearch275(name,position,auto=false){
  }
  kakaoFail276='';
  const seen=new Set();
- let places=data.filter(p=>!seen.has(p.id)&&seen.add(p.id)).map(p=>({name:p.place_name,address:p.road_address_name||p.address_name||'',lat:Number(p.y),lon:Number(p.x),placeId:'kakao:'+p.id,placeUrl:p.place_url,provider:'카카오맵'}));
+ let unique=data.filter(p=>!seen.has(p.id)&&seen.add(p.id));
+ // v3.8.84: 카카오는 주소·태그만 맞는 곳도 돌려줌("스타" → 이름에 '스타' 없는 카페) → 이름에 검색어가 들어간 곳만. 하나도 없으면 그대로
+ if(name){const want=cafeKey281(name),named=unique.filter(p=>cafeKey281(p.place_name).includes(want));if(named.length)unique=named}
+ let places=unique.map(p=>({name:p.place_name,address:p.road_address_name||p.address_name||'',lat:Number(p.y),lon:Number(p.x),placeId:'kakao:'+p.id,placeUrl:p.place_url,provider:'카카오맵'}));
  if(position)places.sort((a,b)=>cafeDistance(a,position)-cafeDistance(b,position));
  return places.slice(0,15);
 }
@@ -11057,7 +11066,7 @@ async function exportBackup3813(){
  const data=backupLocal3813(),stats=backupStats3813(data);let photos;
  try{photos=await photosForBackup3813()}
  catch(e){if(stats.logPhotos)throw Error('Brew Log 사진을 읽지 못해 완전한 백업을 만들 수 없어요. 브라우저 저장 공간을 확인해 주세요.');photos=[]}
- const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.83',exportedAt:new Date().toISOString(),
+ const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.84',exportedAt:new Date().toISOString(),
   metadata:{...stats,photos:photos.length},localStorage:data,photos};
  downloadBackup3813(backup);return backup.metadata;
 }
