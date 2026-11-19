@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.86</title><meta name="app-version" content="3.8.86"/><style data-source="design-system/legacy.css">
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.95</title><meta name="app-version" content="3.8.95"/><style data-source="design-system/legacy.css">
 :root{--bg:#F1E5DC;--page:#FFFEFB;--ink:#4A4947;--sub:#6E6B66;--line:#D8D2C2;--slate:#4A4947;--cherry:#B17457;--panel:#FFFEFB;--muted:#D8D2C2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #6E6B66;outline-offset:2px}button:disabled,input:disabled{opacity:.5;cursor:not-allowed}[hidden]{display:none!important}
 .app{max-width:440px;min-height:100dvh;background:var(--page);margin:0 auto;box-shadow:0 15px 55px #4A494717}.header{height:64px;padding:0 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:850;letter-spacing:-1.05px}.brand .dot{color:var(--cherry)}.slogan{font:700 9px/1.35 Georgia,serif;color:#6E6B66;text-align:right}main{padding:22px 19px 38px}.eyebrow{display:flex;align-items:center;gap:8px;font:700 10px Georgia,serif;letter-spacing:1.5px;color:var(--cherry)}.eyebrow:before{content:'';width:21px;height:2px;background:var(--cherry)}h1{font-size:25px;margin:12px 0 4px;letter-spacing:-.9px}.subtitle{color:var(--sub);font-size:12px;line-height:1.6;margin:0 0 18px}
@@ -3329,12 +3329,52 @@ return {
 .tc-cafe-view-switch button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:36px;border:0;border-radius:9px;background:transparent;color:var(--theme-sub,#6E6B66);font-size:12px;font-weight:600}
 .tc-cafe-view-switch button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .tc-cafe-view-switch button[aria-pressed=true]{background:var(--theme-surface,#FFFEFB);color:var(--theme-primary,#965A40);box-shadow:0 1px 4px #4A494722}
-.tc-thumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:4px 0 18px}
+.tc-thumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 0 18px} /* v3.8.95: 피드형과 같은 높이에서 시작 */
 .tc-thumb{position:relative;display:flex;flex-direction:column;width:100%;aspect-ratio:1/1;min-width:0;overflow:hidden;padding:0;border:1px solid var(--theme-border,#D8D2C2);border-radius:12px;background:var(--theme-surface,#FFFEFB);color:var(--theme-text,#4A4947);text-align:left;cursor:pointer}
 .tc-thumb>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .tc-thumb-body{flex:1;min-height:0;padding:10px 10px 0;overflow:hidden}
 .tc-thumb-body svg{display:block;width:100%;height:100%}
 .tc-thumb-body .profile-axis-label{display:none}
+.tc-thumb.orbs .tc-thumb-body{display:flex;align-items:center;justify-content:center;padding:14px 14px 2px}
+.tc-thumb-orbs{position:relative;display:block;height:100%;max-width:100%;aspect-ratio:252/214;isolation:isolate}
+/* v3.8.94: CAFE LOG 우표 섬네일 · 지도 보기 */
+.tc-thumb-grid:has(.tc-stamp294){gap:14px 12px}
+.tc-thumb.tc-stamp294{aspect-ratio:17/20;border:0;border-radius:0;background:transparent;overflow:visible;padding:0;filter:drop-shadow(0 1px 1.5px rgba(74,73,71,.22)) drop-shadow(0 3px 8px rgba(74,73,71,.08))}
+.tc-stamp-paper294{position:absolute;inset:0;box-sizing:border-box;padding:4px;background:var(--theme-surface,#FFFEFB);-webkit-mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 3.3px,#0000 94%,#000) -5px -5px/10px 10px;mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 3.3px,#0000 94%,#000) -5px -5px/10px 10px}
+.tc-stamp-inner294{box-sizing:border-box;height:100%;display:flex;flex-direction:column;gap:6px;padding:6px 6px 0;text-align:left}
+.tc-stamp-pic294{position:relative;display:flex;align-items:center;justify-content:center;flex:none;width:100%;aspect-ratio:1/1;overflow:hidden;background:#FBF8F1}
+.tc-stamp-pic294>img,.tc-stamp-pic294>svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tc-stamp-pic294 .tc-thumb-orbs{height:84%}
+.tc-thumb.tc-stamp294 .tc-thumb-meta,.tc-thumb.tc-stamp294.photo .tc-thumb-meta{position:static;padding:0 2px;background:none;color:var(--theme-text,#4A4947);min-width:0}
+.tc-thumb.tc-stamp294 .tc-thumb-meta strong{font-size:12px}
+.tc-thumb.tc-stamp294 .tc-thumb-meta small{font-size:10px;color:var(--theme-sub,#6E6B66);opacity:1}
+#tc-cafe-alt-view.map294{margin:0}
+.tc-cafemap294{position:relative;overflow:hidden;overflow:clip;background:#EFE8DB;margin-top:0}
+.tc-cafemap-canvas294{position:absolute;inset:0}
+.tc-cafemap-canvas294 img[src*="daumcdn.net"]{filter:sepia(.2) saturate(.8) brightness(1.03)}
+.tc-cafemap-chip294{position:absolute;left:50%;top:12px;transform:translateX(-50%);z-index:3;margin:0;padding:7px 13px;border-radius:16px;border:1px solid var(--theme-border,#D8D2C2);background:rgba(255,254,251,.94);font-size:11.5px;line-height:1.3;color:var(--theme-sub,#6E6B66);white-space:nowrap;pointer-events:none}
+.tc-cafemap-locate294{position:absolute;right:16px;bottom:200px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid var(--theme-border,#D8D2C2);background:var(--theme-surface,#FFFEFB);display:flex;align-items:center;justify-content:center;padding:0}
+.tc-cafemap-locate294 svg{width:20px;height:20px;fill:none;stroke:var(--theme-text,#4A4947);stroke-width:1.6;stroke-linejoin:round}
+.tc-cafemap-card294{position:absolute;left:14px;right:14px;bottom:100px;z-index:4;display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--theme-border,#D8D2C2);border-radius:18px;background:var(--theme-surface,#FFFEFB);box-shadow:0 8px 24px rgba(74,73,71,.12);cursor:pointer}
+.tc-cafemap-card294[hidden]{display:none}
+.tc-cafemap-card-stamp294{position:relative;flex:none;width:72px;height:72px;filter:drop-shadow(0 1px 1.5px rgba(74,73,71,.22))}
+.tc-cafemap-card-text294{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.tc-cafemap-card-text294 strong{font-size:14px;line-height:1.35;color:var(--theme-text,#4A4947)}
+.tc-cafemap-card-text294 span{font-size:12px;color:var(--theme-sub,#6E6B66)}
+.tc-cafemap-card-text294 .tc-cafemap-count294{font-size:11px;font-weight:500;color:#965A40}
+.tc-cafemap-open294{flex:none;width:44px;height:44px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;padding:0}
+.tc-cafemap-open294 svg{width:22px;height:22px;fill:none;stroke:var(--theme-sub,#6E6B66);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tc-mapstamp294{position:relative;display:flex;flex-direction:column;align-items:center;width:48px;padding:0;border:0;background:transparent;cursor:pointer;filter:drop-shadow(0 1px 1.5px rgba(74,73,71,.25)) drop-shadow(0 3px 6px rgba(74,73,71,.1))}
+.tc-mapstamp-paper294{position:relative;display:block;box-sizing:border-box;width:48px;height:48px;padding:5.5px;background:var(--theme-surface,#FFFEFB);transform:rotate(var(--tilt,0deg));-webkit-mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 2px,#0000 94%,#000) -3px -3px/6px 6px;mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 2px,#0000 94%,#000) -3px -3px/6px 6px}
+.tc-cafemap-card-stamp294 .tc-mapstamp-paper294{width:72px;height:72px;padding:7px}
+.tc-mapstamp-paper294 .tc-stamp-pic294{width:100%;height:100%}
+.tc-mapstamp294.cluster::before{content:"";position:absolute;left:8px;top:-5px;width:44px;height:44px;box-sizing:border-box;padding:2.5px;background:linear-gradient(#E9DCC8,#E9DCC8) content-box,#FFFEFB;border:0;transform:rotate(9deg);-webkit-mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 2px,#0000 94%,#000) -3px -3px/6px 6px;mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 2px,#0000 94%,#000) -3px -3px/6px 6px}
+.tc-mapstamp-badge294{position:absolute;right:-9px;top:-9px;z-index:2;min-width:22px;height:22px;box-sizing:border-box;padding:0 6px;border:2px solid #FFFEFB;border-radius:11px;background:#965A40;color:#FFFEFB;font-size:11px;font-weight:700;line-height:18px;text-align:center}
+.tc-mapstamp-pin294{width:2px;height:10px;background:rgba(74,73,71,.55)}
+.tc-mapstamp-pin294::after{content:"";display:block;width:8px;height:8px;margin:8px 0 0 -5px;border:2px solid #FFFEFB;border-radius:50%;background:#965A40}
+.tc-cafemap294.failed{display:flex;align-items:center;justify-content:center}
+.tc-cafemap-fail294{position:absolute;left:24px;right:24px;top:40%;margin:0;text-align:center;font-size:13px;line-height:1.6;color:var(--theme-sub,#6E6B66)}
+
 .tc-thumb-text{margin:0;font-size:12px;line-height:1.5;color:var(--theme-text,#4A4947);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden;white-space:pre-line;word-break:keep-all}
 .tc-thumb-text.empty{color:var(--theme-sub,#8A847B)}
 .tc-thumb-meta{position:relative;display:grid;gap:1px;padding:6px 10px 9px}
@@ -3349,6 +3389,22 @@ return {
 #tc-scroll-jump button{width:40px;height:40px;display:grid;place-items:center;padding:0;border:1px solid var(--theme-border,#D8D2C2);border-radius:50%;background:color-mix(in srgb,var(--theme-surface,#FFFEFB) 92%,transparent);color:var(--theme-navy,#4A4947);box-shadow:0 4px 14px #4A494729;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:pointer}
 #tc-scroll-jump svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 @media (hover:hover) and (pointer:fine){#tc-scroll-jump button:hover{color:var(--theme-primary,#965A40)}}
+/* v3.8.87: BREW·CAFE LOG 피드 — 사진은 카드 폭 그대로 1:1, 레시피·메모는 테두리·배경 없이 / 목록형은 요약 최대 3줄 */
+#log-feed.scroll .feed-body214 .post-view-photos{width:100%!important;max-width:none!important;margin:16px 0 4px!important;border-radius:10px;overflow:hidden}
+#log-feed.scroll .feed-body214 .post-view-photos .photo-track214 img,#log-feed.scroll .feed-body214 .post-view-photos img{width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:1/1!important;object-fit:cover!important;border-radius:10px}
+#log-feed .feed-body214 .post-recipe-inline{padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:0}
+#log-feed .feed-body214 .post-recipe-inline:focus-visible{outline:2px solid var(--theme-primary,#965A40);outline-offset:3px}
+#log-feed .feed-body214 .post-memo{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+#log-feed .feed-body214>section+section{margin-top:16px}
+#log-feed.list .log-list-summary{display:-webkit-box!important;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;white-space:normal!important;text-overflow:clip!important;line-height:1.5}
+#log-feed.list .log-post{padding-bottom:14px}
+/* v3.8.91: 상온·냉동 강조색이 칸 높이에 맞게 — 위아래·양옆 여백을 똑같이 */
+.tc-storage-switch{align-items:stretch!important;padding:4px!important;gap:4px!important}
+.tc-storage-switch button{min-height:0!important;height:auto!important;margin:0!important}
+#record-cafe-clear{position:absolute;right:42px;top:50%;transform:translateY(-50%);width:30px;height:30px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:transparent;color:var(--theme-sub,#6E6B66);cursor:pointer}
+#record-cafe-clear[hidden]{display:none}
+#record-cafe-clear svg{width:15px;height:15px}
+#record-cafe-search{top:50%!important;bottom:auto!important;transform:translateY(-50%);height:38px}
 #record-place-results{display:grid;gap:5px}
 #record-place-results .record-place-searching{margin:0;padding:10px 12px;color:var(--theme-sub,#6E6B66);font-size:12.5px}
 /* v3.8.76: 카페 검색 결과 = 카페 이름 칸 바로 아래 드롭다운 */
@@ -3494,7 +3550,7 @@ input:placeholder-shown{text-overflow:ellipsis}
 #stage-recipe #recipe-card .recipe-icon-actions .icon-btn{width:34px;height:34px;display:grid;place-items:center;padding:6px}
 #stage-recipe #recipe-card .recipe-icon-actions .icon-btn svg{display:block;width:22px;height:22px}
 </style>
-<meta name="pwa-release" content="0da41adee9717046d1f5edcbc3b7b2e04f8b9e9f4fbb2f49eef354bacd3d5ca2"/></head>
+<meta name="pwa-release" content="8aaea4371357361a2ed89fcf32b83a25ffb01564e00561a9d566cd9eefc5b9f3"/></head>
 <body class="variant-b step-layout-a"><div class="app"><main id="brew-main">
 <button class="eyebrow eyebrow-link" type="button">COFFEE LOG · BREW GUIDE</button><div class="stage-header"><nav aria-label="추출 과정" class="flow-steps">
 <button aria-current="step" class="flow-step active" data-step="1" type="button"><span>준비</span></button>
@@ -4898,7 +4954,7 @@ function grindInfo252(){
 function updateFavoriteUI(){const liked=favoriteRecipes.some(r=>r.favoriteKey===favoriteKey());$('favorite-recipe').classList.toggle('on',liked);$('favorite-recipe').ariaLabel=liked?'즐겨찾기 해제':'즐겨찾기';}
 function favoriteKey(){return JSON.stringify([recipe.method,recipe.name,recipe.dose,recipe.water,recipe.steps])}
 function sizeTitle(){const n=$('recipe-name');n.style.height='auto';n.style.height=Math.min(n.scrollHeight+2,112)+'px'}function renderRecipe(){if(!recipe.method)recipe.method=$('method').value;$('recipe-name').value=recipe.name;$('customized-tag').hidden=!(isLoaded&&dirty);sizeTitle();$('recipe-badge').textContent=recipeAuthor?`${recipeAuthor}의 레시피`:`${recipeSource}`;$('dose-text').textContent=recipe.dose+'g';$('water-text').textContent=recipe.water+'g';$('temp-text').textContent=recipe.temp+'°C';paintGrind252();$('water-label').textContent=recipe.method==='espresso'?'추출량':'물';refreshCardInfo();scheduleRender();populateEditor();updateFavoriteUI()}
-function setRecipe(next,source,{scroll=true,loaded=false,author=''}={}){resetClock();recipe=clone(next);recipe.method=$('method').value;recipeSource=source;recipeAuthor=author;originRecipeName=recipe.name;isLoaded=loaded;isNew=false;dirty=false;renderRecipe();setRecipeMessage(`‘${recipe.name}’ 적용 완료`);$('fine-tune').open=false;if(scroll)requestAnimationFrame(()=>$('recipe-card').scrollIntoView({behavior:'smooth',block:'start'}))}
+function setRecipe(next,source,{scroll=true,loaded=false,author=''}={}){resetClock();recipe=clone(next);recipe.method=$('method').value;recipeSource=source;recipeAuthor=author;originRecipeName=recipe.name;isLoaded=loaded;isNew=false;dirty=false;renderRecipe();setRecipeMessage(`‘${recipe.name}’ 적용 완료`);$('fine-tune').open=false;if(scroll)requestAnimationFrame(()=>window.scrollTo(0,0)) /* v3.8.88: 레시피를 적용하면 화면을 위에서부터(예전엔 레시피 카드로 내려감) */}
 function setRecipeMessage(s){$('recipe-selection-status').textContent=s;$('recipe-selection-status').hidden=true}
 const adjectives=['고요한','느긋한','포근한','산뜻한','따뜻한','장난스러운','기분 좋은','느린','수줍은','경쾌한','달콤한','파란','선명한','나른한','용감한','비밀스런','불타는','엉뚱한','반짝이는','작은','유쾌한','바쁜','적당히 행복한','느낌 좋은','말랑한','은은한','재빠른','무심한','졸린'];
 const times=['아침','오후','정오','저녁','새벽','자정','일요일','월요일','퇴근길','야근','점심','한밤','해질녘','주말','퇴근 후','토요일','수요일','휴일'];
@@ -5244,7 +5300,7 @@ function showStage(next,{scroll=true}={}){
  if(!logMain.hidden&&location.protocol!=='about:')history.replaceState(null,'',location.pathname+location.search+target);
  if(scroll){
   // Restore the top; moving to the next screen must not keep the prior scroll offset.
-  window.scrollTo({top:0,behavior:'instant'});
+  window.scrollTo(0,0); // v3.8.88: 옛 iPhone Safari도 되는 형식
  }
 }
 function goBrew(){
@@ -5354,6 +5410,12 @@ let recordDraft=null,photoRevision=0,photoURLs=[],photosBusy=0,recordSaving=fals
 let draftTimer=0;
 function photoDB(){return new Promise((resolve,reject)=>{if(!window.indexedDB){reject(Error('사진 저장 공간을 사용할 수 없습니다.'));return}const request=indexedDB.open('coffee-log-media',1);request.onupgradeneeded=()=>request.result.createObjectStore('photos');request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);request.onblocked=()=>reject(Error('다른 창을 닫은 뒤 다시 시도해 주세요.'))})}
 async function photoTransaction(mode,operation){const db=await photoDB();try{return await new Promise((resolve,reject)=>{const tx=db.transaction('photos',mode),store=tx.objectStore('photos');let result;tx.oncomplete=()=>resolve(result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||Error('사진 저장 취소'));const request=operation(store);if(request)request.onsuccess=()=>result=request.result})}finally{db.close()}}
+/* v3.8.92: 사진을 Blob 대신 바이트(ArrayBuffer)+형식으로 저장 — iOS에서 저장된 Blob을 다시 읽으면 깨지는 문제(앱 안 미리보기·임베드 화면) 방지. 예전 Blob 저장분도 읽음. */
+function photoPackSync292(bytes,type){return {photo292:1,type:type||'image/jpeg',data:bytes}}
+async function photoPack292(blob){return photoPackSync292(await blob.arrayBuffer(),blob.type)}
+async function photoUnpack292(v){if(!v)return null;if(v.photo292&&v.data)return new Blob([v.data],{type:v.type||'image/jpeg'});if(v instanceof Blob){try{return new Blob([await v.arrayBuffer()],{type:v.type||'image/jpeg'})}catch{return null}}return null}
+async function photoGet292(id){return photoUnpack292(await photoTransaction('readonly',store=>store.get(id)))}
+async function photoPut292(id,blob){const packed=await photoPack292(blob);return photoTransaction('readwrite',store=>store.put(packed,id))}
 function createRecord(){const b=getBean();return {schemaVersion:2,id:uid('log'),date:localDate(),menu:recipeMenu216(recipe),rating:null,styles:recipe.style?[recipe.style]:[],drinkTemperature:recipeMeta216(recipe).drinkTemperature,tastingNotes:[],note:'',beanId:activeBeanId,beanName:b.name,beanRoastDate:b.roastDate,bean:clone(b),gear:clone(getGear()),recipe:clone(recipe),recipeId:recipeIdentity(recipe),elapsedMs:0,profile:{},actual:{},photos:[],createdAt:Date.now()}}
 function completionStepIndex(steps){
  for(let i=steps.length-1;i>=0;i--){
@@ -5627,7 +5689,12 @@ function editActual(key){const spec=actualSpecs.find(x=>x[0]===key);openModal(sp
 function calculateExtraction(){if(!recordDraft)return;const dose=Number(recordDraft.actual.dose??recordDraft.recipe.dose),yieldValue=Number($('actual-yield').value),tds=Number($('actual-tds').value);const formula=dose>0&&yieldValue>0&&tds>0?Math.round(yieldValue*tds/dose*100)/100:null;if(!recordDraft.actual.extractionManual){$('actual-extraction').value=formula??'';recordDraft.actual.extraction=formula}const planned=recordDraft.recipe.method==='espresso'?recordDraft.recipe.water:null;$('extraction-note').textContent=recordDraft.actual.extractionManual?'직접 입력한 추출 수율입니다.':formula!=null?'추출량 × TDS ÷ 원두량'+` · ${formula.toFixed(2)}%`:(planned?'추출량·TDS 입력 시 수율을 계산해요.':'추출량·TDS 입력 시 수율을 계산해요.');}
 for(const [key,id] of [['yield','actual-yield'],['tds','actual-tds'],['extraction','actual-extraction']])$(id).addEventListener('input',()=>{recordDraft.actual[key]=$(id).value===''?null:Number($(id).value);if(key==='extraction')recordDraft.actual.extractionManual=$(id).value!=='';calculateExtraction();queueDraft()});
 $('record-camera').onclick=()=>{$('record-camera-file').value='';$('record-camera-file').click()};$('record-gallery').onclick=()=>{$('record-gallery-file').value='';$('record-gallery-file').click()};
-async function renderPhotos(){const revision=++photoRevision;photoURLs.forEach(URL.revokeObjectURL);photoURLs=[];const root=$('record-photos');root.replaceChildren();if(!recordDraft)return;for(const p of recordDraft.photos){const card=element('div','record-photo'),img=element('img');img.alt=p.name||'커피 기록 사진';card.append(img,button('×',()=>{recordDraft.photos=recordDraft.photos.filter(x=>x.id!==p.id);persistRecordDraft();renderPhotos()},''));card.querySelector('button').setAttribute('aria-label',(p.name||'사진')+' 삭제');root.append(card);try{const blob=await photoTransaction('readonly',store=>store.get(p.id));if(revision!==photoRevision)return;if(blob){const url=URL.createObjectURL(blob);photoURLs.push(url);img.src=url}else{img.alt='사진을 찾을 수 없습니다.'}}catch(error){if(revision===photoRevision)img.alt='사진을 불러올 수 없습니다.'}}}
+/* v3.8.90: 사진 미리보기 주소를 사진별로 재사용 — 다시 그릴 때 기존 주소를 지우지 않아 iOS에서 앞 사진이 깨지지 않게 */
+const photoURLCache290=new Map();
+async function photoURL290(id){if(photoURLCache290.has(id))return photoURLCache290.get(id);const blob=await photoGet292(id);if(!blob)return null;const url=URL.createObjectURL(blob);photoURLCache290.set(id,url);return url}
+function photoCachePrune290(){const keep=new Set((recordDraft?.photos||[]).map(p=>p.id));for(const [id,url] of photoURLCache290)if(!keep.has(id)){URL.revokeObjectURL(url);photoURLCache290.delete(id)}}
+window.__photoCacheSeed290=(id,blob)=>{if(!photoURLCache290.has(id))photoURLCache290.set(id,URL.createObjectURL(blob))};
+async function renderPhotos(){const revision=++photoRevision;photoCachePrune290();const root=$('record-photos');if(!recordDraft){root.replaceChildren();return}const cards=recordDraft.photos.map(p=>{const card=element('div','record-photo'),img=element('img');img.alt=p.name||'커피 기록 사진';card.append(img,button('×',()=>{recordDraft.photos=recordDraft.photos.filter(x=>x.id!==p.id);persistRecordDraft();renderPhotos()},''));card.querySelector('button').setAttribute('aria-label',(p.name||'사진')+' 삭제');return {p,img,card}});root.replaceChildren(...cards.map(c=>c.card));for(const {p,img} of cards){try{const url=await photoURL290(p.id);if(revision!==photoRevision)return;if(url){img.onerror=()=>{if(img.dataset.retry)return;img.dataset.retry='1';const old=photoURLCache290.get(p.id);photoURLCache290.delete(p.id);if(old)URL.revokeObjectURL(old);photoURL290(p.id).then(u=>{if(u&&img.isConnected)img.src=u}).catch(()=>{})};img.src=url}else{img.alt='사진을 찾을 수 없습니다.'}}catch(error){if(revision===photoRevision)img.alt='사진을 불러올 수 없습니다.'}}}
 // Delete only unreferenced media; keep draft/record references across reloads.
 async function cleanupPhotos(){try{const references=new Set([...read(LS_LOGS,[]),read(LS_DRAFT,{photos:[]}),read(LS_CAFE_DRAFT,{photos:[]})].flatMap(x=>x?.photos||[]).map(x=>x.id));await photoTransaction('readwrite',store=>{const cursor=store.openCursor();cursor.onsuccess=()=>{const item=cursor.result;if(item){if(!references.has(item.key))item.delete();item.continue()}}})}catch(error){/* Metadata remains available if IndexedDB is disabled. */}}
 $('save-today').onclick=async()=>{
@@ -6571,7 +6638,7 @@ async function attachPhotos(event){
    const url=URL.createObjectURL(file);let blob;
    try{blob=await cropPhoto(await loadLocalImage(url))}finally{URL.revokeObjectURL(url)}
    if(recordDraft!==target||logPage.hidden)break;
-   const id=uid('photo');await photoTransaction('readwrite',store=>store.put(blob,id));
+   const id=uid('photo');await photoPut292(id,blob);window.__photoCacheSeed290?.(id,blob);
    target.photos.push({id,name:file.name});
    if(recordDraft===target){persistRecordDraft();await renderPhotos()}
   }
@@ -6582,7 +6649,7 @@ $('record-camera-file').onchange=attachPhotos;$('record-gallery-file').onchange=
 
 function addPhotoImage(parent,photo,urls,current){
  const img=element('img');img.alt=photo.name||'커피 기록 사진';img.loading='lazy';parent.append(img);
- photoTransaction('readonly',store=>store.get(photo.id)).then(blob=>{
+ photoGet292(photo.id).then(blob=>{
   if(!current()||!img.isConnected)return;
   if(blob){const url=URL.createObjectURL(blob);urls.push(url);img.src=url}else img.alt='사진을 찾을 수 없습니다.';
  }).catch(()=>{img.alt='사진을 불러올 수 없습니다.'});
@@ -6674,7 +6741,6 @@ function renderFeed(){
   $(id).setAttribute('aria-pressed',Boolean(value));
   $(id).setAttribute('aria-label',id==='pick-year'?'연도 필터':'월 필터');
  }
- if(window.__cafeAlt278?.()){$('style-match-rate').hidden=true;return} // v3.8.82: CAFE LOG 섬네일 보기
  const logs=read(LS_LOGS,[]).filter(log=>(!likedOnly||log.liked)&&(logKind==='all'||logKind===(log.kind||'brew'))&&
   (!filterYear||log.date?.startsWith(filterYear+'-'))&&(!filterMonth||log.date?.slice(5,7)===filterMonth))
   .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||(b.createdAt||0)-(a.createdAt||0));
@@ -6684,6 +6750,7 @@ function renderFeed(){
  rateLabel.textContent=rate.rate===null?'':'의도대로 나온 비율 '+new Intl.NumberFormat('ko-KR',{
   style:'percent',maximumFractionDigits:1,
  }).format(rate.rate)+' · '+rate.matched+'/'+rate.assessed+'잔';
+ if(window.__cafeAlt278?.())return; // v3.8.95: 섬네일·지도 보기에서도 '의도대로 나온 비율' 줄을 그대로 둬서 아래 내용 높이가 피드형과 같게
  if(!logs.length){logPageNumber=0;root.append(element('p','feed-empty','이 조건에 해당하는 기록이 없어요.'));return}
  const pageCount=Math.ceil(logs.length/30);logPageNumber=Math.min(logPageNumber,pageCount-1);
  for(const log of logs.slice(logPageNumber*30,logPageNumber*30+30)){
@@ -6695,7 +6762,9 @@ function renderFeed(){
   const expanded=logView==='scroll'?!foldedLogs.has(log.id):expandedListLogs.has(log.id);
   if(logView==='list'){
    heading.querySelector('h2').title=recordTitle(log);
-   const summary=[drinkSummary(log),detailedBeanSummary(log),recipeRecordSummary(log)].filter(Boolean).join(' · ');
+   // v3.8.87: 목록형 요약 = 메뉴·원두·노트만(최대 3줄)
+   const notes=(Array.isArray(log.tastingNotes)?log.tastingNotes:[]).map(n=>String(n||'').trim()).filter(Boolean).join(', ');
+   const summary=[String(log.menu||'').trim(),detailedBeanSummary(log)||String(log.beanName||'').trim(),notes].filter(Boolean).join(' · ');
    if(summary){const info=element('div','post-recipe log-list-summary',summary);info.title=summary;head.append(info)}
   }
   if(logView!=='list'&&window.TCVisualV38)window.TCVisualV38.decorateCard(card,head,log);
@@ -6750,7 +6819,7 @@ function renderFeed(){
   like.setAttribute('aria-label','좋아요');
   like.setAttribute('aria-pressed',Boolean(log.liked));
   controls.append(icon214('기록 수정','edit',()=>showToday(log)),icon214('기록 삭제','delete',()=>confirmLogDeletion(log)),like,toggle);
-  footer.append(privacy,controls);card.append(footer);root.append(card);
+  footer.append(privacy,controls);if(logView!=='list')card.append(footer);root.append(card); // v3.8.87: 목록형은 아래 줄(구분선·공개 여부·아이콘) 없이 — 누르면 기록이 열림
  }
  if(pageCount>1){
   for(const [label,direction] of [['이전',-1],['다음',1]]){
@@ -6791,7 +6860,7 @@ async function makeRecordImage(log){
  line([...(log.styles||[]),...(log.tastingNotes||[])].join(' · '));line(log.note,29,3);
  if(log.photos?.length){
   try{
-   const blob=await photoTransaction('readonly',s=>s.get(log.photos[0].id));
+   const blob=await photoGet292(log.photos[0].id);
    if(blob){
     const url=URL.createObjectURL(blob);
     try{
@@ -7207,7 +7276,7 @@ clearInputButton.onpointerdown=event=>event.preventDefault();
 document.body.append(clearInputButton);
 let hoveredInput=null,clearInputTarget=null,clearInputInset=0;
 function canClearInput(input){
- if(!input?.matches?.(editableInputSelector)||input.tagName==='SELECT'||!input.value||
+ if(!input?.matches?.(editableInputSelector)||input.tagName==='SELECT'||!input.value||input.id==='record-cafe-name'|| /* v3.8.89: 카페 이름 칸은 칸 안에 붙은 자체 X 버튼 */
   (input.type==='number'&&input.closest('#fine-tune'))||
   input.matches('#step-editor [data-part=time],#step-editor [data-part=type]')||
   input.closest('.other-gear-entry215')||!isVisibleInput(input))return false;
@@ -9404,17 +9473,18 @@ const likeButton3812=$tc('filter-liked'),profileTools=$tc('tc-profile-tools');
 const logViewSwitch=$tc('log-view');
 logViewSwitch.replaceChildren();
 // v3.8.85: 보기 아이콘 하나가 한 자리에서 바뀜 — 피드형 → 목록형 → 섬네일형 → 피드형(BREW LOG·CAFE LOG 각자 기억)
-const logViews283={brew:read('coffee_brew_view','feed'),cafe:read('coffee_cafe_view','feed')};for(const k in logViews283)if(!['feed','list','thumb'].includes(logViews283[k]))logViews283[k]='feed';
-const LOG_VIEW_ORDER285=['feed','list','thumb'];
-const LOG_VIEW_ICONS283={feed:['피드형 보기','<rect x="4" y="3" width="16" height="8" rx="1"/><rect x="4" y="14" width="16" height="7" rx="1"/>'],list:['목록형 보기','<path d="M4 5h16M4 12h16M4 19h16"/>'],thumb:['섬네일형 보기','<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>']};
+const logViews283={brew:read('coffee_brew_view','feed'),cafe:read('coffee_cafe_view','feed')};for(const k in logViews283)if(!(k==='cafe'?['feed','thumb','map']:['feed','thumb']).includes(logViews283[k]))logViews283[k]='feed';
+const LOG_VIEW_ORDER285=['feed','thumb']; /* v3.8.93: 목록형 없앰 — BREW·CAFE 모두 피드형 ↔ 섬네일형 */
+const LOG_VIEW_ORDERS294={brew:['feed','thumb'],cafe:['feed','thumb','map']}; /* v3.8.94: CAFE LOG만 지도 보기 */
+const LOG_VIEW_ICONS283={feed:['피드형 보기','<rect x="4" y="3" width="16" height="8" rx="1"/><rect x="4" y="14" width="16" height="7" rx="1"/>'],list:['목록형 보기','<path d="M4 5h16M4 12h16M4 19h16"/>'],thumb:['섬네일형 보기','<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>'],map:['지도 보기','<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/>']};
 function logPane285(){let pane='brew';try{if(profilePane3812==='cafe')pane='cafe'}catch(e){} /* 시작할 때는 아직 정해지기 전 */return pane}
 const logViewToggle=document.createElement('button');logViewToggle.type='button';logViewToggle.id='tc-log-view-toggle';logViewToggle.className='tc-tool';
-logViewToggle.onclick=()=>{const pane=logPane285(),next=LOG_VIEW_ORDER285[(LOG_VIEW_ORDER285.indexOf(logViews283[pane])+1)%LOG_VIEW_ORDER285.length];
+logViewToggle.onclick=()=>{const pane=logPane285(),order=LOG_VIEW_ORDERS294[pane],next=order[(order.indexOf(logViews283[pane])+1)%order.length];
  logViews283[pane]=next;store(pane==='cafe'?'coffee_cafe_view':'coffee_brew_view',next);logPageNumber=0;renderFeed();updateLogViewToggle()};
 logViewSwitch.append(logViewToggle);profileTools.prepend(likeButton3812,logViewSwitch);
 function updateLogViewToggle(){
- // 아이콘은 '누르면 바뀔 보기'를 보여 준다
- const mode=logViews283[logPane285()],next=LOG_VIEW_ORDER285[(LOG_VIEW_ORDER285.indexOf(mode)+1)%LOG_VIEW_ORDER285.length],[label,svg]=LOG_VIEW_ICONS283[next];
+ // v3.8.93: 아이콘은 '지금 보고 있는 보기'를 보여 준다(누르면 다음 보기로)
+ const mode=logViews283[logPane285()],[label,svg]=LOG_VIEW_ICONS283[mode];
  logViewToggle.dataset.mode=mode;logViewToggle.setAttribute('aria-label',label);logViewToggle.title=label;logViewToggle.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+svg+'</svg>';
 }
 window.__syncLogView285=()=>{logView=logViews283[logPane285()]==='list'?'list':'scroll'}; // renderFeed가 피드형/목록형을 고를 때 씀
@@ -9430,18 +9500,43 @@ function paneLogs283(){
  return read(LS_LOGS,[]).filter(log=>(logKind==='all'||(log.kind||'brew')===logKind)&&(!likedOnly||log.liked)&&(!filterYear||log.date?.startsWith(filterYear+'-'))&&(!filterMonth||log.date?.slice(5,7)===filterMonth))
   .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||(b.createdAt||0)-(a.createdAt||0));
 }
+function thumbOrbNotes293(log){
+ let notes=[];try{notes=representative(beanOf(log.bean||(log.beanName||log.beanId?{name:log.beanName,id:log.beanId}:null)))}catch(e){}
+ if(!notes.length&&Array.isArray(log.tastingNotes)&&log.tastingNotes.length){try{notes=representative({tastingNotes:log.tastingNotes})}catch(e){}}
+ return notes.filter(Boolean);
+}
+function orbsPct293(notes){
+ /* 홈 향미원(orbs)과 같은 배치를 252×214 상자 비율로 — 섬네일 크기에 맞춰 늘고 줄어듦 */
+ let html='';for(let i=0;i<3;i++){const n=notes[i];if(!n)continue;const [x,y,d]=slots[i];
+  const alpha=dark(n.color)?'.5':(i?'.85':'.9');
+  html+='<i class="tc-orb" style="left:'+(x/252*100)+'%;top:'+(y/214*100)+'%;width:'+(d/252*100)+'%;height:'+(d/214*100)+'%;background:'+n.color+';opacity:'+alpha+';mix-blend-mode:'+(i&&!dark(n.color)?'multiply':'normal')+'"></i>'}
+ return html;
+}
 function thumbDate282(date){return String(date||'').slice(0,10).replace(/-/g,'.')}
 /* v3.8.82: 섬네일 = 정사각형에 사진·이름(카페명 / 브루는 원두명)·날짜. 사진이 없으면 테이스팅 프로필, 그것도 없으면 기록 내용 */
 function thumbElement282(log){
+ const gen0=cafeAltGen278;
  const tile=document.createElement('button');tile.type='button';tile.className='tc-thumb';tile.dataset.logId=log.id;
  const cafe=(log.kind||'brew')==='cafe',name=(cafe?log.cafeName:(log.beanName||log.bean?.name||log.menu))||'',date=thumbDate282(log.date);
  tile.setAttribute('aria-label',[name||(cafe?'카페 기록':'브루 기록'),date].filter(Boolean).join(' ')+' 기록 보기');
  const meta=document.createElement('span');meta.className='tc-thumb-meta';
  meta.innerHTML=(name?'<strong>'+esc(name)+'</strong>':'')+'<small>'+esc(date)+'</small>';
  const photo=(Array.isArray(log.photos)?log.photos:[]).find(p=>p?.id);
- if(photo){
+ if(cafe){
+  /* v3.8.94: CAFE 섬네일 = 우표. 그림은 사진 → 향미원 → 프리셋 */
+  tile.classList.add('tc-stamp294',photo?'photo':cafeOrbNotes294(log).length?'orbs':'preset');
+  const paper=element('span','tc-stamp-paper294'),inner=element('span','tc-stamp-inner294');
+  inner.append(stampPicture294(log,thumbURLs282,()=>gen0===cafeAltGen278),meta);paper.append(inner);tile.append(paper);tile.onclick=()=>showPost(log);return tile;
+ }
+ const brewOrbs=cafe?[]:thumbOrbNotes293(log);
+ if(brewOrbs.length){
+  /* v3.8.93: BREW 섬네일 = 향미원 → 테이스팅 프로필 → 사진 → 요약 */
+  tile.classList.add('orbs');const body=document.createElement('span');body.className='tc-thumb-body';body.innerHTML='<span class="tc-thumb-orbs" aria-hidden="true">'+orbsPct293(brewOrbs)+'</span>';tile.append(body);
+ }else if(!cafe&&profileAxes.some(([key])=>log.profile?.[key]!=null)){
+  tile.classList.add('profile');const body=document.createElement('span');body.className='tc-thumb-body';const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','30 22 160 154');svg.setAttribute('role','img');renderRadar(svg,log.profile);body.append(svg);tile.append(body);
+ }else if(photo){
   tile.classList.add('photo');const img=document.createElement('img');img.alt='';tile.append(img);const gen=cafeAltGen278;
-  photoTransaction('readonly',s=>s.get(photo.id)).then(blob=>{if(!blob||gen!==cafeAltGen278)return;const url=URL.createObjectURL(blob);thumbURLs282.push(url);img.src=url}).catch(()=>{});
+  photoGet292(photo.id).then(blob=>{if(!blob||gen!==cafeAltGen278)return;const url=URL.createObjectURL(blob);thumbURLs282.push(url);img.src=url}).catch(()=>{});
  }else{
   const body=document.createElement('span');body.className='tc-thumb-body';
   const hasProfile=profileAxes.some(([key])=>log.profile?.[key]!=null);
@@ -9467,14 +9562,103 @@ function cafeAltCleanup278(){cafeAltGen278++;thumbURLs282.forEach(URL.revokeObje
 /* renderFeed 안에서 부름. 섬네일 보기면 true(피드 대신 그림) */
 function renderCafeAlt278(){
  const pane=!profile.hidden&&(profilePane3812==='cafe'?'cafe':profilePane3812==='brew'?'brew':null);
- const alt=!!pane&&logViews283[pane]==='thumb';
- cafeAltCleanup278();cafeAlt278.hidden=!alt;$('log-feed').hidden=alt;$('log-pages').hidden=alt;updateLogViewToggle();
+ const mode=pane?logViews283[pane]:'feed',alt=!!pane&&(mode==='thumb'||(pane==='cafe'&&mode==='map'));
+ cafeAltCleanup278();cafeAlt278.classList.toggle('map294',alt&&mode==='map');cafeAlt278.hidden=!alt;$('log-feed').hidden=alt;$('log-pages').hidden=alt;updateLogViewToggle();
  if(!alt)return false;
  const logs=paneLogs283();
+ if(mode==='map'){renderCafeMap294(logs);return true}
  if(logs.length)renderThumbs282(logs);else cafeAlt278.append(element('p','feed-empty','이 조건에 해당하는 기록이 없어요.'));
  return true;
 }
 window.__cafeAlt278=renderCafeAlt278;
+const STAMP_PRESETS294=[["drip", "핸드드립", "<rect width=\"150\" height=\"150\" fill=\"#E9DCC8\"/><path d=\"M50 92h50l-6 38H56Z\" fill=\"#CFDCE0\"/><path d=\"M53 108h44l-3 22H56Z\" fill=\"#7A4A33\"/><path d=\"M44 52h62l-14 32H58Z\" fill=\"#FFFEFB\" stroke=\"#965A40\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M40 52h70\" stroke=\"#965A40\" stroke-width=\"4\" stroke-linecap=\"round\"/><path d=\"M75 86v10\" stroke=\"#7A4A33\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M104 30c10 6 18 6 24-2\" stroke=\"#965A40\" stroke-width=\"3\" fill=\"none\" stroke-linecap=\"round\"/><path d=\"M30 30c3-8 9-10 14-6\" stroke=\"#B08A6E\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\"/>"], ["espresso", "에스프레소 머신", "<rect width=\"150\" height=\"150\" fill=\"#D9A88A\"/><rect x=\"34\" y=\"34\" width=\"82\" height=\"16\" rx=\"3\" fill=\"#3E3D3B\"/><rect x=\"38\" y=\"50\" width=\"74\" height=\"70\" rx=\"4\" fill=\"#4A4947\"/><circle cx=\"96\" cy=\"64\" r=\"7\" fill=\"#F3ECE0\"/><path d=\"M96 64l3-4\" stroke=\"#4A4947\" stroke-width=\"2\"/><rect x=\"56\" y=\"70\" width=\"26\" height=\"9\" rx=\"2\" fill=\"#B9B4AC\"/><path d=\"M82 74h22\" stroke=\"#2E2D2B\" stroke-width=\"5\" stroke-linecap=\"round\"/><rect x=\"60\" y=\"94\" width=\"18\" height=\"16\" rx=\"2\" fill=\"#FFFEFB\"/><rect x=\"30\" y=\"120\" width=\"90\" height=\"8\" rx=\"2\" fill=\"#3E3D3B\"/>"], ["latte", "라테", "<rect width=\"150\" height=\"150\" fill=\"#8FA5B0\"/><ellipse cx=\"75\" cy=\"104\" rx=\"52\" ry=\"14\" fill=\"#FFFEFB\"/><path d=\"M37 64h76l-6 38a10 10 0 0 1-10 8H53a10 10 0 0 1-10-8Z\" fill=\"#FFFEFB\"/><path d=\"M113 74c14 0 14 20 0 20\" stroke=\"#FFFEFB\" stroke-width=\"7\" fill=\"none\"/><ellipse cx=\"75\" cy=\"64\" rx=\"38\" ry=\"9\" fill=\"#B07A55\"/><path d=\"M75 70c-10-6-12-12-6-13 3 0 5 2 6 4 1-2 3-4 6-4 6 1 4 7-6 13Z\" fill=\"#F3ECE0\"/>"], ["moka", "모카포트", "<rect width=\"150\" height=\"150\" fill=\"#D9B45A\"/><path d=\"M58 26h34l6 34H52Z\" fill=\"#9A9EA1\"/><path d=\"M50 60h50\" stroke=\"#6E7276\" stroke-width=\"5\"/><path d=\"M52 62h46l8 58H44Z\" fill=\"#B3B7BA\"/><rect x=\"66\" y=\"18\" width=\"18\" height=\"8\" rx=\"3\" fill=\"#4A4947\"/><path d=\"M92 34c18 2 20 22 6 26\" stroke=\"#4A4947\" stroke-width=\"7\" fill=\"none\" stroke-linecap=\"round\"/><path d=\"M58 30l-10 2\" stroke=\"#9A9EA1\" stroke-width=\"5\" stroke-linecap=\"round\"/>"], ["store", "카페 거리", "<rect width=\"150\" height=\"150\" fill=\"#F3ECE0\"/><rect x=\"24\" y=\"46\" width=\"102\" height=\"86\" fill=\"#E9DCC8\"/><path d=\"M18 46h114l-6 18H24Z\" fill=\"#965A40\"/><path d=\"M36 46l-4 18M54 46l-2 18M72 46v18M90 46l2 18M108 46l4 18\" stroke=\"#FFFEFB\" stroke-width=\"7\"/><rect x=\"34\" y=\"76\" width=\"44\" height=\"34\" rx=\"2\" fill=\"#CFDCE0\"/><rect x=\"88\" y=\"76\" width=\"28\" height=\"56\" rx=\"2\" fill=\"#4A4947\"/><circle cx=\"110\" cy=\"106\" r=\"2\" fill=\"#D9B45A\"/><rect x=\"30\" y=\"112\" width=\"52\" height=\"5\" fill=\"#9AAB8A\"/>"], ["city", "도시 노을", "<rect width=\"150\" height=\"150\" fill=\"#E8A87C\"/><circle cx=\"102\" cy=\"58\" r=\"20\" fill=\"#F3D9A6\"/><path d=\"M0 150V96h18V78h16v18h12V62h22v34h10V84h16V70h20v26h14V88h22v62Z\" fill=\"#6B5B53\"/><path d=\"M0 150v-30h26v-12h18v20h20v-16h24v22h16v-14h22v10h24v20Z\" fill=\"#4A4947\"/><g fill=\"#F3D9A6\"><rect x=\"52\" y=\"70\" width=\"4\" height=\"5\"/><rect x=\"60\" y=\"70\" width=\"4\" height=\"5\"/><rect x=\"52\" y=\"80\" width=\"4\" height=\"5\"/><rect x=\"104\" y=\"78\" width=\"4\" height=\"5\"/></g>"], ["mountain", "산 풍경", "<rect width=\"150\" height=\"150\" fill=\"#CFDCE0\"/><circle cx=\"44\" cy=\"44\" r=\"14\" fill=\"#F3ECE0\"/><path d=\"M0 150l46-70 26 30 22-34 56 74Z\" fill=\"#9AAB8A\"/><path d=\"M94 76l-10 15 8-4 6 6 6-5 6 3Z\" fill=\"#FFFEFB\"/><path d=\"M0 150l30-30 30 18 34-24 56 36Z\" fill=\"#7A8B6C\"/>"]];
+function cafeOrbNotes294(log){if(!Array.isArray(log.tastingNotes)||!log.tastingNotes.length)return[];try{return representative({tastingNotes:log.tastingNotes}).filter(Boolean)}catch(e){return[]}}
+function stampPreset294(log){let h=0;const id=String(log.id||log.date||'');for(const c of id)h=(h*31+c.charCodeAt(0))>>>0;return STAMP_PRESETS294[h%STAMP_PRESETS294.length]} /* 기록마다 하나로 고정 */
+function stampPicture294(log,urls,current){
+ const pic=element('span','tc-stamp-pic294'),photo=(Array.isArray(log.photos)?log.photos:[]).find(p=>p?.id);
+ if(photo){const img=document.createElement('img');img.alt='';pic.append(img);pic.classList.add('photo');
+  photoGet292(photo.id).then(blob=>{if(!blob||!current())return;const url=URL.createObjectURL(blob);urls.push(url);img.src=url}).catch(()=>{});return pic}
+ const notes=cafeOrbNotes294(log);
+ if(notes.length){pic.classList.add('orbs');pic.innerHTML='<span class="tc-thumb-orbs" aria-hidden="true">'+orbsPct293(notes)+'</span>';return pic}
+ const [key,label,svg]=stampPreset294(log);pic.classList.add('preset');pic.dataset.preset=key;
+ pic.innerHTML='<svg viewBox="0 0 150 150" role="img" aria-label="'+label+'">'+svg+'</svg>';return pic;
+}
+function mapStamp294(log,urls,current,count){
+ const wrap=element('button','tc-mapstamp294');wrap.type='button';
+ const paper=element('span','tc-mapstamp-paper294');paper.append(stampPicture294(log,urls,current));wrap.append(paper);
+ if(count>1)wrap.append(element('span','tc-mapstamp-badge294',String(count)));
+ const tip=element('span','tc-mapstamp-pin294');wrap.append(tip);
+ wrap.style.setProperty('--tilt',(((String(log.id||'').length*7)%9)-4)+'deg');
+ return wrap;
+}
+/* 카카오 장소 위치: 저장하지 않고 이 화면에서만 다시 찾아 씀(카카오 정책) */
+const cafeCoordCache294=new Map();
+function cafeKey294(log){const p=log.cafePlace;if(!p)return'';if(p.placeId)return String(p.placeId);if(Number.isFinite(Number(p.lat))&&Number.isFinite(Number(p.lon)))return Number(p.lat).toFixed(4)+','+Number(p.lon).toFixed(4);return''}
+function storedCoords294(log){const p=log.cafePlace;return p&&Number.isFinite(Number(p.lat))&&Number.isFinite(Number(p.lon))&&!(Number(p.lat)===0&&Number(p.lon)===0)?{lat:Number(p.lat),lon:Number(p.lon)}:null}
+function kakaoCoords294(kakao,place){
+ const id=String(place.placeId||'').replace(/^kakao:/,'');if(!id||!place.name)return Promise.resolve(null);
+ if(cafeCoordCache294.has(id))return Promise.resolve(cafeCoordCache294.get(id));
+ return new Promise(resolve=>{try{new kakao.maps.services.Places().keywordSearch(place.name,(data,status)=>{
+  const hit=status===kakao.maps.services.Status.OK?(data||[]).find(d=>String(d.id)===id):null;
+  const c=hit?{lat:Number(hit.y),lon:Number(hit.x)}:null;if(c)cafeCoordCache294.set(id,c);resolve(c)},{size:15})}catch(e){resolve(null)}});
+}
+let cafeMapGen294=0;
+function renderCafeMap294(logs){
+ const gen=++cafeMapGen294,altGen=cafeAltGen278,current=()=>gen===cafeMapGen294&&altGen===cafeAltGen278;
+ const box=element('div','tc-cafemap294');box.id='tc-cafe-map294';
+ const canvas=element('div','tc-cafemap-canvas294'),chip=element('p','tc-cafemap-chip294','지도를 불러오는 중…'),card=element('section','tc-cafemap-card294');
+ card.hidden=true;card.setAttribute('aria-label','선택한 카페 기록');
+ const locate=element('button','tc-cafemap-locate294');locate.type='button';locate.setAttribute('aria-label','내 위치');
+ locate.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4 4 11l7 2 2 7Z"/></svg>';
+ box.append(canvas,chip,locate,card);cafeAlt278.append(box);
+ const fit=()=>{if(!box.isConnected)return;box.style.marginLeft=(-cafeAlt278.getBoundingClientRect().left)+'px';box.style.width=document.documentElement.clientWidth+'px';const top=box.getBoundingClientRect().top+scrollY;box.style.height=Math.max(360,innerHeight-top)+'px'};fit();box.__fit294=fit;
+ // 장소별로 묶기(같은 카페 기록은 우표 하나 + 개수)
+ const places=new Map(),noPlace=[];
+ for(const log of logs){const key=cafeKey294(log);if(!key){noPlace.push(log);continue}if(!places.has(key))places.set(key,{key,logs:[],coords:storedCoords294(log)});const pl=places.get(key);pl.logs.push(log);if(!pl.coords)pl.coords=storedCoords294(log)}
+ const setChip=(on,off)=>{chip.textContent=(on?'지도에 '+on+'곳':'지도에 표시할 곳이 없어요')+(off?' · 위치 없는 기록 '+off+'개':'')};
+ const showCard=(pl)=>{const latest=pl.logs[0];card.replaceChildren();
+  const thumb=element('span','tc-cafemap-card-stamp294');const paper=element('span','tc-mapstamp-paper294');paper.append(stampPicture294(latest,thumbURLs282,current));thumb.append(paper);
+  const text=element('div','tc-cafemap-card-text294');text.append(element('strong','',latest.cafeName||latest.cafePlace?.name||'카페 기록'));
+  text.append(element('span','',[thumbDate282(latest.date),latest.menu].filter(Boolean).join(' · ')));
+  if(pl.logs.length>1)text.append(element('span','tc-cafemap-count294','이 카페 기록 '+pl.logs.length+'개'));
+  const open=element('button','tc-cafemap-open294');open.type='button';open.setAttribute('aria-label','기록 보기');open.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>';
+  card.onclick=()=>showPost(latest);open.onclick=e=>{e.stopPropagation();showPost(latest)};
+  card.append(thumb,text,open);card.hidden=false};
+ kakaoReady275().then(async kakao=>{
+  if(!current())return;
+  const center=new kakao.maps.LatLng(35.8714,128.6014); // 기본: 대구
+  const map=new kakao.maps.Map(canvas,{center,level:7});box.__map294=map;
+  let overlays=[];const placed=()=>[...places.values()].filter(pl=>pl.coords);
+  const draw=()=>{if(!current())return;overlays.forEach(o=>o.setMap(null));overlays=[];
+   const proj=map.getProjection(),groups=[];
+   for(const pl of placed()){const pt=proj.containerPointFromCoords(new kakao.maps.LatLng(pl.coords.lat,pl.coords.lon));
+    const g=groups.find(g=>Math.hypot(g.x-pt.x,g.y-pt.y)<52);if(g){g.places.push(pl)}else groups.push({x:pt.x,y:pt.y,places:[pl]})}
+   for(const g of groups){
+    g.places.sort((a,b)=>String(b.logs[0].date||'').localeCompare(String(a.logs[0].date||'')));
+    const top=g.places[0],count=g.places.reduce((n,pl)=>n+pl.logs.length,0);
+    const el=mapStamp294(top.logs[0],thumbURLs282,current,count);
+    if(g.places.length>1){el.classList.add('cluster');el.setAttribute('aria-label','카페 '+g.places.length+'곳 · 기록 '+count+'개 (눌러서 크게 보기)')}else el.setAttribute('aria-label',(top.logs[0].cafeName||'카페 기록')+' 보기');
+    el.onclick=e=>{e.stopPropagation();
+     if(g.places.length>1&&map.getLevel()>1){map.setLevel(Math.max(1,map.getLevel()-2),{anchor:new kakao.maps.LatLng(top.coords.lat,top.coords.lon)});return}
+     showCard(g.places.length>1?{logs:g.places.flatMap(p=>p.logs).sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')))}:top)};
+    const ov=new kakao.maps.CustomOverlay({position:new kakao.maps.LatLng(top.coords.lat,top.coords.lon),content:el,yAnchor:1,clickable:true});ov.setMap(map);overlays.push(ov)}
+   const off=noPlace.length+[...places.values()].filter(pl=>!pl.coords).reduce((n,pl)=>n+pl.logs.length,0);setChip(placed().length,off)};
+  const fitAll=()=>{const pts=placed();if(!pts.length)return;if(pts.length===1){map.setCenter(new kakao.maps.LatLng(pts[0].coords.lat,pts[0].coords.lon));map.setLevel(4);return}
+   const b=new kakao.maps.LatLngBounds();pts.forEach(pl=>b.extend(new kakao.maps.LatLng(pl.coords.lat,pl.coords.lon)));map.setBounds(b,60,40,170,40)};
+  kakao.maps.event.addListener(map,'idle',draw);kakao.maps.event.addListener(map,'click',()=>{card.hidden=true});
+  fitAll();draw();
+  // 위치가 저장되지 않은 카카오 장소: 이름으로 다시 찾아 같은 장소 ID의 위치만 씀
+  const missing=[...places.values()].filter(pl=>!pl.coords&&String(pl.logs[0].cafePlace?.placeId||'').startsWith('kakao:'));
+  for(const pl of missing){const c=await kakaoCoords294(kakao,pl.logs[0].cafePlace);if(!current())return;if(c){pl.coords=c}}
+  if(missing.length){fitAll();draw()}
+  locate.onclick=()=>{if(!navigator.geolocation){toast('이 기기에서는 위치를 쓸 수 없어요.');return}
+   navigator.geolocation.getCurrentPosition(pos=>{if(!current())return;const here=new kakao.maps.LatLng(pos.coords.latitude,pos.coords.longitude);map.setLevel(5);map.panTo(here)},()=>toast('위치 권한을 허용하면 내 위치로 옮겨요.'),{maximumAge:300000,timeout:8000})};
+ }).catch(()=>{if(!current())return;box.classList.add('failed');
+  const off=logs.length;canvas.replaceChildren(element('p','tc-cafemap-fail294','지도를 불러오지 못했어요. 인터넷 연결을 확인해 주세요. 카카오 지도는 오늘의 커피 앱 주소에서만 열려요.'));
+  chip.textContent='카페 기록 '+off+'개';locate.hidden=true});
+}
+window.addEventListener('resize',()=>{const b=document.getElementById('tc-cafe-map294');if(b){b.__fit294?.();b.__map294?.relayout?.()}});
+
 const nav=document.createElement('nav');nav.id='tc-nav';nav.setAttribute('aria-label','하단 내비게이션');
 const OUTLINE_BEAN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3.5C8.5 2 4 7 4 13s4 9 9 8 8-5.5 7-11c-.5-3-2-5-5.5-6.5Z" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M15 5c-5 4-2 7-7 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
 const TAG_COLLECTION3813='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13.2 12.7 20.5a2 2 0 0 1-2.8 0L3.5 14.1A2 2 0 0 1 3 12.7V4.8C3 3.8 3.8 3 4.8 3h7.9c.5 0 1 .2 1.4.6L20 9.5a2.6 2.6 0 0 1 0 3.7Z"/><circle cx="8.1" cy="8.1" r="1.4"/></svg>';
@@ -9953,7 +10137,7 @@ function openSettings(tab='home',brewDraft=null){
   [['today','오늘의 원두','매일 새로운 원두를 추천해줘요.'],['recommended','페르소나 추천','페르소나에 맞는 원두를 추천해줘요.'],['mybean','My Beans','현재 내가 가지고 있는 원두 중에서 추천해줘요.'],['recent','최근 추출','마지막 추출 원두를 표시해요.']].map(([key,title,desc])=>'<button type="button" class="tc-settings-row" data-home-mode="'+key+'" role="radio" aria-checked="'+(key===mode)+'"><strong>'+title+'</strong><small>'+desc+'</small></button>').join('')+'</div><div class="tc-icon-help-row"><span class="tc-set-head"><span>아이콘 설명 메시지 보기</span><svg class="tc-set-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 4.5h14a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2h-7.5L7 20.5V17H5a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2z"/></svg></span><button type="button" role="switch" id="tc-icon-help-toggle" aria-label="아이콘 설명 메시지 보기" aria-checked="'+String(iconHelpEnabled())+'"><span class="tc-switch-visual" aria-hidden="true"><i></i></span><span class="tc-filter-label">'+(iconHelpEnabled()?'ON':'OFF')+'</span></button></div><button type="button" class="tc-settings-persona" id="tc-settings-persona">커피 페르소나 테스트 하러가기</button>';
   target.querySelectorAll('[data-home-mode]').forEach(btn=>btn.onclick=()=>{const v=btn.dataset.homeMode;safeStore(MODE_KEY,v);hideOverlay(settingsLayer);renderHome();if(v==='mybean'&&!chosenHomeBean()){collectionPane='beans';showTab('collection')}});
   target.querySelector('#tc-icon-help-toggle').onclick=()=>{const enabled=!iconHelpEnabled();if(!safeStore(ICON_HELP_KEY,enabled)){toast('설정을 저장하지 못했어요.');return}const toggle=$tc('tc-icon-help-toggle');toggle.setAttribute('aria-checked',String(enabled));toggle.querySelector('.tc-filter-label').textContent=enabled?'ON':'OFF';renderBrewHint();renderPageHint()};
-  target.querySelector('#tc-settings-persona').onclick=()=>openPersona(true);
+  target.querySelector('#tc-settings-persona').onclick=()=>openHomePersona(true);
  }else if(tab==='backup'){
   drawBackupSettings3813(target);
  }else{
@@ -10706,7 +10890,7 @@ function syncContextInputs(){
  const cafe=recordDraft.kind==='cafe';context.classList.toggle('cafe-context',cafe);
  for(const id of ['record-cafe-name','record-beans-input','record-menu-input'])$tc(id).placeholder='검색 또는 직접 입력';
  for(const id of ['record-cafe-name-field','record-cafe-date-field'])$tc(id).hidden=!cafe;
- $tc('today-gear').hidden=cafe;$tc('today-bean').querySelector('.record-field-caption').textContent=cafe?'원두명':'BEANS';$tc('today-recipe-meta').querySelector('.record-field-caption').textContent=cafe?'메뉴':'MENU';$tc('record-cafe-name').value=recordDraft.cafeName||'';
+ $tc('today-gear').hidden=cafe;$tc('today-bean').querySelector('.record-field-caption').textContent=cafe?'원두명':'BEANS';$tc('today-recipe-meta').querySelector('.record-field-caption').textContent=cafe?'메뉴':'MENU';$tc('record-cafe-name').value=recordDraft.cafeName||'';window.__syncCafeClear289?.();
  for(const [id,value] of [['record-beans-input',recordDraft.bean?.name||recordDraft.beanName||''],['record-gear-input',gearSummary(recordDraft)],['record-menu-input',recordDraft.menu||'']]){$tc(id).value=value;$tc(id).dataset.initial=value}
  $tc('record-cafe-date').value=recordDraft.date;$tc('record-cafe-date-button').textContent=recordDraft.date;
  renderRecordSummary();syncRecordTitle();
@@ -10870,7 +11054,7 @@ async function findCafe(opts){
   const position=await currentCafePosition(auto);if(generation!==cafeGeneration||contextFields.hidden||logPage.hidden)return;
   if(!position&&!name){status.textContent='위치를 허용하거나 카페 이름을 입력해 주세요.';return}
   status.textContent=position?'현재 위치 주변 카페를 찾고 있어요.':'카페 이름으로 찾고 있어요.';
-  const choose=place=>{recordDraft.cafePlace=place.provider==='카카오맵'?{name:place.name,placeId:place.placeId,placeUrl:place.placeUrl,provider:place.provider,...(position&&cafeDistance(place,position)<0.5?{lat:position.lat,lon:position.lon}:{})}:place; /* 카카오 정책: 검색 결과는 저장하지 않고 이름·장소 ID만. 위치는 카페 근처(500m)에 있을 때 기기 현재 위치 */recordDraft.cafeName=place.name;$tc('record-cafe-name').value=place.name;captureRecordForm();persistRecordDraft();status.textContent=place.name+' 선택됨';results.replaceChildren()};
+  const choose=place=>{recordDraft.cafePlace=place.provider==='카카오맵'?{name:place.name,placeId:place.placeId,placeUrl:place.placeUrl,provider:place.provider,...(position&&cafeDistance(place,position)<0.5?{lat:position.lat,lon:position.lon}:{})}:place; /* 카카오 정책: 검색 결과는 저장하지 않고 이름·장소 ID만. 위치는 카페 근처(500m)에 있을 때 기기 현재 위치 */recordDraft.cafeName=place.name;$tc('record-cafe-name').value=place.name;window.__syncCafeClear289?.();captureRecordForm();persistRecordDraft();status.textContent=place.name+' 선택됨';results.replaceChildren()};
   // v3.8.76: 이름 검색은 전 세계에서 — 한국은 카카오맵, 해외는 오픈스트리트맵을 함께 찾아 합친 뒤 내 위치에서 가까운 순 10개(v3.8.86)
   const partial=list=>{if(generation!==cafeGeneration||!list.length)return;results.replaceChildren();for(const place of list){const b=document.createElement('button');b.type='button';b.dataset.placeId=place.placeId;b.innerHTML='<strong>'+esc(place.name)+'</strong><small>'+esc(place.address)+'</small>';b.onclick=()=>choose(place);results.append(b)}};
   const [kakao,osm]=await Promise.all([kakaoCafeSearch275(name,position,auto,partial).catch(()=>null),(auto?Promise.resolve(null):osmCafeSearch276(name,position,cafeAbort.signal).catch(e=>{if(e.name==='AbortError')throw e;return null}))]);
@@ -10904,6 +11088,15 @@ $tc('record-cafe-search').onclick=()=>findCafe();
   if(v.length>=2){if(!results.querySelector('button'))results.replaceChildren(element('p','record-place-searching','찾는 중…'))}else results.replaceChildren();
   cafeTyping276=setTimeout(()=>findCafe({auto:true}),300)});
  $tc('record-cafe-name').addEventListener('focus',cafeSearchWarmup285);
+ // v3.8.89: 카페 이름 칸 X — 화면에 떠 있는 공용 X 대신 칸 안에 고정(아이폰에서 칸 높이가 달라 X가 위로 뜨고 스크롤 때 따라 움직이던 문제)
+ {const input=$tc('record-cafe-name'),clear=icon214('카페 이름 지우기','close',()=>{
+   input.value='';input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));
+   $tc('record-place-results')?.replaceChildren();clear.hidden=true;input.focus({preventScroll:true});
+  });
+  clear.id='record-cafe-clear';clear.tabIndex=-1;clear.hidden=!input.value;clear.onpointerdown=e=>e.preventDefault();
+  $tc('record-cafe-search').before(clear);
+  const sync=()=>{clear.hidden=!input.value};['input','change','focus'].forEach(ev=>input.addEventListener(ev,sync));
+  window.__syncCafeClear289=sync;}
  document.addEventListener('pointerdown',e=>{const field=$tc('record-cafe-name-field');if(field&&!field.contains(e.target))$tc('record-place-results')?.replaceChildren()},true);}$tc('record-cafe-name').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();findCafe()}});
 
 /* Preparation choices and recipe/brew controls. */
@@ -11081,9 +11274,9 @@ async function photosForBackup3813(){
   const tx=db.transaction('photos','readonly'),store=tx.objectStore('photos');
   tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error||Error('사진 읽기 실패'));
   const request=store.openCursor();request.onerror=()=>reject(request.error||Error('사진 읽기 실패'));
-  request.onsuccess=()=>{const row=request.result;if(row){if(row.value instanceof Blob)photos.push({id:String(row.key),blob:row.value});row.continue()}}
+  request.onsuccess=()=>{const row=request.result;if(row){if(row.value instanceof Blob||row.value?.photo292)photos.push({id:String(row.key),raw:row.value});row.continue()}}
  })}finally{db.close()}
- const encoded=[];for(const photo of photos)encoded.push({id:photo.id,data:await blobToData3813(photo.blob)});
+ const encoded=[];for(const photo of photos){const blob=await photoUnpack292(photo.raw);if(blob)encoded.push({id:photo.id,data:await blobToData3813(blob)})}
  return encoded;
 }
 function downloadBackup3813(payload){
@@ -11097,7 +11290,7 @@ async function exportBackup3813(){
  const data=backupLocal3813(),stats=backupStats3813(data);let photos;
  try{photos=await photosForBackup3813()}
  catch(e){if(stats.logPhotos)throw Error('Brew Log 사진을 읽지 못해 완전한 백업을 만들 수 없어요. 브라우저 저장 공간을 확인해 주세요.');photos=[]}
- const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.86',exportedAt:new Date().toISOString(),
+ const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.95',exportedAt:new Date().toISOString(),
   metadata:{...stats,photos:photos.length},localStorage:data,photos};
  downloadBackup3813(backup);return backup.metadata;
 }
@@ -11135,7 +11328,7 @@ function mergedBackupValue3813(key,incoming){
 function photoDataToBlob3813(data){
  const [meta,b64]=data.split(','),bin=atob(b64),bytes=new Uint8Array(bin.length);
  for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
- return new Blob([bytes],{type:meta.slice(5,-7).toLowerCase()});
+ return {bytes:bytes.buffer,type:meta.slice(5,-7).toLowerCase()};
 }
 async function restorePhotos3813(photos,mode){
  const db=await photoDB();
@@ -11143,7 +11336,7 @@ async function restorePhotos3813(photos,mode){
   const tx=db.transaction('photos','readwrite'),store=tx.objectStore('photos');
   tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error||Error('사진 복원에 실패했어요.'));
   if(mode==='replace')store.clear();
-  for(const p of photos){const blob=photoDataToBlob3813(p.data);
+  for(const p of photos){const b=photoDataToBlob3813(p.data),blob=photoPackSync292(b.bytes,b.type);
    if(mode==='replace')store.put(blob,p.id);
    else{const req=store.get(p.id);req.onsuccess=()=>{if(!req.result)store.put(blob,p.id)}}
   }
@@ -11362,8 +11555,25 @@ function drawBackupSettings3813(target){
   }
   function applyUpdate() {
     if (!window.confirm('새 버전으로 업데이트할까요?')) return;
-    if (!registration?.waiting) {document.getElementById('coffee-pwa-notice')?.remove(); location.reload(); return;}
+    // v3.8.89: 업데이트 뒤 다시 열리면 '업데이트 완료' 안내를 띄우기 위해 지금 버전을 적어 둔다
+    try { localStorage.setItem('coffee_pwa_updated_from', version); } catch (_) {}
+    const notice = document.getElementById('coffee-pwa-notice');
+    if (notice) notice.innerHTML = '<p>업데이트하는 중이에요…</p>';
+    if (!registration?.waiting) {location.reload(); return;}
     applying = true; registration.waiting.postMessage({type:'APPLY_UPDATE'});
+  }
+  function showUpdated() {
+    // v3.8.89: 업데이트를 누른 뒤 새 버전으로 다시 열리면 완료 안내
+    let from = null;
+    try { from = localStorage.getItem('coffee_pwa_updated_from'); localStorage.removeItem('coffee_pwa_updated_from'); } catch (_) {}
+    if (!from) return;
+    const done = document.createElement('section'); done.id = 'coffee-pwa-updated';
+    done.className = 'coffee-pwa-notice'; done.setAttribute('role','status');
+    done.innerHTML = '<p></p><div class="coffee-pwa-actions"><button type="button" data-pwa-ok>확인</button></div>';
+    done.querySelector('p').textContent = from === version ? '이미 최신 버전이에요 (v' + version + ').' : '업데이트가 완료됐어요. 지금은 v' + version + '이에요.';
+    done.querySelector('[data-pwa-ok]').onclick = () => done.remove();
+    document.body.append(done);
+    setTimeout(() => done.remove(), 6000);
   }
   function offerUpdate() {
     message = '새 버전이 있습니다'; refreshPanel();
@@ -11385,6 +11595,7 @@ function drawBackupSettings3813(target){
     refreshPanel();
     if (registration && navigator.onLine && Date.now()-lastCheck > 30*1000) checkUpdate();
   }
+  showUpdated();
   new MutationObserver(addPanel).observe(document.body, {childList:true,subtree:true});
   addPanel();
   window.addEventListener('beforeinstallprompt', event => {event.preventDefault(); installPrompt = event; refreshPanel();});
