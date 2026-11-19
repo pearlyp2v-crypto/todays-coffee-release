@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.76</title><meta name="app-version" content="3.8.76"/><style data-source="design-system/legacy.css">
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.83</title><meta name="app-version" content="3.8.83"/><style data-source="design-system/legacy.css">
 :root{--bg:#F1E5DC;--page:#FFFEFB;--ink:#4A4947;--sub:#6E6B66;--line:#D8D2C2;--slate:#4A4947;--cherry:#B17457;--panel:#FFFEFB;--muted:#D8D2C2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #6E6B66;outline-offset:2px}button:disabled,input:disabled{opacity:.5;cursor:not-allowed}[hidden]{display:none!important}
 .app{max-width:440px;min-height:100dvh;background:var(--page);margin:0 auto;box-shadow:0 15px 55px #4A494717}.header{height:64px;padding:0 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:850;letter-spacing:-1.05px}.brand .dot{color:var(--cherry)}.slogan{font:700 9px/1.35 Georgia,serif;color:#6E6B66;text-align:right}main{padding:22px 19px 38px}.eyebrow{display:flex;align-items:center;gap:8px;font:700 10px Georgia,serif;letter-spacing:1.5px;color:var(--cherry)}.eyebrow:before{content:'';width:21px;height:2px;background:var(--cherry)}h1{font-size:25px;margin:12px 0 4px;letter-spacing:-.9px}.subtitle{color:var(--sub);font-size:12px;line-height:1.6;margin:0 0 18px}
@@ -3322,6 +3322,34 @@ return {
 #record-place-panel{grid-column:1/-1;min-width:0}
 #record-place-panel[hidden],#record-place-map[hidden]{display:none!important}
 #record-place-status{font-size:11px;color:var(--theme-sub);line-height:1.5;margin:3px 0 8px}
+/* v3.8.82: CAFE LOG 섬네일 보기 · v3.8.83: BREW LOG도, 피드형·섬네일형 아이콘 두 개 */
+#tc-profile .tc-log-view-btn{border-color:transparent!important;box-shadow:none!important}
+#tc-profile .tc-log-view-btn[aria-pressed=true]{color:var(--theme-primary,#965A40);background:var(--theme-hover,#F1E5DC)}
+.tc-cafe-view-switch{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:10px 0 12px;padding:4px;border:1px solid var(--theme-border,#D8D2C2);border-radius:12px;background:var(--theme-search,#F9F7F0)}
+.tc-cafe-view-switch[hidden],#tc-cafe-alt-view[hidden],#log-feed[hidden],#log-pages[hidden],#log-view[hidden]{display:none!important}
+.tc-cafe-view-switch button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:36px;border:0;border-radius:9px;background:transparent;color:var(--theme-sub,#6E6B66);font-size:12px;font-weight:600}
+.tc-cafe-view-switch button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tc-cafe-view-switch button[aria-pressed=true]{background:var(--theme-surface,#FFFEFB);color:var(--theme-primary,#965A40);box-shadow:0 1px 4px #4A494722}
+.tc-thumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:4px 0 18px}
+.tc-thumb{position:relative;display:flex;flex-direction:column;width:100%;aspect-ratio:1/1;min-width:0;overflow:hidden;padding:0;border:1px solid var(--theme-border,#D8D2C2);border-radius:12px;background:var(--theme-surface,#FFFEFB);color:var(--theme-text,#4A4947);text-align:left;cursor:pointer}
+.tc-thumb>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tc-thumb-body{flex:1;min-height:0;padding:10px 10px 0;overflow:hidden}
+.tc-thumb-body svg{display:block;width:100%;height:100%}
+.tc-thumb-body .profile-axis-label{display:none}
+.tc-thumb-text{margin:0;font-size:12px;line-height:1.5;color:var(--theme-text,#4A4947);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden;white-space:pre-line;word-break:keep-all}
+.tc-thumb-text.empty{color:var(--theme-sub,#8A847B)}
+.tc-thumb-meta{position:relative;display:grid;gap:1px;padding:6px 10px 9px}
+.tc-thumb.photo .tc-thumb-meta{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 9px;background:linear-gradient(transparent,#00000094);color:#fff}
+.tc-thumb-meta strong{overflow:hidden;font-size:13px;font-weight:700;white-space:nowrap;text-overflow:ellipsis}
+.tc-thumb-meta small{font-size:10.5px;letter-spacing:.04em;font-variant-numeric:tabular-nums;opacity:.85}
+.gc-warn278{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:6px 0 0;padding:8px 10px;border-radius:8px;background:#FBEDE4;color:#8A3B22;font-size:12px;line-height:1.45}
+.gc-fixed278{color:#2F6457!important}
+/* v3.8.83: 위/아래 떠 있는 화살표 */
+#tc-scroll-jump{position:fixed;z-index:75;right:max(12px,calc((100vw - 440px)/2 + 12px));bottom:calc(150px + env(safe-area-inset-bottom,0px));display:grid;gap:8px}
+#tc-scroll-jump[hidden],#tc-scroll-jump button[hidden]{display:none!important}
+#tc-scroll-jump button{width:40px;height:40px;display:grid;place-items:center;padding:0;border:1px solid var(--theme-border,#D8D2C2);border-radius:50%;background:color-mix(in srgb,var(--theme-surface,#FFFEFB) 92%,transparent);color:var(--theme-navy,#4A4947);box-shadow:0 4px 14px #4A494729;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:pointer}
+#tc-scroll-jump svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover) and (pointer:fine){#tc-scroll-jump button:hover{color:var(--theme-primary,#965A40)}}
 #record-place-results{display:grid;gap:5px}
 /* v3.8.76: 카페 검색 결과 = 카페 이름 칸 바로 아래 드롭다운 */
 .record-place-input{position:relative}
@@ -5608,8 +5636,8 @@ $('save-today').onclick=async()=>{
  const cafe=recordDraft?.kind==='cafe';
  if(!cafe)for(const id of ['actual-yield','actual-tds','actual-extraction']){if(!$(id).checkValidity()){$('record-details').open=true;$(id).reportValidity();return}}
  addTag($('tasting-input').value);captureRecordForm();renderStyleOutcome();
- if(cafe&&(!$('record-cafe-date').value||$('record-cafe-date').value>localDate())){$('record-cafe-date').value=localDate();$('record-cafe-date-button').textContent=localDate();recordDraft.date=localDate()} /* v3.8.75: 방문 날짜가 비면 오늘로 — 카페 이름만 있으면 저장 */
- if(cafe&&!$('record-cafe-name').value.trim()){toast('카페 이름을 입력해 주세요.');if(!$('record-context-summary').hidden)$('record-context-summary').click();$('record-cafe-name').focus();return}
+ if(cafe&&(!$('record-cafe-date').value||$('record-cafe-date').value>localDate())){$('record-cafe-date').value=localDate();$('record-cafe-date-button').textContent=localDate();recordDraft.date=localDate()} /* v3.8.75: 방문 날짜가 비면 오늘로 */
+ /* v3.8.80: 카페 기록은 아무것도 입력하지 않아도 저장(카페 이름도 선택) — 사용자 요청 */
  recordDraft.menu=recordDraft.menu||'커피';recordDraft.updatedAt=Date.now();
  if(cafe){recordDraft.cafeName=$('record-cafe-name').value.trim();recordDraft.summary=recordDraft.title;recordDraft.visibility=recordDraft.visibility||'private'}
  else recordDraft.recipeId=recordDraft.recipeId||recipeIdentity(recordDraft.recipe);
@@ -6083,7 +6111,7 @@ const backToday211=backToday;
 backToday=function(){hideModulePages();backToday211()};$('record-back').onclick=backToday;
 
 let logKind='all',likedOnly=false,logView=read('coffee_log_feed_view','scroll'),feedURLs=[],feedGeneration=0;
-if(!['scroll','list'].includes(logView))logView='scroll';
+logView='scroll'; // v3.8.83: 목록형 보기 삭제 — 항상 피드형(섬네일형은 BREW·CAFE LOG 보기 아이콘)
 const lockSVG=locked=>'<svg viewBox="0 0 24 24" aria-hidden="true">'+(locked?'<path d="M7 10V7a5 5 0 0 1 10 0v3"/>':'<path d="M7 10V7a5 5 0 0 1 9-3"/>')+'<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M12 14v3"/></svg>';
 const heartSVG='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8Z"/></svg>';
 function updateLogMeta(id,changes){const records=read(LS_LOGS,[]),next=records.map(x=>x.id===id?{...x,...changes}:x);if(!store(LS_LOGS,next)){toast('변경을 저장하지 못했습니다. 기존 설정을 유지합니다.');return false}return true}
@@ -6646,6 +6674,7 @@ function renderFeed(){
   $(id).setAttribute('aria-pressed',Boolean(value));
   $(id).setAttribute('aria-label',id==='pick-year'?'연도 필터':'월 필터');
  }
+ if(window.__cafeAlt278?.()){$('style-match-rate').hidden=true;return} // v3.8.82: CAFE LOG 섬네일 보기
  const logs=read(LS_LOGS,[]).filter(log=>(!likedOnly||log.liked)&&(logKind==='all'||logKind===(log.kind||'brew'))&&
   (!filterYear||log.date?.startsWith(filterYear+'-'))&&(!filterMonth||log.date?.slice(5,7)===filterMonth))
   .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||(b.createdAt||0)-(a.createdAt||0));
@@ -8569,6 +8598,16 @@ function gcShape2112(labels,W,c){
  if(aspect>1.4&&aspect<1.95&&A/(L1*L2)>0.88&&A/(L1*L2)<1.1&&circ>0.5)return {kind:'rect',px:L1,aspect,A,box};
  return null;
 }
+// v3.8.78: 비스듬히 찍혀 사다리꼴로 보이는 카드도 '네 모서리 도형'이면 카드 후보로 본다(이후 원근 보정)
+function gcQuadShape278(labels,W,c){
+ const pts=gcOutline278(labels,W,c),hull=gcHull278(pts),q=gcCorners278(pts);if(!q||hull.length<4)return null;
+ const area=poly=>{let s=0;for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length];s+=a[0]*b[1]-b[0]*a[1]}return Math.abs(s)/2};
+ const cx=q.reduce((s,p)=>s+p[0],0)/4,cy=q.reduce((s,p)=>s+p[1],0)/4;q.sort((a,b)=>Math.atan2(a[1]-cy,a[0]-cx)-Math.atan2(b[1]-cy,b[0]-cx));
+ const hullA=area(hull),quadA=area(q);if(!quadA||hullA/quadA<0.95||hullA/quadA>1.03||c.area/hullA<0.8)return null;
+ const L=[0,1,2,3].map(i=>Math.hypot(q[(i+1)%4][0]-q[i][0],q[(i+1)%4][1]-q[i][1])),long=Math.max(L[0]+L[2],L[1]+L[3])/2,short=Math.min(L[0]+L[2],L[1]+L[3])/2,aspect=long/short;
+ if(aspect>3)return null; // 아주 비스듬하면 긴 변·짧은 변이 뒤바뀌어 보일 수 있어 1 근처도 허용(이때는 다시 찍기 안내)
+ return {kind:'rect',px:long,aspect,A:hullA,box:{x:c.minX,y:c.minY,w:c.maxX-c.minX+1,h:c.maxY-c.minY+1,cx,cy}};
+}
 function gcDetectRef2112(rgb,gray,W,H){
  const border=[];for(let x=0;x<W;x+=4){border.push(0*W+x,(H-1)*W+x)}for(let y=0;y<H;y+=4){border.push(y*W,y*W+W-1)}
  const med=k=>{const v=border.map(p=>rgb[p*4+k]).sort((a,b)=>a-b);return v[v.length>>1]};
@@ -8578,7 +8617,7 @@ function gcDetectRef2112(rgb,gray,W,H){
  let best=null;
  for(const mask of [dark,diff]){
   const {labels,comps}=gcLabel2112(mask,W,H);
-  for(const c of comps){if(c.area<W*H*0.004)continue;const s=gcShape2112(labels,W,c);if(s&&(!best||s.A>best.A))best=s}
+  for(const c of comps){if(c.area<W*H*0.004)continue;const s=gcShape2112(labels,W,c)||(c.area>W*H*0.01&&c.minX>0&&c.minY>0&&c.maxX<W-1&&c.maxY<H-1?gcQuadShape278(labels,W,c):null);if(s&&(!best||s.A>best.A)){best=s;best.labels=labels;best.comp=c}} // v3.8.78: 원근 보정에 쓰려고 덩어리 정보 보관
  }
  return best;
 }
@@ -8621,6 +8660,105 @@ function gcVerdict2112(um,target){
  if(Math.abs(diff)<=75)return {label,text:`${range} 안이에요.`,short:'목표와 비슷'};
  const coarse=diff>0,way=coarse?'가늘게':'굵게';
  return {label,text:`${range}보다 ${coarse?'굵어요':'가늘어요'}. ${clicks?`약 ${clicks}클릭 `:'조금 '}${way} 조정해 보세요.`,short:coarse?'목표보다 굵음':'목표보다 가늚'};
+}
+/* v3.8.78: 분쇄도 확인 1단계 — 기울어진 사진 자동 보정.
+   찍은 사진에서 카드(직사각형)를 찾으면 네 모서리를 구하고, 카드가 반듯한 직사각형이 되도록
+   사진 전체를 원근 보정(호모그래피)한 뒤 그 사진으로 입자를 잰다. 너무 비스듬하면 다시 찍기를 권한다. */
+function gcHull278(pts){
+ pts=pts.slice().sort((a,b)=>a[0]-b[0]||a[1]-b[1]);if(pts.length<3)return pts;
+ const cross=(o,a,b)=>(a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0]),lo=[],up=[];
+ for(const p of pts){while(lo.length>=2&&cross(lo[lo.length-2],lo[lo.length-1],p)<=0)lo.pop();lo.push(p)}
+ for(let i=pts.length-1;i>=0;i--){const p=pts[i];while(up.length>=2&&cross(up[up.length-2],up[up.length-1],p)<=0)up.pop();up.push(p)}
+ return lo.slice(0,-1).concat(up.slice(0,-1));
+}
+// 카드 덩어리의 바깥 윤곽점(행마다 좌우 끝, 열마다 위아래 끝)
+function gcOutline278(labels,W,c){
+ const pts=[];
+ for(let y=c.minY;y<=c.maxY;y++){let l=-1,r=-1;for(let x=c.minX;x<=c.maxX;x++)if(labels[y*W+x]===c.id){if(l<0)l=x;r=x}if(l>=0){pts.push([l,y]);if(r!==l)pts.push([r,y])}}
+ for(let x=c.minX;x<=c.maxX;x++){let t=-1,b=-1;for(let y=c.minY;y<=c.maxY;y++)if(labels[y*W+x]===c.id){if(t<0)t=y;b=y}if(t>=0){pts.push([x,t]);if(b!==t)pts.push([x,b])}}
+ return pts;
+}
+function gcCorners278(pts){
+ const hull=gcHull278(pts);if(hull.length<4)return null;
+ let a=0,b=0,best=-1;for(let i=0;i<hull.length;i++)for(let j=i+1;j<hull.length;j++){const d=(hull[i][0]-hull[j][0])**2+(hull[i][1]-hull[j][1])**2;if(d>best){best=d;a=i;b=j}}
+ const A=hull[a],C=hull[b],side=p=>(C[0]-A[0])*(p[1]-A[1])-(C[1]-A[1])*(p[0]-A[0]);
+ let B=null,D=null,sb=0,sd=0;for(const p of hull){const s=side(p);if(s>sb){sb=s;B=p}if(s<sd){sd=s;D=p}}
+ if(!B||!D)return null;
+ let quad=[A,B,C,D];
+ // 모서리가 둥근 카드: 변마다 가운데 부분 윤곽점으로 직선을 맞추고 이웃 직선의 교점을 진짜 모서리로
+ const lines=[];
+ for(let i=0;i<4;i++){
+  const p=quad[i],q=quad[(i+1)%4],dx=q[0]-p[0],dy=q[1]-p[1],len=Math.hypot(dx,dy);if(len<8)return null;
+  const ux=dx/len,uy=dy/len,tol=Math.max(2,len*0.03),sel=[];
+  for(const r of pts){const t=((r[0]-p[0])*ux+(r[1]-p[1])*uy)/len,d=Math.abs((r[0]-p[0])*uy-(r[1]-p[1])*ux);if(t>0.15&&t<0.85&&d<tol)sel.push(r)}
+  if(sel.length<6){lines.push(null);continue}
+  let mx=0,my=0;for(const r of sel){mx+=r[0];my+=r[1]}mx/=sel.length;my/=sel.length;
+  let sxx=0,syy=0,sxy=0;for(const r of sel){const X=r[0]-mx,Y=r[1]-my;sxx+=X*X;syy+=Y*Y;sxy+=X*Y}
+  const th=Math.atan2(2*sxy,sxx-syy)/2;lines.push({mx,my,dx:Math.cos(th),dy:Math.sin(th)});
+ }
+ const meet=(l1,l2)=>{const det=l1.dx*l2.dy-l1.dy*l2.dx;if(Math.abs(det)<1e-6)return null;const t=((l2.mx-l1.mx)*l2.dy-(l2.my-l1.my)*l2.dx)/det;return [l1.mx+t*l1.dx,l1.my+t*l1.dy]};
+ const refined=quad.map((p,i)=>{const l1=lines[(i+3)%4],l2=lines[i];const m=l1&&l2?meet(l1,l2):null;return m&&Math.hypot(m[0]-p[0],m[1]-p[1])<Math.hypot(C[0]-A[0],C[1]-A[1])*0.08?m:p});
+ return refined;
+}
+// 네 점 → 네 점 호모그래피 (h33=1). src[i]를 dst[i]로 보낸다.
+function gcHomography278(src,dst){
+ const M=[],v=[];
+ for(let i=0;i<4;i++){const [x,y]=src[i],[u,w]=dst[i];
+  M.push([x,y,1,0,0,0,-u*x,-u*y]);v.push(u);M.push([0,0,0,x,y,1,-w*x,-w*y]);v.push(w)}
+ for(let c=0;c<8;c++){let p=c;for(let r=c+1;r<8;r++)if(Math.abs(M[r][c])>Math.abs(M[p][c]))p=r;if(Math.abs(M[p][c])<1e-12)return null;
+  [M[c],M[p]]=[M[p],M[c]];[v[c],v[p]]=[v[p],v[c]];
+  for(let r=0;r<8;r++){if(r===c)continue;const f=M[r][c]/M[c][c];if(!f)continue;for(let k=c;k<8;k++)M[r][k]-=f*M[c][k];v[r]-=f*v[c]}}
+ const h=v.map((x,i)=>x/M[i][i]);return [...h,1];
+}
+function gcApplyH278(h,x,y){const d=h[6]*x+h[7]*y+h[8];return [(h[0]*x+h[1]*y+h[2])/d,(h[3]*x+h[4]*y+h[5])/d]}
+/* ref: gcDetectRef2112 결과(kind rect + labels/comp). 반환: null(보정 불가) 또는
+   {warped, tilt, severe, canvas, W, H, rgb, gray, ref} — warped=false면 이미 반듯해서 그대로 씀 */
+// Zhang & He(2004) 화이트보드 보정: 사각형 네 모서리(시계 방향, q0→q1이 '가로')로 실제 가로/세로 비율 추정
+function gcTrueAspect278(q,u0,v0){
+ const m1=[...q[0],1],m2=[...q[1],1],m4=[...q[2],1],m3=[...q[3],1];
+ const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+ const c14=cross(m1,m4),k2=dot(c14,m3)/dot(cross(m2,m4),m3),k3=dot(c14,m2)/dot(cross(m3,m4),m2);
+ const n2=m2.map((v,i)=>k2*v-m1[i]),n3=m3.map((v,i)=>k3*v-m1[i]);
+ const near=Math.abs(n2[2])<1e-9||Math.abs(n3[2])<1e-9;
+ let f2=near?NaN:-((n2[0]*n3[0]-(n2[0]*n3[2]+n2[2]*n3[0])*u0+n2[2]*n3[2]*u0*u0)+(n2[1]*n3[1]-(n2[1]*n3[2]+n2[2]*n3[1])*v0+n2[2]*n3[2]*v0*v0))/(n2[2]*n3[2]);
+ if(!(f2>0))return Math.sqrt((n2[0]**2+n2[1]**2)/(n3[0]**2+n3[1]**2)); // 거의 정면(평행)이면 단순 비율
+ const norm=n=>{const f=Math.sqrt(f2),x=(n[0]-u0*n[2])/f,y=(n[1]-v0*n[2])/f;return x*x+y*y+n[2]*n[2]};
+ return Math.sqrt(norm(n2)/norm(n3));
+}
+function gcRectify278(state,ratio){
+ const ref=state.ref;if(!ref||ref.kind!=='rect'||!ref.labels||!ref.comp)return null;
+ const pts=gcOutline278(ref.labels,state.W,ref.comp),q=gcCorners278(pts);if(!q)return null;
+ // 시계 방향으로 정렬하고 가장 긴 변이 위쪽 변이 되게 시작점을 맞춘다
+ const cx=q.reduce((s,p)=>s+p[0],0)/4,cy=q.reduce((s,p)=>s+p[1],0)/4;
+ q.sort((a,b)=>Math.atan2(a[1]-cy,a[0]-cx)-Math.atan2(b[1]-cy,b[0]-cx));
+ const len=i=>Math.hypot(q[(i+1)%4][0]-q[i][0],q[(i+1)%4][1]-q[i][1]);
+ const s=[0,1,2,3].map(len),est=gcTrueAspect278(q,state.W/2,state.H/2);
+ // 실제 가로:세로 추정(카메라 원근 계산)이 되면 그걸로 긴 변을 고르고, 안 되면 보이는 변 길이로
+ const start=Number.isFinite(est)&&est>0?(est>=1?0:1):((s[0]+s[2]>=s[1]+s[3])?0:1);
+ const quad=[0,1,2,3].map(i=>q[(i+start)%4]),L=[0,1,2,3].map(i=>Math.hypot(quad[(i+1)%4][0]-quad[i][0],quad[(i+1)%4][1]-quad[i][1]));
+ const angle=i=>{const a=quad[(i+3)%4],b=quad[i],c=quad[(i+1)%4],v1=[a[0]-b[0],a[1]-b[1]],v2=[c[0]-b[0],c[1]-b[1]];return Math.acos(Math.max(-1,Math.min(1,(v1[0]*v2[0]+v1[1]*v2[1])/(Math.hypot(...v1)*Math.hypot(...v2)))))*180/Math.PI};
+ const skew=Math.max(...[0,1,2,3].map(i=>Math.abs(angle(i)-90)));
+ const tilt=Math.max(Math.max(L[0],L[2])/Math.min(L[0],L[2]),Math.max(L[1],L[3])/Math.min(L[1],L[3]))-1;
+ const severe=tilt>0.3||skew>20;
+ if(tilt<0.03&&skew<3)return {warped:false,tilt,severe:false};
+ const long=Math.max(L[0],L[2]),short=long/ratio;
+ const rect=[[0,0],[long,0],[long,short],[0,short]];
+ const Hf=gcHomography278(quad,rect),Hb=gcHomography278(rect,quad);if(!Hf||!Hb)return null;
+ // 원래 사진의 네 귀퉁이가 보정 후 어디로 가는지 → 출력 범위(카드 크기의 4배 안으로 제한, 최대 2000px)
+ const W0=state.W,H0=state.H,corners=[[0,0],[W0,0],[W0,H0],[0,H0]].map(([x,y])=>gcApplyH278(Hf,x,y)).filter(p=>p.every(Number.isFinite));
+ const lim=long*4;let x0=-lim,y0=-lim,x1=long+lim,y1=short+lim;
+ if(corners.length===4){x0=Math.max(x0,Math.min(...corners.map(p=>p[0])));x1=Math.min(x1,Math.max(...corners.map(p=>p[0])));y0=Math.max(y0,Math.min(...corners.map(p=>p[1])));y1=Math.min(y1,Math.max(...corners.map(p=>p[1])))}
+ let k=Math.min(1,2000/Math.max(x1-x0,y1-y0));const W=Math.max(1,Math.round((x1-x0)*k)),H=Math.max(1,Math.round((y1-y0)*k));
+ const src=state.rgb,out=new Uint8ClampedArray(W*H*4),gray=new Uint8Array(W*H);
+ const bg=(()=>{const v=[0,1,2].map(()=>[]);for(let x=0;x<W0;x+=8)for(const y of [0,H0-1])for(let c=0;c<3;c++)v[c].push(src[(y*W0+x)*4+c]);return v.map(a=>a.sort((m,n)=>m-n)[a.length>>1])})();
+ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
+  const [sx,sy]=gcApplyH278(Hb,x/k+x0,y/k+y0),o=(y*W+x)*4,X=Math.round(sx),Y=Math.round(sy);
+  if(X>=0&&Y>=0&&X<W0&&Y<H0){const i=(Y*W0+X)*4;out[o]=src[i];out[o+1]=src[i+1];out[o+2]=src[i+2]}else{out[o]=bg[0];out[o+1]=bg[1];out[o+2]=bg[2]}
+  out[o+3]=255;gray[y*W+x]=(out[o]*.299+out[o+1]*.587+out[o+2]*.114)|0;
+ }
+ const canvas=document.createElement('canvas');canvas.width=W;canvas.height=H;canvas.getContext('2d').putImageData(new ImageData(out,W,H),0,0);
+ const bx=(0-x0)*k,by=(0-y0)*k;
+ return {warped:true,tilt,severe,canvas,W,H,rgb:out,gray,ref:{kind:'rect',px:long*k,aspect:ratio,A:long*short*k*k,box:{x:bx,y:by,w:long*k,h:short*k,cx:bx+long*k/2,cy:by+short*k/2}}};
 }
 // --- 화면 ---
 function openGrindCheck2112(){
@@ -8690,6 +8828,8 @@ function openGrindCheck2112(){
     element('p','gc-big2112',`약 ${r.um}µm · ${v.label}`),
     element('p','gc-verdict2112',v.text),
     element('p','gc-note2112',`작은 입자 ${r.small}% · 기준 ${refLabel.replace(/\s*\(.*?\)/,'')} · 오차 ±100µm`));
+   if(state.fix?.warped&&!state.tapMode){state.result.tiltFixed=true;out.append(element('p','gc-note2112 gc-fixed278','기울어진 사진을 카드 기준으로 반듯하게 펴서 계산했어요.'))}
+   if(state.fix?.severe){const warn=element('p','gc-warn278','많이 비스듬하게 찍혔어요. 위에서 수직으로 다시 찍으면 더 정확해요.');warn.append(button('다시 찍기',()=>file.click(),'prep-text-link'));out.append(warn)}
    actions.hidden=false;state.kept=r.kept;
    if(state.tapMode)canvas.classList.remove('gc-zoom2115');
    draw();
@@ -8725,7 +8865,14 @@ function openGrindCheck2112(){
     state.rgb=data;state.gray=gray;state.taps=[];state.tapMode=false;canvas.classList.remove('gc-zoom2115');
     help.hidden=true;pick.hidden=true;tip.hidden=false;
     note('계산하는 중…');
-    setTimeout(()=>{state.ref=gcDetectRef2112(data,gray,state.W,state.H);
+    setTimeout(()=>{state.ref=gcDetectRef2112(data,gray,state.W,state.H);state.fix=null;
+     if(state.ref?.kind==='rect'){ // v3.8.78: 카드가 기울어 보이면 카드 기준으로 반듯하게 편 사진으로 잰다
+      const chosen=gcFindRef2112(state.refId),ratios={card:85.6/53.98,'bc-kr':1.8,'bc-us':88.9/50.8,'bc-eu':85/55};
+      const ratio=chosen?.kind==='rect'?ratios[chosen.id]:(state.ref.aspect>1.68?1.8:ratios.card);
+      let fix=null;try{fix=gcRectify278(state,ratio)}catch(e){fix=null}
+      if(fix){state.fix={tilt:fix.tilt,severe:fix.severe,warped:fix.warped};if(fix.warped){state.img=fix.canvas;state.W=fix.W;state.H=fix.H;canvas.width=fix.W;canvas.height=fix.H;state.rgb=fix.rgb;state.gray=fix.gray;state.ref=fix.ref}}
+     }
+     if(state.ref){delete state.ref.labels;delete state.ref.comp}
      if(state.ref&&state.ref.kind==='coin'&&!(gcFindRef2112(state.refId)?.kind==='coin'))state.refId='';
      if(state.ref&&state.ref.kind==='rect'&&!(gcFindRef2112(state.refId)?.kind==='rect'))state.refId='';
      renderRef();measure();URL.revokeObjectURL(url)},30);
@@ -9256,14 +9403,79 @@ const logPageShell=$tc('my-log-page');profile.append(logPageShell);
 const likeButton3812=$tc('filter-liked'),profileTools=$tc('tc-profile-tools');
 const logViewSwitch=$tc('log-view');
 logViewSwitch.replaceChildren();
-const logViewToggle=document.createElement('button');logViewToggle.type='button';logViewToggle.id='tc-log-view-toggle';logViewToggle.className='tc-tool';
-logViewToggle.onclick=()=>{logView=logView==='scroll'?'list':'scroll';store('coffee_log_feed_view',logView);renderFeed();updateLogViewToggle()};
-logViewSwitch.append(logViewToggle);profileTools.prepend(likeButton3812,logViewSwitch);
+const logViews283={brew:read('coffee_brew_view','feed'),cafe:read('coffee_cafe_view','feed')};for(const k in logViews283)if(!['feed','thumb'].includes(logViews283[k]))logViews283[k]='feed';
+// v3.8.83: 피드형·섬네일형 아이콘 두 개(누른 쪽이 켜짐). 목록형은 삭제
+const LOG_VIEW_ICONS283={feed:['피드형 보기','<rect x="4" y="3" width="16" height="8" rx="1"/><rect x="4" y="14" width="16" height="7" rx="1"/>'],thumb:['섬네일형 보기','<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>']};
+const logViewButtons283={};
+for(const [mode,[label,svg]] of Object.entries(LOG_VIEW_ICONS283)){
+ const b=document.createElement('button');b.type='button';b.id='tc-log-view-'+mode;b.className='tc-tool tc-log-view-btn';b.dataset.view=mode;b.setAttribute('aria-label',label);b.title=label;
+ b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+svg+'</svg>';
+ b.onclick=()=>{const pane=profilePane3812==='cafe'?'cafe':'brew';if(logViews283[pane]===mode)return;logViews283[pane]=mode;store(pane==='cafe'?'coffee_cafe_view':'coffee_brew_view',mode);logPageNumber=0;renderFeed();updateLogViewToggle()};
+ logViewButtons283[mode]=b;logViewSwitch.append(b);
+}
+profileTools.prepend(likeButton3812,logViewSwitch);
 function updateLogViewToggle(){
- logViewToggle.setAttribute('aria-label',logView==='scroll'?'목록형 보기':'피드형 보기');logViewToggle.title=logViewToggle.getAttribute('aria-label');
- logViewToggle.innerHTML=logView==='scroll'?'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"/></svg>':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="8" rx="1"/><rect x="4" y="14" width="16" height="7" rx="1"/></svg>';
+ let pane='brew';try{if(profilePane3812==='cafe')pane='cafe'}catch(e){} // 시작할 때는 아직 정해지기 전
+ const mode=logViews283[pane];
+ for(const [m,b] of Object.entries(logViewButtons283))b.setAttribute('aria-pressed',String(m===mode));
 }
 updateLogViewToggle();
+/* v3.8.83: BREW LOG·CAFE LOG 보기 = 피드형 · 섬네일형(목록형 삭제). 두 아이콘을 따로 두고, 로그마다 마지막 보기를 기억 */
+let thumbURLs282=[],cafeAltGen278=0;
+const GLOBE_ICON278='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3.5 15 0 18M12 3c-3 3-3.5 15 0 18"/></svg>';
+const LIST_ICON278='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+const cafeAlt278=document.createElement('div');cafeAlt278.id='tc-cafe-alt-view';cafeAlt278.hidden=true;
+$('log-feed').before(cafeAlt278); // 섬네일 보기 자리
+function paneLogs283(){
+ // renderFeed와 같은 조건(로그 종류·좋아요·연·월)
+ return read(LS_LOGS,[]).filter(log=>(logKind==='all'||(log.kind||'brew')===logKind)&&(!likedOnly||log.liked)&&(!filterYear||log.date?.startsWith(filterYear+'-'))&&(!filterMonth||log.date?.slice(5,7)===filterMonth))
+  .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||(b.createdAt||0)-(a.createdAt||0));
+}
+function thumbDate282(date){return String(date||'').slice(0,10).replace(/-/g,'.')}
+/* v3.8.82: 섬네일 = 정사각형에 사진·이름(카페명 / 브루는 원두명)·날짜. 사진이 없으면 테이스팅 프로필, 그것도 없으면 기록 내용 */
+function thumbElement282(log){
+ const tile=document.createElement('button');tile.type='button';tile.className='tc-thumb';tile.dataset.logId=log.id;
+ const cafe=(log.kind||'brew')==='cafe',name=(cafe?log.cafeName:(log.beanName||log.bean?.name||log.menu))||'',date=thumbDate282(log.date);
+ tile.setAttribute('aria-label',[name||(cafe?'카페 기록':'브루 기록'),date].filter(Boolean).join(' ')+' 기록 보기');
+ const meta=document.createElement('span');meta.className='tc-thumb-meta';
+ meta.innerHTML=(name?'<strong>'+esc(name)+'</strong>':'')+'<small>'+esc(date)+'</small>';
+ const photo=(Array.isArray(log.photos)?log.photos:[]).find(p=>p?.id);
+ if(photo){
+  tile.classList.add('photo');const img=document.createElement('img');img.alt='';tile.append(img);const gen=cafeAltGen278;
+  photoTransaction('readonly',s=>s.get(photo.id)).then(blob=>{if(!blob||gen!==cafeAltGen278)return;const url=URL.createObjectURL(blob);thumbURLs282.push(url);img.src=url}).catch(()=>{});
+ }else{
+  const body=document.createElement('span');body.className='tc-thumb-body';
+  const hasProfile=profileAxes.some(([key])=>log.profile?.[key]!=null);
+  if(hasProfile){
+   tile.classList.add('profile');const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','30 22 160 154');svg.setAttribute('role','img');renderRadar(svg,log.profile);body.append(svg);
+  }else{
+   tile.classList.add('text');
+   const lines=[log.menu,log.beanName||log.bean?.name,Array.isArray(log.tastingNotes)?log.tastingNotes.join(', '):'',log.note,log.summary].map(v=>String(v||'').trim()).filter(Boolean);
+   const text=[...new Set(lines)].join('\n');
+   body.append(element('p','tc-thumb-text'+(text?'':' empty'),text||'적은 내용이 없어요.'));
+  }
+  tile.append(body);
+ }
+ tile.append(meta);tile.onclick=()=>showPost(log);
+ return tile;
+}
+function renderThumbs282(logs){
+ const grid=document.createElement('div');grid.className='tc-thumb-grid';
+ for(const log of logs)grid.append(thumbElement282(log));
+ cafeAlt278.append(grid);
+}
+function cafeAltCleanup278(){cafeAltGen278++;thumbURLs282.forEach(URL.revokeObjectURL);thumbURLs282=[];cafeAlt278.replaceChildren()}
+/* renderFeed 안에서 부름. 섬네일 보기면 true(피드 대신 그림) */
+function renderCafeAlt278(){
+ const pane=!profile.hidden&&(profilePane3812==='cafe'?'cafe':profilePane3812==='brew'?'brew':null);
+ const alt=!!pane&&logViews283[pane]==='thumb';
+ cafeAltCleanup278();cafeAlt278.hidden=!alt;$('log-feed').hidden=alt;$('log-pages').hidden=alt;updateLogViewToggle();
+ if(!alt)return false;
+ const logs=paneLogs283();
+ if(logs.length)renderThumbs282(logs);else cafeAlt278.append(element('p','feed-empty','이 조건에 해당하는 기록이 없어요.'));
+ return true;
+}
+window.__cafeAlt278=renderCafeAlt278;
 const nav=document.createElement('nav');nav.id='tc-nav';nav.setAttribute('aria-label','하단 내비게이션');
 const OUTLINE_BEAN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3.5C8.5 2 4 7 4 13s4 9 9 8 8-5.5 7-11c-.5-3-2-5-5.5-6.5Z" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M15 5c-5 4-2 7-7 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
 const TAG_COLLECTION3813='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13.2 12.7 20.5a2 2 0 0 1-2.8 0L3.5 14.1A2 2 0 0 1 3 12.7V4.8C3 3.8 3.8 3 4.8 3h7.9c.5 0 1 .2 1.4.6L20 9.5a2.6 2.6 0 0 1 0 3.7Z"/><circle cx="8.1" cy="8.1" r="1.4"/></svg>';
@@ -10539,8 +10751,8 @@ function leafletReady(){
  });return leafletLoad;
 }
 let cafePos276=null,cafeTyping276=null; // v3.8.76: 위치 5분 기억 (입력할 때마다 기다리지 않게)
-function currentCafePosition(){
- if(cafePos276&&Date.now()-cafePos276.at<300000)return Promise.resolve(cafePos276.pos);
+function currentCafePosition(useCache){
+ if(useCache&&cafePos276&&Date.now()-cafePos276.at<300000)return Promise.resolve(cafePos276.pos); // v3.8.80: 기억한 위치는 입력 중 자동 검색에만
  if(!navigator.geolocation)return Promise.resolve(null);
  return new Promise(resolve=>navigator.geolocation.getCurrentPosition(p=>{
   const lat=Number(p.coords.latitude),lon=Number(p.coords.longitude);const pos=Number.isFinite(lat)&&Math.abs(lat)<=90&&Number.isFinite(lon)&&Math.abs(lon)<=180?{lat,lon}:null;if(pos)cafePos276={pos,at:Date.now()};resolve(pos);
@@ -10573,19 +10785,35 @@ function kakaoReady275(){
  kakaoLoad275.catch(()=>{kakaoLoad275=null});
  return kakaoLoad275;
 }
-async function kakaoCafeSearch275(name,position){
+// v3.8.77: 카카오가 안 될 때 카카오가 돌려준 이유(msg)를 화면에 보여 주기 위한 진단
+async function kakaoDiagnose277(name){try{const r=await fetch('https://dapi.kakao.com/v2/local/search/keyword.json?size=1&query='+encodeURIComponent(name||'카페'),{headers:{Authorization:'KakaoAK '+KAKAO_JS_KEY275,KA:'sdk/2.7.2 os/javascript lang/ko-KR origin/'+encodeURIComponent(location.origin)}});const j=await r.json().catch(()=>({}));kakaoFail276=(j.msg||j.message||('HTTP '+r.status)).slice(0,80)}catch(e){kakaoFail276='응답 오류'}}
+let kakaoNearby281=null; // v3.8.81: 내 주변 카페 목록(최대 45곳) 5분 기억 — 이름 일부만 써도 주변 가게를 찾기 위해
+const cafeKey281=s=>String(s||'').toLowerCase().replace(/\s+/g,'');
+async function kakaoCafeSearch275(name,position,auto=false){
  // v3.8.76: 이름 검색은 전국에서 찾고(위치로 범위를 좁히지 않음), 결과를 내 위치에서 가까운 순으로 보여 준다
  if(!navigator.onLine)return null;
- let k;try{k=await kakaoReady275()}catch(e){kakaoFail276='카카오 지도 SDK를 불러오지 못했어요';return null}
+ let k;try{k=await kakaoReady275()}catch(e){kakaoFail276='카카오 지도 SDK를 불러오지 못했어요';await kakaoDiagnose277(name);kakaoFail276='지도 SDK 실패 · '+kakaoFail276;return null}
  const S=k.maps.services,ps=new S.Places();
  const call=(method,query,opts)=>new Promise(r=>ps[method](query,(data,status,pg)=>r(status===S.Status.OK?{data,more:!!pg?.hasNextPage}:status===S.Status.ZERO_RESULT?{data:[],more:false}:null),opts));
  const pages=async(method,query,opts)=>{let all=[];for(let page=1;page<=3;page++){const r=await call(method,query,{...opts,page});if(!r)return page===1?null:all;all=all.concat(r.data);if(!r.more)break}return all};
- const diagnose=async()=>{try{const r=await fetch('https://dapi.kakao.com/v2/local/search/keyword.json?size=1&query='+encodeURIComponent(name||'카페'),{headers:{Authorization:'KakaoAK '+KAKAO_JS_KEY275,KA:'sdk/2.7.2 os/javascript lang/ko-KR origin/'+encodeURIComponent(location.origin)}});const j=await r.json().catch(()=>({}));kakaoFail276=(j.msg||j.message||('HTTP '+r.status)).slice(0,80)}catch(e){kakaoFail276='응답 오류'}};
  let data;
  if(name){
   const q=[name,...(/\s/.test(name)?[name.replace(/\s+/g,'')]:[])];
-  data=[];for(const query of q){const cafe=await pages('keywordSearch',query,{size:15,category_group_code:'CE7'});if(cafe===null){await diagnose();return null}data=data.concat(cafe)}  // 카페 분류(전국)
-  if(!data.length)for(const query of q){const any=await pages('keywordSearch',query,{size:15});if(any===null)return null;data=data.concat(any)}               // 없으면 모든 장소(전국)
+  const maxPages=auto?1:3,pagesN=async(method,query,opts)=>{let all=[];for(let page=1;page<=maxPages;page++){const r=await call(method,query,{...opts,page});if(!r)return page===1?null:all;all=all.concat(r.data);if(!r.more)break}return all};
+  data=[];for(const query of q){const cafe=await pagesN('keywordSearch',query,{size:15,category_group_code:'CE7'});if(cafe===null){await kakaoDiagnose277(name);return null}data=data.concat(cafe)}  // 카페 분류(전국)
+  if(position){
+   // v3.8.81: 전국 검색은 '이름이 가장 잘 맞는 곳' 위주라, 이름 일부("텐퍼")만 쓰면 먼 지점 하나만 올 때가 있음 →
+   // ① 내 위치 20km 안 이름 검색(가까운 순) ② 내 주변 카페 목록에서 이름에 검색어가 들어간 곳 — 을 함께 찾는다
+   const loc=new k.maps.LatLng(position.lat,position.lon);
+   for(const query of q){const near=await call('keywordSearch',query,{size:15,category_group_code:'CE7',location:loc,radius:20000,sort:S.SortBy.DISTANCE});if(near)data=data.concat(near.data)}
+   const key=position.lat.toFixed(3)+','+position.lon.toFixed(3);
+   if(!kakaoNearby281||kakaoNearby281.key!==key||Date.now()-kakaoNearby281.at>300000){
+    const list=await pages('categorySearch','CE7',{size:15,location:loc,radius:5000,sort:S.SortBy.DISTANCE});
+    if(list)kakaoNearby281={key,at:Date.now(),list};
+   }
+   const want=cafeKey281(name);if(kakaoNearby281?.key===key)data=data.concat(kakaoNearby281.list.filter(p=>cafeKey281(p.place_name).includes(want)));
+  }
+  if(!data.length)for(const query of q){const any=await pagesN('keywordSearch',query,{size:15});if(any===null)return null;data=data.concat(any)}               // 없으면 모든 장소(전국)
  }else{
   if(!position)return [];
   const r=await call('categorySearch','CE7',{size:15,location:new k.maps.LatLng(position.lat,position.lon),radius:2000,sort:S.SortBy.DISTANCE});if(!r)return null;data=r.data; // 이름 없이: 주변 2km 카페
@@ -10606,11 +10834,11 @@ async function findCafe(opts){
  cafeAbort?.abort();cafeAbort=new AbortController();const generation=++cafeGeneration;status.textContent='현재 위치를 확인하고 있어요.';results.replaceChildren();
  if(cafeMap){cafeMap.remove();cafeMap=null}$tc('record-place-map').hidden=true;
  try{
-  const position=await currentCafePosition();if(generation!==cafeGeneration||contextFields.hidden||logPage.hidden)return;
+  const position=await currentCafePosition(auto);if(generation!==cafeGeneration||contextFields.hidden||logPage.hidden)return;
   if(!position&&!name){status.textContent='위치를 허용하거나 카페 이름을 입력해 주세요.';return}
   status.textContent=position?'현재 위치 주변 카페를 찾고 있어요.':'카페 이름으로 찾고 있어요.';
   // v3.8.76: 이름 검색은 전 세계에서 — 한국은 카카오맵, 해외는 오픈스트리트맵을 함께 찾아 합친 뒤 내 위치에서 가까운 순 15개
-  const [kakao,osm]=await Promise.all([kakaoCafeSearch275(name,position).catch(()=>null),(auto?Promise.resolve(null):osmCafeSearch276(name,position,cafeAbort.signal).catch(e=>{if(e.name==='AbortError')throw e;return null}))]);
+  const [kakao,osm]=await Promise.all([kakaoCafeSearch275(name,position,auto).catch(()=>null),(auto?Promise.resolve(null):osmCafeSearch276(name,position,cafeAbort.signal).catch(e=>{if(e.name==='AbortError')throw e;return null}))]);
   if(generation!==cafeGeneration)return;
   if(kakao===null&&osm===null){if(auto){status.textContent='검색 버튼(엔터)을 누르면 찾아요.'+(kakaoFail276?' · 카카오 연결 안 됨: '+kakaoFail276:'');return}throw Error('search')}
   let places=[...(kakao||[])];
@@ -10741,6 +10969,30 @@ const guideShowTabBefore=showTab;showTab=function(){stopCafeSearch();return guid
 /* v3.8.75: 기록하기 페이지 왼쪽 아래 버튼 = 이전 페이지. 어디서 기록하기를 열었는지 기억해 두고, 쓰던 내용은 저장한 채 그곳으로 돌아간다 */
 let recordOrigin275=null;
 const showTabBefore275=showTab;showTab=function(tab){const out=showTabBefore275.apply(this,arguments);recordOrigin275={type:'tab',tab,pane:tab==='profile'?profilePane3812:tab==='collection'?collectionPane:null};return out};
+/* v3.8.83: MY BEANS·MY RECIPE·BREW LOG·CAFE LOG — 스크롤이 생기면 맨 위/맨 아래로 가는 떠 있는 화살표 */
+{
+ const box=document.createElement('div');box.id='tc-scroll-jump';box.hidden=true;
+ const mk=(id,label,path)=>{const b=document.createElement('button');b.type='button';b.id=id;b.setAttribute('aria-label',label);b.title=label;b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+path+'"/></svg>';box.append(b);return b};
+ const up=mk('tc-scroll-top','맨 위로','M6 14l6-6 6 6'),down=mk('tc-scroll-bottom','맨 아래로','M6 10l6 6 6-6');
+ const smooth=matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+ up.onclick=()=>scrollTo({top:0,behavior:smooth});
+ down.onclick=()=>scrollTo({top:document.documentElement.scrollHeight,behavior:smooth});
+ document.body.append(box);
+ let queued=false;
+ const update=()=>{queued=false;
+  const page=!myBean.hidden||!myRecipeHome.hidden||!profile.hidden;
+  const covered=!$('modal').hidden||!!document.querySelector('.tc-overlay:not([hidden])')||($tc('tc-layer')&&!$tc('tc-layer').hidden);
+  const max=document.documentElement.scrollHeight-innerHeight,y=scrollY;
+  const show=page&&!covered&&max>120;
+  box.hidden=!show;if(!show)return;
+  up.hidden=y<160;down.hidden=y>max-160;
+ };
+ const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(update)}};
+ addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule);
+ if(window.ResizeObserver)new ResizeObserver(schedule).observe(document.body);
+ new MutationObserver(schedule).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden']});
+ window.__scrollJump283=update;schedule();
+}
 const showTodayBefore275=showToday;showToday=function(){if(!logMain.hidden)recordOrigin275={type:'guide'};const out=showTodayBefore275.apply(this,arguments);$('record-back').textContent='← 이전';const eb=document.querySelector('#today-page>.eyebrow-link');if(eb)eb.textContent=recordDraft?.kind==='cafe'?'CAFE LOG · TODAY':'BREW LOG · TODAY';return out};
 const recordBackBefore275=$('record-back').onclick;
 $('record-back').onclick=()=>{const o=recordOrigin275;
@@ -10805,7 +11057,7 @@ async function exportBackup3813(){
  const data=backupLocal3813(),stats=backupStats3813(data);let photos;
  try{photos=await photosForBackup3813()}
  catch(e){if(stats.logPhotos)throw Error('Brew Log 사진을 읽지 못해 완전한 백업을 만들 수 없어요. 브라우저 저장 공간을 확인해 주세요.');photos=[]}
- const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.76',exportedAt:new Date().toISOString(),
+ const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.83',exportedAt:new Date().toISOString(),
   metadata:{...stats,photos:photos.length},localStorage:data,photos};
  downloadBackup3813(backup);return backup.metadata;
 }
