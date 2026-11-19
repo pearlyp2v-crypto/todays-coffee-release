@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.75</title><meta name="app-version" content="3.8.75"/><style data-source="design-system/legacy.css">
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.76</title><meta name="app-version" content="3.8.76"/><style data-source="design-system/legacy.css">
 :root{--bg:#F1E5DC;--page:#FFFEFB;--ink:#4A4947;--sub:#6E6B66;--line:#D8D2C2;--slate:#4A4947;--cherry:#B17457;--panel:#FFFEFB;--muted:#D8D2C2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #6E6B66;outline-offset:2px}button:disabled,input:disabled{opacity:.5;cursor:not-allowed}[hidden]{display:none!important}
 .app{max-width:440px;min-height:100dvh;background:var(--page);margin:0 auto;box-shadow:0 15px 55px #4A494717}.header{height:64px;padding:0 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:850;letter-spacing:-1.05px}.brand .dot{color:var(--cherry)}.slogan{font:700 9px/1.35 Georgia,serif;color:#6E6B66;text-align:right}main{padding:22px 19px 38px}.eyebrow{display:flex;align-items:center;gap:8px;font:700 10px Georgia,serif;letter-spacing:1.5px;color:var(--cherry)}.eyebrow:before{content:'';width:21px;height:2px;background:var(--cherry)}h1{font-size:25px;margin:12px 0 4px;letter-spacing:-.9px}.subtitle{color:var(--sub);font-size:12px;line-height:1.6;margin:0 0 18px}
@@ -3323,6 +3323,12 @@ return {
 #record-place-panel[hidden],#record-place-map[hidden]{display:none!important}
 #record-place-status{font-size:11px;color:var(--theme-sub);line-height:1.5;margin:3px 0 8px}
 #record-place-results{display:grid;gap:5px}
+/* v3.8.76: 카페 검색 결과 = 카페 이름 칸 바로 아래 드롭다운 */
+.record-place-input{position:relative}
+#record-place-results{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:40;max-height:300px;overflow:auto;gap:0!important;padding:4px;border:1px solid var(--theme-border,#D8D2C2);border-radius:10px;background:var(--theme-surface,#FFFEFB);box-shadow:0 8px 24px #4A494726}
+#record-place-results:empty{display:none!important}
+#record-place-results button{border:0!important;border-radius:7px!important;background:transparent!important}
+#record-place-results button:is(:hover,:focus-visible){background:var(--theme-hover,#F1E5DC)!important}
 #record-place-results button{display:grid;gap:3px;padding:9px;text-align:left;min-width:0;border:1px solid var(--theme-border);border-radius:8px;background:var(--theme-surface);color:var(--theme-navy);font:inherit;font-size:12px}
 #record-place-results button[aria-pressed=true]{background:var(--theme-hover)}
 #record-place-results small{font-size:10px;color:var(--theme-sub);overflow-wrap:anywhere}
@@ -10432,7 +10438,8 @@ for(const label of contextFields.querySelectorAll(':scope>label')){
 }
 const contextActions=document.createElement('div');contextActions.className='record-context-actions';contextActions.innerHTML='<button type="button" id="record-context-cancel">취소</button><button type="button" id="record-context-done">입력 완료</button>';
 const placePanel=document.createElement('div');placePanel.id='record-place-panel';placePanel.hidden=true;placePanel.innerHTML='<p id="record-place-status" role="status"></p><div id="record-place-results"></div><div id="record-place-map" hidden></div>';
-contextFields.append(placePanel,contextActions);context.append(contextSummary,contextFields);contextFields.hidden=true;
+contextFields.append(placePanel,contextActions);cafeNameLabel.querySelector('.record-place-input').append(placePanel.querySelector('#record-place-results')); /* v3.8.76: 검색 결과는 카페 이름 칸 아래 드롭다운 */
+context.append(contextSummary,contextFields);contextFields.hidden=true;
 /* Search the embedded bean catalogue without changing the active brew or collection. */
 const recordBeanInput=$tc('record-beans-input'),recordBeanCombo=document.createElement('div');recordBeanCombo.className='record-bean-combo';
 recordBeanInput.before(recordBeanCombo);recordBeanCombo.append(recordBeanInput);
@@ -10531,16 +10538,29 @@ function leafletReady(){
   const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js';script.onload=()=>resolve(window.L);script.onerror=()=>{leafletLoad=null;script.remove();reject(Error('map'))};document.head.append(script);
  });return leafletLoad;
 }
+let cafePos276=null,cafeTyping276=null; // v3.8.76: 위치 5분 기억 (입력할 때마다 기다리지 않게)
 function currentCafePosition(){
+ if(cafePos276&&Date.now()-cafePos276.at<300000)return Promise.resolve(cafePos276.pos);
  if(!navigator.geolocation)return Promise.resolve(null);
  return new Promise(resolve=>navigator.geolocation.getCurrentPosition(p=>{
-  const lat=Number(p.coords.latitude),lon=Number(p.coords.longitude);resolve(Number.isFinite(lat)&&Math.abs(lat)<=90&&Number.isFinite(lon)&&Math.abs(lon)<=180?{lat,lon}:null);
+  const lat=Number(p.coords.latitude),lon=Number(p.coords.longitude);const pos=Number.isFinite(lat)&&Math.abs(lat)<=90&&Number.isFinite(lon)&&Math.abs(lon)<=180?{lat,lon}:null;if(pos)cafePos276={pos,at:Date.now()};resolve(pos);
  },()=>resolve(null),{enableHighAccuracy:false,maximumAge:300000,timeout:5000}));
 }
 function cafeDistance(p,center){const rad=Math.PI/180,lat=(p.lat-center.lat)*rad,lon=(p.lon-center.lon)*rad,a=Math.sin(lat/2)**2+Math.cos(p.lat*rad)*Math.cos(center.lat*rad)*Math.sin(lon/2)**2;return 12742*Math.asin(Math.sqrt(Math.min(1,a)))}
+/* v3.8.76: 오픈스트리트맵(전 세계) — 이름이 있으면 내 위치는 순서만 참고(범위 제한 없음), 이름이 없으면 주변 약 10km 카페 */
+async function osmCafeSearch276(name,position,signal){
+ if(!navigator.onLine)return null;
+ const params=new URLSearchParams({q:name||'[cafe]',format:'jsonv2',limit:name?'20':'10',addressdetails:'1','accept-language':'ko'});
+ if(position){const pad=name?1.5:.09,latPad=pad,lonPad=Math.min(180,pad/Math.max(.1,Math.cos(position.lat*Math.PI/180))),clamp=(n,min,max)=>Math.min(max,Math.max(min,n));params.set('viewbox',[clamp(position.lon-lonPad,-180,180),clamp(position.lat+latPad,-90,90),clamp(position.lon+lonPad,-180,180),clamp(position.lat-latPad,-90,90)].map(n=>n.toFixed(4)).join(','));if(!name)params.set('bounded','1')}
+ else if(!name)return [];
+ const url=new URL('https://nominatim.openstreetmap.org/search');url.search=params;
+ const response=await fetch(url,{signal});if(!response.ok)return null;
+ const data=await response.json();
+ return Array.isArray(data)?data.filter(p=>Number.isFinite(Number(p.lat))&&Number.isFinite(Number(p.lon))).map(p=>({name:p.name||p.display_name?.split(',')[0]||name,address:p.display_name||'',lat:Number(p.lat),lon:Number(p.lon),placeId:String(p.place_id||''),provider:'OpenStreetMap'})):[];
+}
 /* v3.8.75: 카페 검색 = 카카오 장소 검색(카카오맵 JavaScript SDK). 키는 등록한 주소(pearlyp2v-crypto.github.io)에서만 작동 */
 const KAKAO_JS_KEY275='4e80b3b36d3760419e20a2a1a17ca9db';
-let kakaoLoad275=null;
+let kakaoLoad275=null,kakaoFail276='';
 function kakaoReady275(){
  if(kakaoLoad275)return kakaoLoad275;
  kakaoLoad275=new Promise((resolve,reject)=>{
@@ -10554,43 +10574,55 @@ function kakaoReady275(){
  return kakaoLoad275;
 }
 async function kakaoCafeSearch275(name,position){
+ // v3.8.76: 이름 검색은 전국에서 찾고(위치로 범위를 좁히지 않음), 결과를 내 위치에서 가까운 순으로 보여 준다
  if(!navigator.onLine)return null;
- const k=await kakaoReady275(),S=k.maps.services,ps=new S.Places();
- const base={size:15};if(position){base.location=new k.maps.LatLng(position.lat,position.lon);base.sort=name?S.SortBy.ACCURACY:S.SortBy.DISTANCE;if(!name)base.radius=2000}
- const call=(method,query,opts)=>new Promise(r=>ps[method](query,(data,status)=>r(status===S.Status.OK?data:status===S.Status.ZERO_RESULT?[]:null),opts));
+ let k;try{k=await kakaoReady275()}catch(e){kakaoFail276='카카오 지도 SDK를 불러오지 못했어요';return null}
+ const S=k.maps.services,ps=new S.Places();
+ const call=(method,query,opts)=>new Promise(r=>ps[method](query,(data,status,pg)=>r(status===S.Status.OK?{data,more:!!pg?.hasNextPage}:status===S.Status.ZERO_RESULT?{data:[],more:false}:null),opts));
+ const pages=async(method,query,opts)=>{let all=[];for(let page=1;page<=3;page++){const r=await call(method,query,{...opts,page});if(!r)return page===1?null:all;all=all.concat(r.data);if(!r.more)break}return all};
+ const diagnose=async()=>{try{const r=await fetch('https://dapi.kakao.com/v2/local/search/keyword.json?size=1&query='+encodeURIComponent(name||'카페'),{headers:{Authorization:'KakaoAK '+KAKAO_JS_KEY275,KA:'sdk/2.7.2 os/javascript lang/ko-KR origin/'+encodeURIComponent(location.origin)}});const j=await r.json().catch(()=>({}));kakaoFail276=(j.msg||j.message||('HTTP '+r.status)).slice(0,80)}catch(e){kakaoFail276='응답 오류'}};
  let data;
  if(name){
-  data=await call('keywordSearch',name,{...base,category_group_code:'CE7'});              // 카페 분류에서 먼저
-  if(data&&!data.length)data=await call('keywordSearch',name,base);                      // 없으면 전체 장소
-  if(data&&!data.length&&/\s/.test(name))data=await call('keywordSearch',name.replace(/\s+/g,''),base); // 띄어쓰기 빼고
- }else data=await call('categorySearch','CE7',base);                                     // 이름 없이: 주변 카페
- if(!data)return null;
- return data.map(p=>({name:p.place_name,address:p.road_address_name||p.address_name||'',lat:Number(p.y),lon:Number(p.x),placeId:'kakao:'+p.id,placeUrl:p.place_url,provider:'카카오맵'}));
+  const q=[name,...(/\s/.test(name)?[name.replace(/\s+/g,'')]:[])];
+  data=[];for(const query of q){const cafe=await pages('keywordSearch',query,{size:15,category_group_code:'CE7'});if(cafe===null){await diagnose();return null}data=data.concat(cafe)}  // 카페 분류(전국)
+  if(!data.length)for(const query of q){const any=await pages('keywordSearch',query,{size:15});if(any===null)return null;data=data.concat(any)}               // 없으면 모든 장소(전국)
+ }else{
+  if(!position)return [];
+  const r=await call('categorySearch','CE7',{size:15,location:new k.maps.LatLng(position.lat,position.lon),radius:2000,sort:S.SortBy.DISTANCE});if(!r)return null;data=r.data; // 이름 없이: 주변 2km 카페
+ }
+ kakaoFail276='';
+ const seen=new Set();
+ let places=data.filter(p=>!seen.has(p.id)&&seen.add(p.id)).map(p=>({name:p.place_name,address:p.road_address_name||p.address_name||'',lat:Number(p.y),lon:Number(p.x),placeId:'kakao:'+p.id,placeUrl:p.place_url,provider:'카카오맵'}));
+ if(position)places.sort((a,b)=>cafeDistance(a,position)-cafeDistance(b,position));
+ return places.slice(0,15);
 }
-async function findCafe(){
+async function findCafe(opts){
+ // v3.8.76: auto=입력하는 동안 자동 검색(카카오만 — 오픈스트리트맵은 자동완성 금지 정책이라 검색 버튼·엔터 때만)
+ const auto=opts?.auto===true;if(!auto)clearTimeout(cafeTyping276);
  const name=$tc('record-cafe-name').value.trim();placePanel.hidden=false;const status=$tc('record-place-status'),results=$tc('record-place-results');
+ if(auto&&name.length<2){results.replaceChildren();return}
  if(name.length===1){status.textContent='카페 이름을 두 글자 이상 입력해 주세요.';return}
- if(Date.now()-lastCafeSearch<1100){status.textContent='잠시 후 다시 검색해 주세요.';return}lastCafeSearch=Date.now();
+ if(!auto){if(Date.now()-lastCafeSearch<1100){status.textContent='잠시 후 다시 검색해 주세요.';return}lastCafeSearch=Date.now()}
  cafeAbort?.abort();cafeAbort=new AbortController();const generation=++cafeGeneration;status.textContent='현재 위치를 확인하고 있어요.';results.replaceChildren();
  if(cafeMap){cafeMap.remove();cafeMap=null}$tc('record-place-map').hidden=true;
  try{
   const position=await currentCafePosition();if(generation!==cafeGeneration||contextFields.hidden||logPage.hidden)return;
   if(!position&&!name){status.textContent='위치를 허용하거나 카페 이름을 입력해 주세요.';return}
   status.textContent=position?'현재 위치 주변 카페를 찾고 있어요.':'카페 이름으로 찾고 있어요.';
-  let places=await kakaoCafeSearch275(name,position).catch(()=>null);if(generation!==cafeGeneration)return; // v3.8.75: 카카오 장소 검색 먼저, 안 되면 오픈스트리트맵
-  if(!places){
-  const params=new URLSearchParams({q:name||'[cafe]',format:'jsonv2',limit:'5',addressdetails:'1','accept-language':'ko'});
-  if(position){const latPad=.09,lonPad=Math.min(180,.09/Math.max(.1,Math.cos(position.lat*Math.PI/180))),clamp=(n,min,max)=>Math.min(max,Math.max(min,n));params.set('viewbox',[clamp(position.lon-lonPad,-180,180),clamp(position.lat+latPad,-90,90),clamp(position.lon+lonPad,-180,180),clamp(position.lat-latPad,-90,90)].map(n=>n.toFixed(4)).join(','));params.set('bounded','1')}
-  const url=new URL('https://nominatim.openstreetmap.org/search');url.search=params;
-  const response=await fetch(url,{signal:cafeAbort.signal});if(!response.ok)throw Error('search');
-  const data=await response.json();if(generation!==cafeGeneration)return;
-  places=Array.isArray(data)?data.filter(p=>Number.isFinite(Number(p.lat))&&Number.isFinite(Number(p.lon))).map(p=>({name:p.name||p.display_name?.split(',')[0]||name,address:p.display_name||'',lat:Number(p.lat),lon:Number(p.lon),placeId:String(p.place_id||''),provider:'OpenStreetMap'})):[];
-  }
+  // v3.8.76: 이름 검색은 전 세계에서 — 한국은 카카오맵, 해외는 오픈스트리트맵을 함께 찾아 합친 뒤 내 위치에서 가까운 순 15개
+  const [kakao,osm]=await Promise.all([kakaoCafeSearch275(name,position).catch(()=>null),(auto?Promise.resolve(null):osmCafeSearch276(name,position,cafeAbort.signal).catch(e=>{if(e.name==='AbortError')throw e;return null}))]);
+  if(generation!==cafeGeneration)return;
+  if(kakao===null&&osm===null){if(auto){status.textContent='검색 버튼(엔터)을 누르면 찾아요.'+(kakaoFail276?' · 카카오 연결 안 됨: '+kakaoFail276:'');return}throw Error('search')}
+  let places=[...(kakao||[])];
+  for(const o of osm||[])if(!places.some(k=>k.name.replace(/\s+/g,'')===o.name.replace(/\s+/g,'')&&cafeDistance(k,o)<0.3))places.push(o); // 같은 가게(이름 같고 300m 안)는 하나만
+  const source=[kakao&&'카카오맵',osm&&'오픈스트리트맵'].filter(Boolean).join('·');
   if(position)places.sort((a,b)=>cafeDistance(a,position)-cafeDistance(b,position));
-  status.textContent=places.length?(position?'주변 카페를 지도나 목록에서 선택해 주세요.':'현재 위치를 확인하지 못했어요. 이름 검색 결과에서 선택해 주세요.'):'검색 결과가 없어요. 카페 이름을 직접 입력해도 됩니다.';
-  const choose=place=>{recordDraft.cafePlace=place.provider==='카카오맵'?{name:place.name,placeId:place.placeId,placeUrl:place.placeUrl,provider:place.provider,...(position&&cafeDistance(place,position)<0.5?{lat:position.lat,lon:position.lon}:{})}:place; /* 카카오 정책: 검색 결과는 저장하지 않고 이름·장소 ID만. 위치는 카페 근처(500m)에 있을 때 기기 현재 위치 */recordDraft.cafeName=place.name;$tc('record-cafe-name').value=place.name;captureRecordForm();persistRecordDraft();status.textContent=place.name+' 선택됨';results.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.placeId===place.placeId)))};
+  places=places.slice(0,15);
+  status.textContent=places.length?(position?'주변 카페를 지도나 목록에서 선택해 주세요.':'현재 위치를 확인하지 못했어요. 이름 검색 결과에서 선택해 주세요.'):'검색 결과가 없어요. 카페 이름을 직접 입력해도 됩니다.';status.textContent+=' ('+source+' 검색)'+(kakao===null&&kakaoFail276?' · 카카오 연결 안 됨: '+kakaoFail276:'')+(auto&&!places.length?' · 해외 카페는 검색 버튼(엔터)으로 찾아요.':'');
+  const choose=place=>{recordDraft.cafePlace=place.provider==='카카오맵'?{name:place.name,placeId:place.placeId,placeUrl:place.placeUrl,provider:place.provider,...(position&&cafeDistance(place,position)<0.5?{lat:position.lat,lon:position.lon}:{})}:place; /* 카카오 정책: 검색 결과는 저장하지 않고 이름·장소 ID만. 위치는 카페 근처(500m)에 있을 때 기기 현재 위치 */recordDraft.cafeName=place.name;$tc('record-cafe-name').value=place.name;captureRecordForm();persistRecordDraft();status.textContent=place.name+' 선택됨';results.replaceChildren()};
   for(const place of places){const b=document.createElement('button');b.type='button';b.dataset.placeId=place.placeId;b.innerHTML='<strong>'+esc(place.name)+'</strong><small>'+esc(place.address)+'</small>';b.onclick=()=>choose(place);results.append(b)}
   if(!places.length&&!position)return;
+  if(auto)return; // 입력 중에는 지도를 그리지 않음
   leafletReady().then(L=>{
    if(generation!==cafeGeneration||contextFields.hidden||logPage.hidden)return;
    const mapNode=$tc('record-place-map');if(cafeMap)cafeMap.remove();mapNode.hidden=false;const center=position||places[0];cafeMap=L.map(mapNode,{scrollWheelZoom:false}).setView([center.lat,center.lon],15);
@@ -10602,7 +10634,9 @@ async function findCafe(){
   }).catch(()=>{if(generation===cafeGeneration)status.textContent='지도를 열지 못했어요. 검색 결과에서 선택할 수 있습니다.'});
  }catch(error){if(error.name!=='AbortError'&&generation===cafeGeneration)status.textContent='검색에 연결하지 못했어요. 카페 이름을 직접 입력해 주세요.'}
 }
-$tc('record-cafe-search').onclick=findCafe;$tc('record-cafe-name').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();findCafe()}});
+$tc('record-cafe-search').onclick=()=>findCafe();
+{$tc('record-cafe-name').addEventListener('input',()=>{clearTimeout(cafeTyping276);cafeTyping276=setTimeout(()=>findCafe({auto:true}),450)});
+ document.addEventListener('pointerdown',e=>{const field=$tc('record-cafe-name-field');if(field&&!field.contains(e.target))$tc('record-place-results')?.replaceChildren()},true);}$tc('record-cafe-name').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();findCafe()}});
 
 /* Preparation choices and recipe/brew controls. */
 renderRecentBeans=function(){
@@ -10771,7 +10805,7 @@ async function exportBackup3813(){
  const data=backupLocal3813(),stats=backupStats3813(data);let photos;
  try{photos=await photosForBackup3813()}
  catch(e){if(stats.logPhotos)throw Error('Brew Log 사진을 읽지 못해 완전한 백업을 만들 수 없어요. 브라우저 저장 공간을 확인해 주세요.');photos=[]}
- const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.75',exportedAt:new Date().toISOString(),
+ const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.76',exportedAt:new Date().toISOString(),
   metadata:{...stats,photos:photos.length},localStorage:data,photos};
  downloadBackup3813(backup);return backup.metadata;
 }
