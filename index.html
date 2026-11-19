@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.84</title><meta name="app-version" content="3.8.84"/><style data-source="design-system/legacy.css">
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.8.86</title><meta name="app-version" content="3.8.86"/><style data-source="design-system/legacy.css">
 :root{--bg:#F1E5DC;--page:#FFFEFB;--ink:#4A4947;--sub:#6E6B66;--line:#D8D2C2;--slate:#4A4947;--cherry:#B17457;--panel:#FFFEFB;--muted:#D8D2C2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #6E6B66;outline-offset:2px}button:disabled,input:disabled{opacity:.5;cursor:not-allowed}[hidden]{display:none!important}
 .app{max-width:440px;min-height:100dvh;background:var(--page);margin:0 auto;box-shadow:0 15px 55px #4A494717}.header{height:64px;padding:0 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:850;letter-spacing:-1.05px}.brand .dot{color:var(--cherry)}.slogan{font:700 9px/1.35 Georgia,serif;color:#6E6B66;text-align:right}main{padding:22px 19px 38px}.eyebrow{display:flex;align-items:center;gap:8px;font:700 10px Georgia,serif;letter-spacing:1.5px;color:var(--cherry)}.eyebrow:before{content:'';width:21px;height:2px;background:var(--cherry)}h1{font-size:25px;margin:12px 0 4px;letter-spacing:-.9px}.subtitle{color:var(--sub);font-size:12px;line-height:1.6;margin:0 0 18px}
@@ -3322,9 +3322,8 @@ return {
 #record-place-panel{grid-column:1/-1;min-width:0}
 #record-place-panel[hidden],#record-place-map[hidden]{display:none!important}
 #record-place-status{font-size:11px;color:var(--theme-sub);line-height:1.5;margin:3px 0 8px}
-/* v3.8.82: CAFE LOG 섬네일 보기 · v3.8.83: BREW LOG도, 피드형·섬네일형 아이콘 두 개 */
-#tc-profile .tc-log-view-btn{border-color:transparent!important;box-shadow:none!important}
-#tc-profile .tc-log-view-btn[aria-pressed=true]{color:var(--theme-primary,#965A40);background:var(--theme-hover,#F1E5DC)}
+/* v3.8.82: CAFE LOG 섬네일 보기 · v3.8.83: BREW LOG도 · v3.8.85: 보기 아이콘 하나로 피드→목록→섬네일 */
+
 .tc-cafe-view-switch{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:10px 0 12px;padding:4px;border:1px solid var(--theme-border,#D8D2C2);border-radius:12px;background:var(--theme-search,#F9F7F0)}
 .tc-cafe-view-switch[hidden],#tc-cafe-alt-view[hidden],#log-feed[hidden],#log-pages[hidden],#log-view[hidden]{display:none!important}
 .tc-cafe-view-switch button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:36px;border:0;border-radius:9px;background:transparent;color:var(--theme-sub,#6E6B66);font-size:12px;font-weight:600}
@@ -3351,6 +3350,7 @@ return {
 #tc-scroll-jump svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 @media (hover:hover) and (pointer:fine){#tc-scroll-jump button:hover{color:var(--theme-primary,#965A40)}}
 #record-place-results{display:grid;gap:5px}
+#record-place-results .record-place-searching{margin:0;padding:10px 12px;color:var(--theme-sub,#6E6B66);font-size:12.5px}
 /* v3.8.76: 카페 검색 결과 = 카페 이름 칸 바로 아래 드롭다운 */
 .record-place-input{position:relative}
 #record-place-results{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:40;max-height:300px;overflow:auto;gap:0!important;padding:4px;border:1px solid var(--theme-border,#D8D2C2);border-radius:10px;background:var(--theme-surface,#FFFEFB);box-shadow:0 8px 24px #4A494726}
@@ -6111,7 +6111,7 @@ const backToday211=backToday;
 backToday=function(){hideModulePages();backToday211()};$('record-back').onclick=backToday;
 
 let logKind='all',likedOnly=false,logView=read('coffee_log_feed_view','scroll'),feedURLs=[],feedGeneration=0;
-logView='scroll'; // v3.8.83: 목록형 보기 삭제 — 항상 피드형(섬네일형은 BREW·CAFE LOG 보기 아이콘)
+if(!['scroll','list'].includes(logView))logView='scroll'; // v3.8.85: 피드형/목록형은 BREW·CAFE LOG 보기 아이콘(로그마다 기억)이 정함
 const lockSVG=locked=>'<svg viewBox="0 0 24 24" aria-hidden="true">'+(locked?'<path d="M7 10V7a5 5 0 0 1 10 0v3"/>':'<path d="M7 10V7a5 5 0 0 1 9-3"/>')+'<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M12 14v3"/></svg>';
 const heartSVG='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8Z"/></svg>';
 function updateLogMeta(id,changes){const records=read(LS_LOGS,[]),next=records.map(x=>x.id===id?{...x,...changes}:x);if(!store(LS_LOGS,next)){toast('변경을 저장하지 못했습니다. 기존 설정을 유지합니다.');return false}return true}
@@ -6665,7 +6665,7 @@ function renderFeed(){
  likedFilter.setAttribute('aria-pressed',likedOnly);
  const generation=++feedGeneration;feedURLs.forEach(URL.revokeObjectURL);feedURLs=[];
  const root=$('log-feed'),pages=$('log-pages');
- root.className='log-feed '+logView;root.replaceChildren();pages.replaceChildren();
+ window.__syncLogView285?.();root.className='log-feed '+logView;root.replaceChildren();pages.replaceChildren();
  for(const [selector,key,value] of [['[data-log-kind]','logKind',logKind],['[data-log-view]','logView',logView]]){
   document.querySelectorAll(selector).forEach(b=>b.setAttribute('aria-pressed',b.dataset[key]===value));
  }
@@ -9403,24 +9403,23 @@ const logPageShell=$tc('my-log-page');profile.append(logPageShell);
 const likeButton3812=$tc('filter-liked'),profileTools=$tc('tc-profile-tools');
 const logViewSwitch=$tc('log-view');
 logViewSwitch.replaceChildren();
-const logViews283={brew:read('coffee_brew_view','feed'),cafe:read('coffee_cafe_view','feed')};for(const k in logViews283)if(!['feed','thumb'].includes(logViews283[k]))logViews283[k]='feed';
-// v3.8.83: 피드형·섬네일형 아이콘 두 개(누른 쪽이 켜짐). 목록형은 삭제
-const LOG_VIEW_ICONS283={feed:['피드형 보기','<rect x="4" y="3" width="16" height="8" rx="1"/><rect x="4" y="14" width="16" height="7" rx="1"/>'],thumb:['섬네일형 보기','<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>']};
-const logViewButtons283={};
-for(const [mode,[label,svg]] of Object.entries(LOG_VIEW_ICONS283)){
- const b=document.createElement('button');b.type='button';b.id='tc-log-view-'+mode;b.className='tc-tool tc-log-view-btn';b.dataset.view=mode;b.setAttribute('aria-label',label);b.title=label;
- b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+svg+'</svg>';
- b.onclick=()=>{const pane=profilePane3812==='cafe'?'cafe':'brew';if(logViews283[pane]===mode)return;logViews283[pane]=mode;store(pane==='cafe'?'coffee_cafe_view':'coffee_brew_view',mode);logPageNumber=0;renderFeed();updateLogViewToggle()};
- logViewButtons283[mode]=b;logViewSwitch.append(b);
-}
-profileTools.prepend(likeButton3812,logViewSwitch);
+// v3.8.85: 보기 아이콘 하나가 한 자리에서 바뀜 — 피드형 → 목록형 → 섬네일형 → 피드형(BREW LOG·CAFE LOG 각자 기억)
+const logViews283={brew:read('coffee_brew_view','feed'),cafe:read('coffee_cafe_view','feed')};for(const k in logViews283)if(!['feed','list','thumb'].includes(logViews283[k]))logViews283[k]='feed';
+const LOG_VIEW_ORDER285=['feed','list','thumb'];
+const LOG_VIEW_ICONS283={feed:['피드형 보기','<rect x="4" y="3" width="16" height="8" rx="1"/><rect x="4" y="14" width="16" height="7" rx="1"/>'],list:['목록형 보기','<path d="M4 5h16M4 12h16M4 19h16"/>'],thumb:['섬네일형 보기','<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>']};
+function logPane285(){let pane='brew';try{if(profilePane3812==='cafe')pane='cafe'}catch(e){} /* 시작할 때는 아직 정해지기 전 */return pane}
+const logViewToggle=document.createElement('button');logViewToggle.type='button';logViewToggle.id='tc-log-view-toggle';logViewToggle.className='tc-tool';
+logViewToggle.onclick=()=>{const pane=logPane285(),next=LOG_VIEW_ORDER285[(LOG_VIEW_ORDER285.indexOf(logViews283[pane])+1)%LOG_VIEW_ORDER285.length];
+ logViews283[pane]=next;store(pane==='cafe'?'coffee_cafe_view':'coffee_brew_view',next);logPageNumber=0;renderFeed();updateLogViewToggle()};
+logViewSwitch.append(logViewToggle);profileTools.prepend(likeButton3812,logViewSwitch);
 function updateLogViewToggle(){
- let pane='brew';try{if(profilePane3812==='cafe')pane='cafe'}catch(e){} // 시작할 때는 아직 정해지기 전
- const mode=logViews283[pane];
- for(const [m,b] of Object.entries(logViewButtons283))b.setAttribute('aria-pressed',String(m===mode));
+ // 아이콘은 '누르면 바뀔 보기'를 보여 준다
+ const mode=logViews283[logPane285()],next=LOG_VIEW_ORDER285[(LOG_VIEW_ORDER285.indexOf(mode)+1)%LOG_VIEW_ORDER285.length],[label,svg]=LOG_VIEW_ICONS283[next];
+ logViewToggle.dataset.mode=mode;logViewToggle.setAttribute('aria-label',label);logViewToggle.title=label;logViewToggle.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+svg+'</svg>';
 }
+window.__syncLogView285=()=>{logView=logViews283[logPane285()]==='list'?'list':'scroll'}; // renderFeed가 피드형/목록형을 고를 때 씀
 updateLogViewToggle();
-/* v3.8.83: BREW LOG·CAFE LOG 보기 = 피드형 · 섬네일형(목록형 삭제). 두 아이콘을 따로 두고, 로그마다 마지막 보기를 기억 */
+/* BREW LOG·CAFE LOG 보기 = 피드형 · 목록형 · 섬네일형(v3.8.85). 보기 아이콘 하나로 바꾸고, 로그마다 마지막 보기를 기억 */
 let thumbURLs282=[],cafeAltGen278=0;
 const GLOBE_ICON278='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3.5 15 0 18M12 3c-3 3-3.5 15 0 18"/></svg>';
 const LIST_ICON278='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
@@ -10789,7 +10788,33 @@ function kakaoReady275(){
 async function kakaoDiagnose277(name){try{const r=await fetch('https://dapi.kakao.com/v2/local/search/keyword.json?size=1&query='+encodeURIComponent(name||'카페'),{headers:{Authorization:'KakaoAK '+KAKAO_JS_KEY275,KA:'sdk/2.7.2 os/javascript lang/ko-KR origin/'+encodeURIComponent(location.origin)}});const j=await r.json().catch(()=>({}));kakaoFail276=(j.msg||j.message||('HTTP '+r.status)).slice(0,80)}catch(e){kakaoFail276='응답 오류'}}
 let kakaoNearby281=null; // v3.8.81: 내 주변 카페 목록(최대 45곳) 5분 기억 — 이름 일부만 써도 주변 가게를 찾기 위해
 const cafeKey281=s=>String(s||'').toLowerCase().replace(/\s+/g,'');
-async function kakaoCafeSearch275(name,position,auto=false){
+// v3.8.85: 카카오 결과 → 중복 빼기 · 이름에 검색어 들어간 곳만(v3.8.84) · 가까운 순 10개(v3.8.86)
+function kakaoPlaces285(data,name,position){
+ const seen=new Set();
+ let unique=data.filter(p=>!seen.has(p.id)&&seen.add(p.id));
+ if(name){const want=cafeKey281(name),named=unique.filter(p=>cafeKey281(p.place_name).includes(want));if(named.length)unique=named}
+ let places=unique.map(p=>({name:p.place_name,address:p.road_address_name||p.address_name||'',lat:Number(p.y),lon:Number(p.x),placeId:'kakao:'+p.id,placeUrl:p.place_url,provider:'카카오맵'}));
+ if(position)places.sort((a,b)=>cafeDistance(a,position)-cafeDistance(b,position));
+ return places.slice(0,10); // v3.8.86: 10개까지(드롭다운에 4~5개 보임, 먼 같은 이름 지점은 잘라냄)
+}
+// v3.8.85: 내 주변 5km 카페 목록(최대 45곳, 메모리에만 5분) — 카페 이름 칸을 누를 때 미리 받아 둔다
+let kakaoNearbyLoad285=null;
+async function kakaoNearby285(k,position){
+ const key=position.lat.toFixed(3)+','+position.lon.toFixed(3);
+ if(kakaoNearby281?.key===key&&Date.now()-kakaoNearby281.at<300000)return kakaoNearby281.list;
+ if(kakaoNearbyLoad285?.key===key)return kakaoNearbyLoad285.promise;
+ const S=k.maps.services,ps=new S.Places(),loc=new k.maps.LatLng(position.lat,position.lon);
+ const page=n=>new Promise(r=>ps.categorySearch('CE7',(data,status,pg)=>r(status===S.Status.OK?{data,more:!!pg?.hasNextPage}:{data:[],more:false}),{size:15,location:loc,radius:5000,sort:S.SortBy.DISTANCE,page:n}));
+ const promise=(async()=>{let all=[];for(let n=1;n<=3;n++){const r=await page(n);all=all.concat(r.data);if(!r.more)break}kakaoNearby281={key,at:Date.now(),list:all};return all})();
+ kakaoNearbyLoad285={key,promise};promise.finally(()=>{if(kakaoNearbyLoad285?.promise===promise)kakaoNearbyLoad285=null});
+ return promise;
+}
+function cafeSearchWarmup285(){
+ // 카페 이름 칸을 누르면: 카카오 지도 준비 + 내 위치 + 주변 카페 목록을 미리
+ if(!navigator.onLine)return;
+ Promise.all([kakaoReady275().catch(()=>null),currentCafePosition(true)]).then(([k,pos])=>{if(k&&pos)kakaoNearby285(k,pos).catch(()=>{})});
+}
+async function kakaoCafeSearch275(name,position,auto=false,onPartial=null){
  // v3.8.76: 이름 검색은 전국에서 찾고(위치로 범위를 좁히지 않음), 결과를 내 위치에서 가까운 순으로 보여 준다
  if(!navigator.onLine)return null;
  let k;try{k=await kakaoReady275()}catch(e){kakaoFail276='카카오 지도 SDK를 불러오지 못했어요';await kakaoDiagnose277(name);kakaoFail276='지도 SDK 실패 · '+kakaoFail276;return null}
@@ -10799,25 +10824,30 @@ async function kakaoCafeSearch275(name,position,auto=false){
  let data;
  if(name){
   const q=[name,...(/\s/.test(name)?[name.replace(/\s+/g,'')]:[])];
-  const maxPages=auto?1:3,pagesN=async(method,query,opts)=>{let all=[];for(let page=1;page<=maxPages;page++){const r=await call(method,query,{...opts,page});if(!r)return page===1?null:all;all=all.concat(r.data);if(!r.more)break}return all};
-  data=[];for(const query of q){const cafe=await pagesN('keywordSearch',query,{size:15,category_group_code:'CE7'});if(cafe===null){await kakaoDiagnose277(name);return null}data=data.concat(cafe)}  // 카페 분류(전국)
+  const maxPages=1,pagesN=async(method,query,opts)=>{let all=[];for(let page=1;page<=maxPages;page++){const r=await call(method,query,{...opts,page});if(!r)return page===1?null:all;all=all.concat(r.data);if(!r.more)break}return all};
+  // v3.8.85: 전국 이름 검색 · 내 주변 20km 이름 검색 · 주변 카페 목록을 동시에(예전엔 하나씩 차례로 → 몇 초 걸림)
+  // v3.8.86: 10개만 보여 주므로 전국 검색은 버튼·엔터 때도 1쪽(15곳)만
+  const loc=position?new k.maps.LatLng(position.lat,position.lon):null;
+  const [wide,local]=await Promise.all([
+   Promise.all(q.map(query=>pagesN('keywordSearch',query,{size:15,category_group_code:'CE7'}))),
+   loc?Promise.all(q.map(query=>call('keywordSearch',query,{size:15,category_group_code:'CE7',location:loc,radius:20000,sort:S.SortBy.DISTANCE}))):Promise.resolve([]),
+   loc?kakaoNearby285(k,position).catch(()=>null):Promise.resolve(null)
+  ]);
+  if(wide.some(r=>r===null)){await kakaoDiagnose277(name);return null}
+  data=wide.flat();for(const near of local)if(near)data=data.concat(near.data);
   if(position){
    // v3.8.81: 전국 검색은 '이름이 가장 잘 맞는 곳' 위주라, 이름 일부("텐퍼")만 쓰면 먼 지점 하나만 올 때가 있음 →
-   // ① 내 위치 20km 안 이름 검색(가까운 순) ② 내 주변 카페 목록에서 이름에 검색어가 들어간 곳 — 을 함께 찾는다
-   const loc=new k.maps.LatLng(position.lat,position.lon);
-   for(const query of q){const near=await call('keywordSearch',query,{size:15,category_group_code:'CE7',location:loc,radius:20000,sort:S.SortBy.DISTANCE});if(near)data=data.concat(near.data)}
+   // ① 내 위치 20km 안 이름 검색(가까운 순) ② 내 주변 카페 목록에서 이름에 검색어가 들어간 곳 — 을 함께 찾는다(위에서 동시에)
    const key=position.lat.toFixed(3)+','+position.lon.toFixed(3);
-   if(!kakaoNearby281||kakaoNearby281.key!==key||Date.now()-kakaoNearby281.at>300000){
-    const list=await pages('categorySearch','CE7',{size:15,location:loc,radius:5000,sort:S.SortBy.DISTANCE});
-    if(list)kakaoNearby281={key,at:Date.now(),list};
-   }
    const want=cafeKey281(name);if(kakaoNearby281?.key===key)data=data.concat(kakaoNearby281.list.filter(p=>cafeKey281(p.place_name).includes(want)));
    // v3.8.84: 찾은 결과에 '상호 ○○점' 체인이 있으면 상호 이름으로 내 주변을 한 번 더 찾는다
    // ("텐퍼" → 광주 '텐퍼센트커피 광주금남로점' → '텐퍼센트커피'로 주변 검색 → 신서혁신도시점·동호점…)
    const brands=[];
    for(const p of data){const parts=String(p.place_name||'').trim().split(/\s+/);if(parts.length<2||!/점$/.test(parts[parts.length-1]))continue;
     const brand=parts.slice(0,-1).join(' '),bk=cafeKey281(brand);if(!bk.includes(want)||q.some(x=>cafeKey281(x)===bk)||brands.some(b=>cafeKey281(b)===bk))continue;brands.push(brand);if(brands.length>=2)break}
-   for(const brand of brands){const near=await call('keywordSearch',brand,{size:15,category_group_code:'CE7',location:loc,radius:20000,sort:S.SortBy.DISTANCE});if(near)data=data.concat(near.data)}
+   if(brands.length&&onPartial)onPartial(kakaoPlaces285(data,name,position)); // 1차 결과 먼저 보여 주기
+   const extra=await Promise.all(brands.map(brand=>call('keywordSearch',brand,{size:15,category_group_code:'CE7',location:loc,radius:20000,sort:S.SortBy.DISTANCE})));
+   for(const near of extra)if(near)data=data.concat(near.data);
   }
   if(!data.length)for(const query of q){const any=await pagesN('keywordSearch',query,{size:15});if(any===null)return null;data=data.concat(any)}               // 없으면 모든 장소(전국)
  }else{
@@ -10825,13 +10855,7 @@ async function kakaoCafeSearch275(name,position,auto=false){
   const r=await call('categorySearch','CE7',{size:15,location:new k.maps.LatLng(position.lat,position.lon),radius:2000,sort:S.SortBy.DISTANCE});if(!r)return null;data=r.data; // 이름 없이: 주변 2km 카페
  }
  kakaoFail276='';
- const seen=new Set();
- let unique=data.filter(p=>!seen.has(p.id)&&seen.add(p.id));
- // v3.8.84: 카카오는 주소·태그만 맞는 곳도 돌려줌("스타" → 이름에 '스타' 없는 카페) → 이름에 검색어가 들어간 곳만. 하나도 없으면 그대로
- if(name){const want=cafeKey281(name),named=unique.filter(p=>cafeKey281(p.place_name).includes(want));if(named.length)unique=named}
- let places=unique.map(p=>({name:p.place_name,address:p.road_address_name||p.address_name||'',lat:Number(p.y),lon:Number(p.x),placeId:'kakao:'+p.id,placeUrl:p.place_url,provider:'카카오맵'}));
- if(position)places.sort((a,b)=>cafeDistance(a,position)-cafeDistance(b,position));
- return places.slice(0,15);
+ return kakaoPlaces285(data,name,position);
 }
 async function findCafe(opts){
  // v3.8.76: auto=입력하는 동안 자동 검색(카카오만 — 오픈스트리트맵은 자동완성 금지 정책이라 검색 버튼·엔터 때만)
@@ -10840,23 +10864,25 @@ async function findCafe(opts){
  if(auto&&name.length<2){results.replaceChildren();return}
  if(name.length===1){status.textContent='카페 이름을 두 글자 이상 입력해 주세요.';return}
  if(!auto){if(Date.now()-lastCafeSearch<1100){status.textContent='잠시 후 다시 검색해 주세요.';return}lastCafeSearch=Date.now()}
- cafeAbort?.abort();cafeAbort=new AbortController();const generation=++cafeGeneration;status.textContent='현재 위치를 확인하고 있어요.';results.replaceChildren();
+ cafeAbort?.abort();cafeAbort=new AbortController();const generation=++cafeGeneration;status.textContent='현재 위치를 확인하고 있어요.';if(!auto)results.replaceChildren();
  if(cafeMap){cafeMap.remove();cafeMap=null}$tc('record-place-map').hidden=true;
  try{
   const position=await currentCafePosition(auto);if(generation!==cafeGeneration||contextFields.hidden||logPage.hidden)return;
   if(!position&&!name){status.textContent='위치를 허용하거나 카페 이름을 입력해 주세요.';return}
   status.textContent=position?'현재 위치 주변 카페를 찾고 있어요.':'카페 이름으로 찾고 있어요.';
-  // v3.8.76: 이름 검색은 전 세계에서 — 한국은 카카오맵, 해외는 오픈스트리트맵을 함께 찾아 합친 뒤 내 위치에서 가까운 순 15개
-  const [kakao,osm]=await Promise.all([kakaoCafeSearch275(name,position,auto).catch(()=>null),(auto?Promise.resolve(null):osmCafeSearch276(name,position,cafeAbort.signal).catch(e=>{if(e.name==='AbortError')throw e;return null}))]);
+  const choose=place=>{recordDraft.cafePlace=place.provider==='카카오맵'?{name:place.name,placeId:place.placeId,placeUrl:place.placeUrl,provider:place.provider,...(position&&cafeDistance(place,position)<0.5?{lat:position.lat,lon:position.lon}:{})}:place; /* 카카오 정책: 검색 결과는 저장하지 않고 이름·장소 ID만. 위치는 카페 근처(500m)에 있을 때 기기 현재 위치 */recordDraft.cafeName=place.name;$tc('record-cafe-name').value=place.name;captureRecordForm();persistRecordDraft();status.textContent=place.name+' 선택됨';results.replaceChildren()};
+  // v3.8.76: 이름 검색은 전 세계에서 — 한국은 카카오맵, 해외는 오픈스트리트맵을 함께 찾아 합친 뒤 내 위치에서 가까운 순 10개(v3.8.86)
+  const partial=list=>{if(generation!==cafeGeneration||!list.length)return;results.replaceChildren();for(const place of list){const b=document.createElement('button');b.type='button';b.dataset.placeId=place.placeId;b.innerHTML='<strong>'+esc(place.name)+'</strong><small>'+esc(place.address)+'</small>';b.onclick=()=>choose(place);results.append(b)}};
+  const [kakao,osm]=await Promise.all([kakaoCafeSearch275(name,position,auto,partial).catch(()=>null),(auto?Promise.resolve(null):osmCafeSearch276(name,position,cafeAbort.signal).catch(e=>{if(e.name==='AbortError')throw e;return null}))]);
   if(generation!==cafeGeneration)return;
   if(kakao===null&&osm===null){if(auto){status.textContent='검색 버튼(엔터)을 누르면 찾아요.'+(kakaoFail276?' · 카카오 연결 안 됨: '+kakaoFail276:'');return}throw Error('search')}
   let places=[...(kakao||[])];
   for(const o of osm||[])if(!places.some(k=>k.name.replace(/\s+/g,'')===o.name.replace(/\s+/g,'')&&cafeDistance(k,o)<0.3))places.push(o); // 같은 가게(이름 같고 300m 안)는 하나만
   const source=[kakao&&'카카오맵',osm&&'오픈스트리트맵'].filter(Boolean).join('·');
   if(position)places.sort((a,b)=>cafeDistance(a,position)-cafeDistance(b,position));
-  places=places.slice(0,15);
+  places=places.slice(0,10); // v3.8.86: 카카오+오픈스트리트맵 합쳐 가까운 순 10개
   status.textContent=places.length?(position?'주변 카페를 지도나 목록에서 선택해 주세요.':'현재 위치를 확인하지 못했어요. 이름 검색 결과에서 선택해 주세요.'):'검색 결과가 없어요. 카페 이름을 직접 입력해도 됩니다.';status.textContent+=' ('+source+' 검색)'+(kakao===null&&kakaoFail276?' · 카카오 연결 안 됨: '+kakaoFail276:'')+(auto&&!places.length?' · 해외 카페는 검색 버튼(엔터)으로 찾아요.':'');
-  const choose=place=>{recordDraft.cafePlace=place.provider==='카카오맵'?{name:place.name,placeId:place.placeId,placeUrl:place.placeUrl,provider:place.provider,...(position&&cafeDistance(place,position)<0.5?{lat:position.lat,lon:position.lon}:{})}:place; /* 카카오 정책: 검색 결과는 저장하지 않고 이름·장소 ID만. 위치는 카페 근처(500m)에 있을 때 기기 현재 위치 */recordDraft.cafeName=place.name;$tc('record-cafe-name').value=place.name;captureRecordForm();persistRecordDraft();status.textContent=place.name+' 선택됨';results.replaceChildren()};
+  results.replaceChildren();
   for(const place of places){const b=document.createElement('button');b.type='button';b.dataset.placeId=place.placeId;b.innerHTML='<strong>'+esc(place.name)+'</strong><small>'+esc(place.address)+'</small>';b.onclick=()=>choose(place);results.append(b)}
   if(!places.length&&!position)return;
   if(auto)return; // 입력 중에는 지도를 그리지 않음
@@ -10872,7 +10898,12 @@ async function findCafe(opts){
  }catch(error){if(error.name!=='AbortError'&&generation===cafeGeneration)status.textContent='검색에 연결하지 못했어요. 카페 이름을 직접 입력해 주세요.'}
 }
 $tc('record-cafe-search').onclick=()=>findCafe();
-{$tc('record-cafe-name').addEventListener('input',()=>{clearTimeout(cafeTyping276);cafeTyping276=setTimeout(()=>findCafe({auto:true}),450)});
+{$tc('record-cafe-name').addEventListener('input',()=>{clearTimeout(cafeTyping276);
+  // v3.8.85: 치자마자 '찾는 중…'을 보여 주고, 0.3초 멈추면 검색
+  const results=$tc('record-place-results'),v=$tc('record-cafe-name').value.trim();
+  if(v.length>=2){if(!results.querySelector('button'))results.replaceChildren(element('p','record-place-searching','찾는 중…'))}else results.replaceChildren();
+  cafeTyping276=setTimeout(()=>findCafe({auto:true}),300)});
+ $tc('record-cafe-name').addEventListener('focus',cafeSearchWarmup285);
  document.addEventListener('pointerdown',e=>{const field=$tc('record-cafe-name-field');if(field&&!field.contains(e.target))$tc('record-place-results')?.replaceChildren()},true);}$tc('record-cafe-name').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();findCafe()}});
 
 /* Preparation choices and recipe/brew controls. */
@@ -11066,7 +11097,7 @@ async function exportBackup3813(){
  const data=backupLocal3813(),stats=backupStats3813(data);let photos;
  try{photos=await photosForBackup3813()}
  catch(e){if(stats.logPhotos)throw Error('Brew Log 사진을 읽지 못해 완전한 백업을 만들 수 없어요. 브라우저 저장 공간을 확인해 주세요.');photos=[]}
- const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.84',exportedAt:new Date().toISOString(),
+ const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.8.86',exportedAt:new Date().toISOString(),
   metadata:{...stats,photos:photos.length},localStorage:data,photos};
  downloadBackup3813(backup);return backup.metadata;
 }
