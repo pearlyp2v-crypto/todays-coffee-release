@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.9.0</title><meta name="app-version" content="3.9.0"/><style data-source="design-system/legacy.css">
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.9.4</title><meta name="app-version" content="3.9.4"/><style data-source="design-system/legacy.css">
 :root{--bg:#F1E5DC;--page:#FFFEFB;--ink:#4A4947;--sub:#6E6B66;--line:#D8D2C2;--slate:#4A4947;--cherry:#B17457;--panel:#FFFEFB;--muted:#D8D2C2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #6E6B66;outline-offset:2px}button:disabled,input:disabled{opacity:.5;cursor:not-allowed}[hidden]{display:none!important}
 .app{max-width:440px;min-height:100dvh;background:var(--page);margin:0 auto;box-shadow:0 15px 55px #4A494717}.header{height:64px;padding:0 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:850;letter-spacing:-1.05px}.brand .dot{color:var(--cherry)}.slogan{font:700 9px/1.35 Georgia,serif;color:#6E6B66;text-align:right}main{padding:22px 19px 38px}.eyebrow{display:flex;align-items:center;gap:8px;font:700 10px Georgia,serif;letter-spacing:1.5px;color:var(--cherry)}.eyebrow:before{content:'';width:21px;height:2px;background:var(--cherry)}h1{font-size:25px;margin:12px 0 4px;letter-spacing:-.9px}.subtitle{color:var(--sub);font-size:12px;line-height:1.6;margin:0 0 18px}
@@ -3686,6 +3686,17 @@ input:placeholder-shown{text-overflow:ellipsis}
 #stage-recipe #recipe-card .recipe-icon-actions{display:flex;align-items:center;flex:none}
 #stage-recipe #recipe-card .recipe-icon-actions .icon-btn{width:34px;height:34px;display:grid;place-items:center;padding:6px}
 #stage-recipe #recipe-card .recipe-icon-actions .icon-btn svg{display:block;width:22px;height:22px}
+</style>
+<style id="tc-home-canvas-v391">
+@media(max-width:600px),(display-mode:standalone){
+ html,body{background:var(--theme-bg,#F9F7F0)}
+ html:has(body.tc-persona-open){background:#dfe4e8}
+}
+#tc-home .tc-story{top:calc(-14px - clamp(0px,calc(9dvh - 58.5px),17px) + 36px)}
+</style>
+<style id="tc-control-taps-v394">
+/* Keep browser double-tap zoom off controls; map surfaces retain their own gestures. */
+button,a[href],summary,[role="button"]{touch-action:manipulation}
 </style>
 <meta name="pwa-release" content="8aaea4371357361a2ed89fcf32b83a25ffb01564e00561a9d566cd9eefc5b9f3"/></head>
 <body class="variant-b step-layout-a"><div class="app"><main id="brew-main">
@@ -12139,7 +12150,7 @@ async function exportBackup3813(){
  const data=backupLocal3813(),stats=backupStats3813(data);let photos;
  try{photos=await photosForBackup3813()}
  catch(e){if(stats.logPhotos)throw Error('Brew Log 사진을 읽지 못해 완전한 백업을 만들 수 없어요. 브라우저 저장 공간을 확인해 주세요.');photos=[]}
- const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.9.0',exportedAt:new Date().toISOString(),
+ const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.9.4',exportedAt:new Date().toISOString(),
   metadata:{...stats,photos:photos.length},localStorage:data,photos};
  downloadBackup3813(backup);return backup.metadata;
 }
