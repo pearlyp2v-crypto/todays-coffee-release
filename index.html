@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.9.4</title><meta name="app-version" content="3.9.4"/><style data-source="design-system/legacy.css">
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" name="viewport"/><meta content="#F9F7F0" name="theme-color"/><title>coffee-log-v3.9.6</title><meta name="app-version" content="3.9.6"/><style data-source="design-system/legacy.css">
 :root{--bg:#F1E5DC;--page:#FFFEFB;--ink:#4A4947;--sub:#6E6B66;--line:#D8D2C2;--slate:#4A4947;--cherry:#B17457;--panel:#FFFEFB;--muted:#D8D2C2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #6E6B66;outline-offset:2px}button:disabled,input:disabled{opacity:.5;cursor:not-allowed}[hidden]{display:none!important}
 .app{max-width:440px;min-height:100dvh;background:var(--page);margin:0 auto;box-shadow:0 15px 55px #4A494717}.header{height:64px;padding:0 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:850;letter-spacing:-1.05px}.brand .dot{color:var(--cherry)}.slogan{font:700 9px/1.35 Georgia,serif;color:#6E6B66;text-align:right}main{padding:22px 19px 38px}.eyebrow{display:flex;align-items:center;gap:8px;font:700 10px Georgia,serif;letter-spacing:1.5px;color:var(--cherry)}.eyebrow:before{content:'';width:21px;height:2px;background:var(--cherry)}h1{font-size:25px;margin:12px 0 4px;letter-spacing:-.9px}.subtitle{color:var(--sub);font-size:12px;line-height:1.6;margin:0 0 18px}
@@ -3350,7 +3350,7 @@ body.tc-flow-nav300 :is(#stage-prepare,#stage-recipe,#stage-brew) .stage-bottom,
 .tc-cafe-view-switch button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:36px;border:0;border-radius:9px;background:transparent;color:var(--theme-sub,#6E6B66);font-size:12px;font-weight:600}
 .tc-cafe-view-switch button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .tc-cafe-view-switch button[aria-pressed=true]{background:var(--theme-surface,#FFFEFB);color:var(--theme-primary,#965A40);box-shadow:0 1px 4px #4A494722}
-.tc-thumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 0 18px} /* v3.8.95: 피드형과 같은 높이에서 시작 */
+.tc-thumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 0 18px;touch-action:pan-y} /* 한 손가락 스크롤, 두 손가락은 섬네일 크기 조절 */
 .tc-thumb{position:relative;display:flex;flex-direction:column;width:100%;aspect-ratio:1/1;min-width:0;overflow:hidden;padding:0;border:1px solid var(--theme-border,#D8D2C2);border-radius:12px;background:var(--theme-surface,#FFFEFB);color:var(--theme-text,#4A4947);text-align:left;cursor:pointer}
 .tc-thumb>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .tc-thumb-body{flex:1;min-height:0;padding:10px 10px 0;overflow:hidden}
@@ -3372,6 +3372,17 @@ body.tc-flow-nav300 :is(#stage-prepare,#stage-recipe,#stage-brew) .stage-bottom,
 .tc-thumb.tc-stamp294 .tc-thumb-meta,.tc-thumb.tc-stamp294.photo .tc-thumb-meta{position:static;padding:0 2px;background:none;color:var(--theme-text,#4A4947);min-width:0}
 .tc-thumb.tc-stamp294 .tc-thumb-meta strong{font-size:12px}
 .tc-thumb.tc-stamp294 .tc-thumb-meta small{font-size:10px;color:var(--theme-sub,#6E6B66);opacity:1}
+.tc-thumb-grid[data-columns="3"] .tc-stamp-inner294,.tc-thumb-grid[data-columns="4"] .tc-stamp-inner294{padding:3px 3px 0;gap:3px}
+.tc-thumb-grid[data-columns="3"] .tc-thumb-foot296,.tc-thumb-grid[data-columns="4"] .tc-thumb-foot296{gap:0;min-width:0}
+.tc-thumb-grid[data-columns="3"] .tc-thumb-like296,.tc-thumb-grid[data-columns="4"] .tc-thumb-like296{width:20px;height:24px;padding:3px}
+.tc-thumb-grid[data-columns="3"] .tc-thumb-date296,.tc-thumb-grid[data-columns="4"] .tc-thumb-date296{overflow:hidden;white-space:nowrap}
+.tc-thumb-grid[data-columns="4"] .tc-thumb-meta strong{font-size:10px}
+.tc-thumb-grid:is([data-columns="3"],[data-columns="4"]) .tc-thumb.tc-stamp294{aspect-ratio:auto;align-self:start}
+.tc-thumb-grid:is([data-columns="3"],[data-columns="4"]) .tc-stamp-paper294{position:relative;inset:auto;display:block;width:100%}
+.tc-thumb-grid:is([data-columns="3"],[data-columns="4"]) .tc-thumb-foot296{flex-wrap:wrap}
+.tc-thumb-grid:is([data-columns="3"],[data-columns="4"]) .tc-thumb-foot296 .tc-thumb-meta{flex-basis:100%}
+.tc-thumb-grid:is([data-columns="3"],[data-columns="4"]) .tc-thumb-date296{flex-wrap:wrap;gap:0 4px;white-space:normal}
+.tc-thumb-grid:is([data-columns="3"],[data-columns="4"]) .tc-thumb-like296{margin-left:auto}
 #tc-cafe-alt-view.map294{margin:0}
 /* v3.8.96: 섬네일 아래 줄 = 이름 · 날짜 ★별점 | 오른쪽 하트 */
 .tc-thumb.tc-stamp294:focus-visible{outline:2px solid var(--theme-primary,#965A40);outline-offset:3px}
@@ -3692,7 +3703,7 @@ input:placeholder-shown{text-overflow:ellipsis}
  html,body{background:var(--theme-bg,#F9F7F0)}
  html:has(body.tc-persona-open){background:#dfe4e8}
 }
-#tc-home .tc-story{top:calc(-14px - clamp(0px,calc(9dvh - 58.5px),17px) + 36px)}
+#tc-home .tc-story{top:calc(-14px - clamp(0px,calc(9dvh - 58.5px),17px) + 12px)}
 </style>
 <style id="tc-control-taps-v394">
 /* Keep browser double-tap zoom off controls; map surfaces retain their own gestures. */
@@ -9658,13 +9669,13 @@ const logViews283={brew:viewDefaults317().brew,cafe:viewDefaults317().cafe};for(
 /* v3.8.97: 지도는 따로 아이콘(BREW·CAFE 둘 다). 보기 아이콘은 피드 ↔ 섬네일만 — 지도에서 나오면 마지막 보기로 */
 const logBase297={brew:logViews283.brew,cafe:logViews283.cafe};
 const LOG_VIEW_ORDER285=['feed','thumb']; /* v3.8.93: 목록형 없앰 — BREW·CAFE 모두 피드형 ↔ 섬네일형 */
-const LOG_VIEW_ORDERS294={brew:['feed','thumb','map'],cafe:['feed','thumb','map']}; /* v3.8.116: 보기 아이콘 하나로 피드 → 섬네일 → 지도 */ /* v3.8.94: CAFE LOG만 지도 보기 */
+const LOG_VIEW_ORDERS294={brew:['feed','thumb'],cafe:['feed','thumb']};
 const LOG_VIEW_ICONS283={feed:['피드형 보기','<rect x="4" y="3" width="16" height="8" rx="1"/><rect x="4" y="14" width="16" height="7" rx="1"/>'],list:['목록형 보기','<path d="M4 5h16M4 12h16M4 19h16"/>'],thumb:['섬네일형 보기','<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>'],map:['지도 보기','<path d="M20.972 11.291a9 9 0 1 0 -8.322 9.686"/><path d="M3.6 9h16.8"/><path d="M3.6 15h8.9"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a16.986 16.986 0 0 1 2.578 9.018"/><path d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879z"/><path d="M19 18v.01"/>']};
 /* v3.8.115: 지도 아이콘 = 지구본 + 핀(사용자 선택 B안) */
 function logPane285(){let pane='brew';try{if(profilePane3812==='cafe')pane='cafe'}catch(e){} /* 시작할 때는 아직 정해지기 전 */return pane}
 const logViewToggle=document.createElement('button');logViewToggle.type='button';logViewToggle.id='tc-log-view-toggle';logViewToggle.className='tc-tool';
 function setLogView297(pane,mode){logViews283[pane]=mode;store(pane==='cafe'?'coffee_cafe_view':'coffee_brew_view',mode);if(mode!=='map'){logBase297[pane]=mode;store(pane==='cafe'?'coffee_cafe_base_view':'coffee_brew_base_view',mode)}logPageNumber=0;renderFeed();updateLogViewToggle()}
-logViewToggle.onclick=()=>{const pane=logPane285(),cur=logViews283[pane];setLogView297(pane,cur==='feed'?'thumb':cur==='thumb'?'map':'feed')};
+logViewToggle.onclick=()=>{const pane=logPane285(),cur=logViews283[pane];setLogView297(pane,cur==='map'?logBase297[pane]:cur==='feed'?'thumb':'feed')};
 const logMapButton297=document.createElement('button');logMapButton297.type='button';logMapButton297.id='tc-log-map';logMapButton297.className='tc-tool';
 logMapButton297.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+LOG_VIEW_ICONS283.map[1]+'</svg>';
 logMapButton297.onclick=()=>{const pane=logPane285();setLogView297(pane,logViews283[pane]==='map'?logBase297[pane]:'map')};
@@ -9678,7 +9689,7 @@ profileTools.append(logSortButton296);
 function updateLogViewToggle(){
  try{updateLogSort296()}catch(e){}
  // v3.8.93: 아이콘은 '지금 보고 있는 보기'를 보여 준다(누르면 다음 보기로)
- const pane=logPane285(),onMap=logViews283[pane]==='map',mode=LOG_VIEW_ICONS283[logViews283[pane]]?logViews283[pane]:'feed',[label,svg]=LOG_VIEW_ICONS283[mode];
+ const pane=logPane285(),onMap=logViews283[pane]==='map',mode=onMap?logBase297[pane]:logViews283[pane],[label,svg]=LOG_VIEW_ICONS283[mode]||LOG_VIEW_ICONS283.feed;
  logMapButton297.setAttribute('aria-pressed',String(onMap));logMapButton297.setAttribute('aria-label',pane==='cafe'?'카페 지도 보기':'원두 산지 지도 보기');logMapButton297.title=onMap?'지도 닫기':'지도';
  logViewToggle.dataset.mode=mode;logViewToggle.setAttribute('aria-label',label);logViewToggle.title=label;logViewToggle.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+svg+'</svg>';
 }
@@ -9747,8 +9758,21 @@ function thumbElement282(log,preset=null){
  const open=()=>openRecordModal296(log);tile.onclick=open;tile.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}};
  return tile;
 }
+const THUMB_COLUMNS_KEY395='tc_thumb_columns_v1';
+const thumbColumns395=(()=>{let saved={};try{saved=JSON.parse(localStorage.getItem(THUMB_COLUMNS_KEY395)||'{}')||{}}catch(e){}return Object.fromEntries(['brew','cafe'].map(k=>[k,[1,2,3,4].includes(saved[k])?saved[k]:2]))})();
+function bindThumbPinch395(grid,pane){
+ const apply=n=>{thumbColumns395[pane]=n;grid.dataset.columns=String(n);grid.style.gridTemplateColumns=`repeat(${n},minmax(0,1fr))`};apply(thumbColumns395[pane]);
+ let pinch=null,suppressUntil=0;
+ const distance=e=>Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+ grid.addEventListener('touchstart',e=>{if(e.touches.length!==2){pinch=null;return}if(e.cancelable)e.preventDefault();pinch={distance:distance(e),columns:thumbColumns395[pane]};suppressUntil=Date.now()+500},{passive:false});
+ grid.addEventListener('touchmove',e=>{if(!pinch||e.touches.length!==2)return;if(e.cancelable)e.preventDefault();suppressUntil=Date.now()+500;const ratio=distance(e)/Math.max(1,pinch.distance),steps=Math.trunc(Math.log(ratio)/Math.log(1.3)),n=Math.max(1,Math.min(4,pinch.columns-steps));if(n!==thumbColumns395[pane])apply(n)},{passive:false});
+ const end=()=>{if(!pinch)return;pinch=null;suppressUntil=Date.now()+400;store(THUMB_COLUMNS_KEY395,thumbColumns395)};
+ grid.addEventListener('touchend',end,{passive:true});grid.addEventListener('touchcancel',end,{passive:true});
+ grid.addEventListener('click',e=>{if(Date.now()<suppressUntil){e.preventDefault();e.stopImmediatePropagation()}},true);
+}
 function renderThumbs282(logs){
  const grid=document.createElement('div');grid.className='tc-thumb-grid';
+ bindThumbPinch395(grid,logPane285());
  /* v3.8.96: 프리셋 그림이 옆·위 칸과 겹치지 않게(2열) — 기록마다 정한 그림에서 시작해 다음 그림으로 */
  const keys=[];
  logs.forEach((log,i)=>{let preset=null;
@@ -9961,6 +9985,7 @@ function makeDetail297(host,{places,stamp,onStamp,onTap,onZoomOut}){
  return api;
 }
 /* 기록 위치들이 다 보이는 지구본 시점 */
+function globeStart395(pts){return {...globeFit296(pts),k:1.6}}
 function globeFit296(pts){
  if(!pts.length)return {lon:128,lat:30,k:1};
  let x=0,y=0,z=0;for(const p of pts){const a=p.coords.lat*Math.PI/180,b=p.coords.lon*Math.PI/180;x+=Math.cos(a)*Math.cos(b);y+=Math.cos(a)*Math.sin(b);z+=Math.sin(a)}
@@ -10044,8 +10069,7 @@ function renderCafeMap294(logs){
    if(inKorea296(here)&&map){if(mode!=='kakao')toKakao(here,5);else{map.setLevel(5);map.panTo(new kakao.maps.LatLng(here.lat,here.lon))}return}
    if(mode==='detail'){detail.zoomTo(here.lat,here.lon,13);return}if(mode!=='globe')toGlobe(globeFit296([]));globe.animate({lon:here.lon,lat:here.lat,k:30},800)},()=>toast('위치 권한을 허용하면 내 위치로 옮겨요.'),{maximumAge:300000,timeout:8000})};
  setChip();
- const overseas=placed().some(pl=>!inKorea296(pl.coords));
- if(overseas)toGlobe(globeFit296(placed())); /* 해외 기록이 있으면 지구본으로 시작 */
+ toGlobe(globeStart395(placed()));
  kakaoReady275().then(async api=>{
   if(!current())return;kakao=api;
   map=new kakao.maps.Map(canvas,{center:new kakao.maps.LatLng(35.8714,128.6014),level:7});map.setMaxLevel?.(KAKAO_MAX296);box.__map294=map; // 기본: 대구
@@ -10144,7 +10168,7 @@ function renderBrewMap297(logs){
  const detail=makeDetail297(box,{places:placed,stamp:(group)=>{group.forEach(p=>p.logs.sort(byDate));const count=new Set(group.flatMap(p=>p.logs)).size,top=group.slice().sort((a,b)=>byDate(a.logs[0],b.logs[0]))[0],el=mapStamp294(top.logs[0],thumbURLs282,current,count,pic(top.logs[0]));el.setAttribute('aria-label',group.map(p=>p.label).join(', ')+' · 기록 '+count+'개');if(group.length>1)el.classList.add('cluster');return el},
   onStamp:g=>{const c=g.places[0].coords;if(g.places.length>1){detail.zoomTo(c.lat,c.lon);return}detail.center(c.lat,c.lon);showCard(g.places)},onTap:()=>{card.hidden=true},
   onZoomOut:v=>{if(!detailOn)return;detailOn=false;detail.close();globe.show(true);globe.set(v,true)}});
- box.insertBefore(globe.el,chip);box.insertBefore(detail.el,chip);globe.show(true);globe.set(globeFit296(placed()),true);box.__globe297=globe;
+ box.insertBefore(globe.el,chip);box.insertBefore(detail.el,chip);globe.show(true);globe.set(globeStart395(placed()),true);box.__globe297=globe;
  /* v3.8.113: 오른쪽 위 '내 위치' — 내가 있는 곳을 가운데로 */
  const locate=element('button','tc-cafemap-locate294');locate.type='button';locate.setAttribute('aria-label','내 위치');locate.innerHTML=LOCATE_SVG297;box.append(locate);
  locate.onclick=()=>{if(!navigator.geolocation){toast('이 기기에서는 위치를 쓸 수 없어요.');return}
@@ -10658,7 +10682,7 @@ $tc('tc-sheet-close').onclick=closeActions;
 $tc('tc-brand-persona').onclick=()=>openHomePersona(false); /* v3.8.117: 문구 전체가 커피 페르소나(결과가 있으면 결과, 없으면 테스트) */
 $tc('tc-global-settings').onclick=()=>openSettings();
 /* v3.8.115: 설정 옆 지구본 = 어디서든 한 번에 내 커피 지도(지금 고른 BREW/CAFE LOG의 지도) */
-$tc('tc-global-map').onclick=()=>{const cur=logPane285(),onMap=!profile.hidden&&logViews283[cur]==='map',pane=onMap?(cur==='brew'?'cafe':'brew'):cur;setLogView297(pane,'map');enterProfilePane3812(pane)}; /* v3.8.117: 지도에서 한 번 더 누르면 BREW ↔ CAFE 지도 */
+$tc('tc-global-map').onclick=()=>{const pane=logPane285();setLogView297(pane,'map');enterProfilePane3812(pane)};
 function openProfileSettings(){openModal('설정',()=>{
  $tc('modal-body').innerHTML='<p class="tc-help">이 앱의 원두·레시피·기록은 현재 브라우저에 저장됩니다. 다른 기기와 자동 동기화되지 않습니다.</p><p class="tc-help">공개 피드와 팔로우 기능은 추후 업데이트 예정입니다.</p>';
 })}
@@ -12150,7 +12174,7 @@ async function exportBackup3813(){
  const data=backupLocal3813(),stats=backupStats3813(data);let photos;
  try{photos=await photosForBackup3813()}
  catch(e){if(stats.logPhotos)throw Error('Brew Log 사진을 읽지 못해 완전한 백업을 만들 수 없어요. 브라우저 저장 공간을 확인해 주세요.');photos=[]}
- const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.9.4',exportedAt:new Date().toISOString(),
+ const backup={format:BACKUP_SCHEMA3813,schemaVersion:BACKUP_VERSION3813,appVersion:'3.9.6',exportedAt:new Date().toISOString(),
   metadata:{...stats,photos:photos.length},localStorage:data,photos};
  downloadBackup3813(backup);return backup.metadata;
 }
