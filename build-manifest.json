@@ -1,10 +1,10 @@
 {
-  "app": "3.9.6",
+  "app": "3.9.14",
   "database_source": "coffee-db/오늘의커피_원두DB_v3.2.xlsx",
   "database_exporter": "coffee-db/exporter/export_db.py",
   "roaster_aliases_source": "coffee-db/roaster-aliases-v1.json",
   "engine": "0.6",
-  "html_sha256": "a749d012fb1593e662bf7519400f52b17791508d56a61a67bfb03bd694dd081a",
+  "html_sha256": "87b0febf3e715319f81f79773c38af86af8bca112b674e0a624b33145d698556",
   "beans": 218,
   "public_recipes": 29,
   "source_sha256": {
@@ -12,8 +12,8 @@
     "app/01_persona/src/page.css": "09013bc1ccc60f2679b0ada83d824601c3f67ad14a44ca582f63da9203c3e63e",
     "app/01_persona/src/page.js": "b9281f43b05aeb351f2bb57bd98ffb77a40743d3afa433c3caa1317c2eca3375",
     "app/02_coffee-log/src/date-picker.js": "bb8c93fc0175c688d7317dcd25a2c35a31864420ccdf07b6ed289e6c171f413d",
-    "APP_VERSION": "05566dceb1394c0ba52e28e74b18cfc0efb325b12d58183db953af94e4a9e27d",
-    "app/02_coffee-log/src/index.template.html": "3fcbdc62503f355124a038683dcd0067bc821d83bcbbb67a1d595c585e96742d",
+    "APP_VERSION": "4a4959cb053b312df329a8e218f6f2bbca5e9e058bf6ac697bd498378a661fba",
+    "app/02_coffee-log/src/index.template.html": "192d181d32d40caea3c6abb6e11d6292f09def0819beac94f49ee6eeedf314c8",
     "app/02_coffee-log/src/label-ocr.js": "e2342b95e9de846e605fffe740c5bd51c163ac2b43b615e658101dc4ec6ea0c3",
     "data/beans.json": "b21ec42d6d42981811efb4b7902621dc2c11728edcb3321b3cb349aa1c295ff4",
     "data/recipe-config.json": "1d877a7e5d2a8afb98e3b9206e7e8b37352d95dbe860ebfa8c4504d0f1c2651f",
@@ -41,7 +41,7 @@
     "icons/favicon-32.png": "1d9d44831b3d6f6aaaccdff57c4d0501e20933b91ba12ecf5813ef310b9aade8",
     "icons/icon-192.png": "55a97f8059d41e97c43cced1f6b06133c865b277dcb76fb0e8da3213b7758541",
     "icons/icon-512.png": "e70c4a097c12bc2933781e18b356cb8efda9245838201a1dbd6c14c5c7d7918f",
-    "sw.js": "cef4b0f64581a55041e7a70fc277328676ed196b12fcfe92b7f358bad2dd4ea5",
+    "sw.js": "30e19588cd16111e541fae859b8a1a44832ef43c007e844e596c1a4fc957a834",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   }
 }
