@@ -1,0 +1,10 @@
+{
+  "app": "3.9.22",
+  "kind": "standalone-preview",
+  "source_repository": "pearlyp2v-crypto/app-todays-coffee",
+  "source_commit": "c3645d0409da60f74c8ea46d5ebc9e95f378aed3",
+  "html_sha256": "9672e4b6bc2e84a4d564f00b0b41ed0d221cc19d36102c23a29558d1a1907830",
+  "path": "previews/v3.9.22/coffee-log-v3.9.22.html",
+  "storage": "Same origin as production. Use a private browser session for isolated tests.",
+  "pwa": "Standalone filename: no preview service worker or installation."
+}
