@@ -1,10 +1,10 @@
 {
-  "app": "3.9.14",
+  "app": "3.9.25",
   "database_source": "coffee-db/오늘의커피_원두DB_v3.2.xlsx",
   "database_exporter": "coffee-db/exporter/export_db.py",
   "roaster_aliases_source": "coffee-db/roaster-aliases-v1.json",
   "engine": "0.6",
-  "html_sha256": "87b0febf3e715319f81f79773c38af86af8bca112b674e0a624b33145d698556",
+  "html_sha256": "5d9b17b575a8ff3ccc7415f7d268f59c852a0539a314ad408d9dc3f5a3bc4199",
   "beans": 218,
   "public_recipes": 29,
   "source_sha256": {
@@ -12,8 +12,8 @@
     "app/01_persona/src/page.css": "09013bc1ccc60f2679b0ada83d824601c3f67ad14a44ca582f63da9203c3e63e",
     "app/01_persona/src/page.js": "b9281f43b05aeb351f2bb57bd98ffb77a40743d3afa433c3caa1317c2eca3375",
     "app/02_coffee-log/src/date-picker.js": "bb8c93fc0175c688d7317dcd25a2c35a31864420ccdf07b6ed289e6c171f413d",
-    "APP_VERSION": "4a4959cb053b312df329a8e218f6f2bbca5e9e058bf6ac697bd498378a661fba",
-    "app/02_coffee-log/src/index.template.html": "192d181d32d40caea3c6abb6e11d6292f09def0819beac94f49ee6eeedf314c8",
+    "APP_VERSION": "e34b73eac4e485054df93cd20109cfa5e4f75ac843897de7deed6928db40ca59",
+    "app/02_coffee-log/src/index.template.html": "20f7a4aeec60ac858529ad81d3d5a71b898e414425de0896943384aee9c16db0",
     "app/02_coffee-log/src/label-ocr.js": "e2342b95e9de846e605fffe740c5bd51c163ac2b43b615e658101dc4ec6ea0c3",
     "data/beans.json": "b21ec42d6d42981811efb4b7902621dc2c11728edcb3321b3cb349aa1c295ff4",
     "data/recipe-config.json": "1d877a7e5d2a8afb98e3b9206e7e8b37352d95dbe860ebfa8c4504d0f1c2651f",
@@ -23,7 +23,7 @@
     "data/persona-origins-v3.3.json": "84feea48cccdea237e38eb0fe0d77159c955cdd9241e241cfd4f9f5906b72643",
     "data/origin-stories-extra.json": "4e68d244d2e409045f7560c21e76629f9b9f1befc54114a9b9218839b5f97c6d",
     "engine/recipe-engine.js": "678e194d950a7aefcb5cf2ef836dc4bfd8886af501522d785cb440938d2f654f",
-    "scripts/build.py": "1469aa787763d80c231254f5e0c6ebec8574681ca38a0cd2a6d584b68f32c13b",
+    "scripts/build.py": "f3a96cce6c2228366e532f85aae5e0c2c9be03e2e36884fe294971ba676022a3",
     "coffee-db/roaster-aliases-v1.json": "ef580ee127c0f887777b188a4e3121a6f0b39fc8e8d4af66fc9c752f34f98978",
     "coffee-db/오늘의커피_원두DB_v3.2.xlsx": "c9254bb94c104e23f8c29f01464d356d23872bdb90470ec5f429b80544eb377d",
     "coffee-db/exporter/export_db.py": "51acc0594583eabd5f781da459966770a80a7fdeb6533ab10b42ec3a71b7ddd9",
@@ -41,7 +41,7 @@
     "icons/favicon-32.png": "1d9d44831b3d6f6aaaccdff57c4d0501e20933b91ba12ecf5813ef310b9aade8",
     "icons/icon-192.png": "55a97f8059d41e97c43cced1f6b06133c865b277dcb76fb0e8da3213b7758541",
     "icons/icon-512.png": "e70c4a097c12bc2933781e18b356cb8efda9245838201a1dbd6c14c5c7d7918f",
-    "sw.js": "30e19588cd16111e541fae859b8a1a44832ef43c007e844e596c1a4fc957a834",
+    "sw.js": "5c6308f8346b489d9b361a57bfdf2d936d438c317cd2d61bbaf7a7d4a4b2c837",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   }
 }
